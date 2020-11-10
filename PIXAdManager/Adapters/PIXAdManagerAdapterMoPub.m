@@ -8,6 +8,7 @@
 
 #import "PIXAdManagerAdapterMoPub.h"
 
+static NSString * const kMediationPartner = @"MoPub";
 static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
 
 @interface PIXAdManagerAdapterMoPub ()
@@ -20,15 +21,15 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
 @implementation PIXAdManagerAdapterMoPub
 
 - (NSString *)adapterName {
-    return @"MoPub";
+    return kMediationPartner;
 }
 
 - (UIView *)adapterAdView {
-    if (!_adView) {
-        _adView = [[MPAdView alloc] initWithAdUnitId:self.adUnitID];
-        _adView.delegate = self;
+    if (!self.adView) {
+        self.adView = [[MPAdView alloc] initWithAdUnitId:self.adUnitID];
+        self.adView.delegate = self;
     }
-    return _adView;
+    return self.adView;
 }
 
 - (void)initializeWithConfiguration:(NSDictionary *)configuration {

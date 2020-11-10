@@ -23,9 +23,9 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     PIXAdManager *adManager = [PIXAdManager sharedManager];
+    adManager.delegate = self;
     
     self.adView = adManager.adView;
-    adManager.delegate = self;
     
     self.adView.translatesAutoresizingMaskIntoConstraints = NO;
     self.adViewDesignedSize = CGSizeMake(320.0, 50.0);

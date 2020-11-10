@@ -19,7 +19,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[PIXAdManager sharedManager] initializeMediationPartner:MediationPartnerMoPub withConfiguration:nil];
+//    NSDictionary *configuration = @{@"adUnitID": @"5d0ff333b3a745118af4429d08d362be"};
+//    [[PIXAdManager sharedManager] initializeMediationPartner:MediationPartnerMoPub withConfiguration:configuration];
+    
+    [[PIXAdManager sharedManager] initializeMediationPartner:MediationPartnerAdMob withConfiguration:nil];
     
     return YES;
 }

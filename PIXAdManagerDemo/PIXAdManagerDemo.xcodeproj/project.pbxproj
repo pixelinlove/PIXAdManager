@@ -3,10 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		651ADA91255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */; };
+		651ADA9B255AFA54005E2D91 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651ADA95255AFA54005E2D91 /* nanopb.xcframework */; };
+		651ADA9C255AFA54005E2D91 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651ADA96255AFA54005E2D91 /* GoogleAppMeasurement.framework */; };
+		651ADA9D255AFA54005E2D91 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651ADA97255AFA54005E2D91 /* PromisesObjC.xcframework */; };
+		651ADA9E255AFA54005E2D91 /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651ADA98255AFA54005E2D91 /* UserMessagingPlatform.xcframework */; };
+		651ADA9F255AFA54005E2D91 /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651ADA99255AFA54005E2D91 /* GoogleMobileAds.xcframework */; };
+		651ADAA0255AFA54005E2D91 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651ADA9A255AFA54005E2D91 /* GoogleUtilities.xcframework */; };
 		6552D33C2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */; };
 		6552D5612557193100C71EA2 /* MPFullscreenAdAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D3432557193000C71EA2 /* MPFullscreenAdAdapter.m */; };
 		6552D5622557193100C71EA2 /* MPServerAdPositioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D3452557193000C71EA2 /* MPServerAdPositioning.m */; };
@@ -243,8 +250,6 @@
 		6552D6492557193200C71EA2 /* MPConsoleLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D5542557193100C71EA2 /* MPConsoleLogger.m */; };
 		6552D64A2557193200C71EA2 /* MPBaseAdapterConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D55B2557193100C71EA2 /* MPBaseAdapterConfiguration.m */; };
 		6552D64B2557193200C71EA2 /* MPConsentChangedNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D55C2557193100C71EA2 /* MPConsentChangedNotification.m */; };
-		6552D64C2557193200C71EA2 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6552D55F2557193100C71EA2 /* GoogleMobileAds.framework */; };
-		6552D64D2557193200C71EA2 /* UserMessagingPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6552D5602557193100C71EA2 /* UserMessagingPlatform.framework */; };
 		65F3CAE520535349009A3C86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F3CAE420535349009A3C86 /* AppDelegate.m */; };
 		65F3CAE820535349009A3C86 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F3CAE720535349009A3C86 /* ViewController.m */; };
 		65F3CAEB20535349009A3C86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F3CAE920535349009A3C86 /* Main.storyboard */; };
@@ -255,6 +260,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		651ADA8F255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapterAdMob.h; sourceTree = "<group>"; };
+		651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterAdMob.m; sourceTree = "<group>"; };
+		651ADA95255AFA54005E2D91 /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = nanopb.xcframework; sourceTree = "<group>"; };
+		651ADA96255AFA54005E2D91 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppMeasurement.framework; sourceTree = "<group>"; };
+		651ADA97255AFA54005E2D91 /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PromisesObjC.xcframework; sourceTree = "<group>"; };
+		651ADA98255AFA54005E2D91 /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
+		651ADA99255AFA54005E2D91 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleMobileAds.xcframework; sourceTree = "<group>"; };
+		651ADA9A255AFA54005E2D91 /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleUtilities.xcframework; sourceTree = "<group>"; };
 		6552D3322556B19C00C71EA2 /* PIXAdManagerAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapter.h; sourceTree = "<group>"; };
 		6552D33A2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapterMoPub.h; sourceTree = "<group>"; };
 		6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterMoPub.m; sourceTree = "<group>"; };
@@ -771,8 +784,6 @@
 		6552D55B2557193100C71EA2 /* MPBaseAdapterConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBaseAdapterConfiguration.m; sourceTree = "<group>"; };
 		6552D55C2557193100C71EA2 /* MPConsentChangedNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPConsentChangedNotification.m; sourceTree = "<group>"; };
 		6552D55D2557193100C71EA2 /* MPInterstitialAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPInterstitialAdController.h; sourceTree = "<group>"; };
-		6552D55F2557193100C71EA2 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
-		6552D5602557193100C71EA2 /* UserMessagingPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UserMessagingPlatform.framework; sourceTree = "<group>"; };
 		65F3CAE020535349009A3C86 /* PIXAdManagerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PIXAdManagerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F3CAE320535349009A3C86 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65F3CAE420535349009A3C86 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -792,15 +803,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6552D64C2557193200C71EA2 /* GoogleMobileAds.framework in Frameworks */,
-				6552D64D2557193200C71EA2 /* UserMessagingPlatform.framework in Frameworks */,
 				6552D5AD2557193100C71EA2 /* libOMSDK-iOS-v1-Mopub.a in Frameworks */,
+				651ADA9F255AFA54005E2D91 /* GoogleMobileAds.xcframework in Frameworks */,
+				651ADAA0255AFA54005E2D91 /* GoogleUtilities.xcframework in Frameworks */,
+				651ADA9B255AFA54005E2D91 /* nanopb.xcframework in Frameworks */,
+				651ADA9E255AFA54005E2D91 /* UserMessagingPlatform.xcframework in Frameworks */,
+				651ADA9C255AFA54005E2D91 /* GoogleAppMeasurement.framework in Frameworks */,
+				651ADA9D255AFA54005E2D91 /* PromisesObjC.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		651ADA94255AFA54005E2D91 /* GoogleAdMob */ = {
+			isa = PBXGroup;
+			children = (
+				651ADA95255AFA54005E2D91 /* nanopb.xcframework */,
+				651ADA96255AFA54005E2D91 /* GoogleAppMeasurement.framework */,
+				651ADA97255AFA54005E2D91 /* PromisesObjC.xcframework */,
+				651ADA98255AFA54005E2D91 /* UserMessagingPlatform.xcframework */,
+				651ADA99255AFA54005E2D91 /* GoogleMobileAds.xcframework */,
+				651ADA9A255AFA54005E2D91 /* GoogleUtilities.xcframework */,
+			);
+			path = GoogleAdMob;
+			sourceTree = "<group>";
+		};
 		6552D33E2557189F00C71EA2 /* Internals */ = {
 			isa = PBXGroup;
 			children = (
@@ -814,6 +842,8 @@
 			children = (
 				6552D33A2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.h */,
 				6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */,
+				651ADA8F255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.h */,
+				651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -821,8 +851,8 @@
 		6552D3402557193000C71EA2 /* AdNetworkSDKs */ = {
 			isa = PBXGroup;
 			children = (
+				651ADA94255AFA54005E2D91 /* GoogleAdMob */,
 				6552D3412557193000C71EA2 /* MoPubSDK */,
-				6552D55E2557193100C71EA2 /* GoogleAdMob */,
 			);
 			path = AdNetworkSDKs;
 			sourceTree = "<group>";
@@ -1563,15 +1593,6 @@
 			path = Internal;
 			sourceTree = "<group>";
 		};
-		6552D55E2557193100C71EA2 /* GoogleAdMob */ = {
-			isa = PBXGroup;
-			children = (
-				6552D55F2557193100C71EA2 /* GoogleMobileAds.framework */,
-				6552D5602557193100C71EA2 /* UserMessagingPlatform.framework */,
-			);
-			path = GoogleAdMob;
-			sourceTree = "<group>";
-		};
 		65F3CAD720535349009A3C86 = {
 			isa = PBXGroup;
 			children = (
@@ -1827,6 +1848,7 @@
 				6552D5C32557193100C71EA2 /* MPHTMLBannerCustomEvent.m in Sources */,
 				65F3CAF320535349009A3C86 /* main.m in Sources */,
 				6552D62B2557193200C71EA2 /* MPAdAdapterError.m in Sources */,
+				651ADA91255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m in Sources */,
 				6552D5822557193100C71EA2 /* MPNativeAd.m in Sources */,
 				6552D6132557193200C71EA2 /* MoPub+Utility.m in Sources */,
 				6552D6162557193200C71EA2 /* MPVASTCreative.m in Sources */,
@@ -2074,11 +2096,15 @@
 					"$(PROJECT_DIR)/PIXAdManagerDemo/AdNetworkSDKs/GoogleAdMob",
 				);
 				INFOPLIST_FILE = PIXAdManagerDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PIXAdManagerDemo/AdNetworkSDKs/MoPubSDK/Internal/Viewability/OMSDK",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pixelinlove.PIXAdManagerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2096,11 +2122,15 @@
 					"$(PROJECT_DIR)/PIXAdManagerDemo/AdNetworkSDKs/GoogleAdMob",
 				);
 				INFOPLIST_FILE = PIXAdManagerDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PIXAdManagerDemo/AdNetworkSDKs/MoPubSDK/Internal/Viewability/OMSDK",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pixelinlove.PIXAdManagerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

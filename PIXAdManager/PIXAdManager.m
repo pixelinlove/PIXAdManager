@@ -77,6 +77,7 @@
 }
 
 - (UIViewController *)viewControllerForPresentingModalView {
+    NSLog(@"[log][manager] %@", self.delegate);
     return [self.delegate viewControllerForPresentingModalView];
 }
 
