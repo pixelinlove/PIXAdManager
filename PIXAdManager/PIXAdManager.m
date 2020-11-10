@@ -11,7 +11,7 @@
 
 @interface PIXAdManager ()
 
-@property (nonatomic, assign) MediationPartner initialisedMediationPartner;
+@property (nonatomic, assign) MediationPartner initialisedMediationPartner; //current Mediation partner
 @property (nonatomic, strong) id<PIXAdManagerAdapter> adapter;
 
 @end
@@ -27,7 +27,7 @@
     return sharedInstance;
 }
 
-- (void)initializeMediationPartner:(MediationPartner)partner {
+- (void)initializeMediationPartner:(MediationPartner)partner withConfiguration:(NSDictionary *)configuration {
     if (_initialisedMediationPartner != 0) {
         //TODO: Raise error. Mediation Partner already initialised and can't be changed.
         [NSException raise:NSInternalInconsistencyException
@@ -44,6 +44,9 @@
         return;
     }
     self.adapter = (id<PIXAdManagerAdapter>)[[adapterClass alloc] init];
+    self.adapter.adapterDelegate = self;
+    
+    [self.adapter initializeWithConfiguration:configuration];
 }
 
 - (NSString *)classNameForPartner:(MediationPartner)partner {
@@ -57,8 +60,34 @@
     return className;
 }
 
-- (void)showMessage {
-    NSLog(@"%@", self.adapter.name);
+- (void)loadAd {
+    [self.adapter loadAd];
+}
+
+- (void)startRefreshing {
+    [self.adapter startRefreshing];
+}
+
+- (void)stopRefreshing {
+    [self.adapter stopRefreshing];
+}
+
+- (UIView *)adView {
+    return self.adapter.adapterAdView;
+}
+
+- (UIViewController *)viewControllerForPresentingModalView {
+    return [self.delegate viewControllerForPresentingModalView];
+}
+
+- (void)adapterDidLoadAd:(UIView *)ad {
+    NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
+    [self.delegate adManagerDidLoadAd:ad];
+}
+
+- (void)adapterDidFailToLoadAdWithError:(NSError *)error {
+    NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
+    [self.delegate adManagerDidFailWithError:error];
 }
 
 @end

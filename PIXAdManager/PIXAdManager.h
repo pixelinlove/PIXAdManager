@@ -6,8 +6,8 @@
 //  Copyright © 2018 Andrea Ottolina. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "PIXAdManagerAdapter.h"
 
 typedef enum {
     MediationPartnerNone = 0,
@@ -15,14 +15,35 @@ typedef enum {
     MediationPartnerAdMob
 } MediationPartner;
 
-@interface PIXAdManager : NSObject
 
-@property (nonatomic, strong) NSString *mediationClass;
+@class PIXAdManager;
+
+// PIXAdManagerDelegate declaration
+@protocol PIXAdManagerDelegate <NSObject>
+
+@required
+
+- (UIViewController *)viewControllerForPresentingModalView;
+
+@optional
+
+- (void)adManagerDidLoadAd:(UIView *)ad;
+- (void)adManagerDidFailWithError:(NSError *)error;
+
+@end
+
+// PIXAdManager singleton class definition
+@interface PIXAdManager : NSObject <PIXAdManagerAdapterDelegate>
+
 @property (nonatomic, strong) UIView *adView;
+@property (nonatomic, copy) NSString *mediationClass;
+@property (nonatomic, weak) id<PIXAdManagerDelegate> delegate;
 
 + (PIXAdManager *)sharedManager;
 
-- (void)initializeMediationPartner:(MediationPartner)partner;
-- (void)showMessage;
+- (void)initializeMediationPartner:(MediationPartner)partner withConfiguration:(NSDictionary *)configuration;
+- (void)loadAd;
+- (void)startRefreshing;
+- (void)stopRefreshing;
 
 @end
