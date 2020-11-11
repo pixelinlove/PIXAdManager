@@ -13,8 +13,10 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
 
 @interface PIXAdManagerAdapterMoPub ()
 
+@property (nonatomic, strong) NSDictionary *configuration;
 @property (nonatomic, copy) NSString *adUnitID;
 @property (nonatomic, strong) MPAdView *adView;
+@property (nonatomic, assign) BOOL isSdkInitialized;
 
 @end
 
@@ -34,7 +36,8 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
 
 - (void)initializeWithConfiguration:(NSDictionary *)configuration {
     
-    NSString *configurationAdUnitID = configuration[@"adUnitID"];
+    self.configuration = configuration;
+    NSString *configurationAdUnitID = self.configuration[@"adUnitID"];
     self.adUnitID = configurationAdUnitID ? configurationAdUnitID : kTestindAdUnitID;
     
     MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization:self.adUnitID];
@@ -45,10 +48,21 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
     }];
 }
 
-// GADBannerView ad loading
+// MPAdView ad loading
+
+- (BOOL)isSdkInitialized {
+    return [MoPub sharedInstance].isSdkInitialized;
+}
 
 - (void)loadAd {
-    [self.adView loadAdWithMaxAdSize:kMPPresetMaxAdSize50Height];
+    NSLog(@"[AdManager][%@] > %@ ", self.adapterName, NSStringFromSelector(_cmd));
+    if (self.isSdkInitialized) {
+        [self.adView loadAdWithMaxAdSize:kMPPresetMaxAdSize50Height];
+    } else {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self loadAd];
+        });
+    }
 }
 
 - (void)startRefreshing {

@@ -13,8 +13,10 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
 
 @interface PIXAdManagerAdapterAdMob ()
 
+@property (nonatomic, strong) NSDictionary *configuration;
 @property (nonatomic, copy) NSString *adUnitID;
 @property (nonatomic, strong) GADBannerView *adView;
+@property (nonatomic, assign) BOOL isSdkInitialized;
 
 @end
 
@@ -35,23 +37,37 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
 
 - (void)initializeWithConfiguration:(nonnull NSDictionary *)configuration {
     
-    NSString *configurationAdUnitID = configuration[@"adUnitID"];
+    self.configuration = configuration;
+    NSString *configurationAdUnitID = self.configuration[@"adUnitID"];
     self.adUnitID = configurationAdUnitID ? configurationAdUnitID : kTestindAdUnitID;
     
+    NSLog(@"[AdManager][%@] > 1%@ ", self.adapterName, NSStringFromSelector(_cmd));
     [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus * _Nonnull status) {
         // SDK initialization complete. Ready to make ad requests.
-        NSLog(@"[AdManager][%@] > %@ ", self.adapterName, NSStringFromSelector(_cmd));
+        NSLog(@"[AdManager][%@] > 2%@ ", self.adapterName, NSStringFromSelector(_cmd));
+        self.isSdkInitialized = YES;
     }];
     
 }
 
 // GADBannerView ad loading
 
+- (BOOL)isSdkInitialized {
+    return _isSdkInitialized;
+}
+
 - (void)loadAd {
-    if (!self.adView.rootViewController) {
-        self.adView.rootViewController = [self.adapterDelegate viewControllerForPresentingModalView];
+    NSLog(@"[AdManager][%@] > %@ ", self.adapterName, NSStringFromSelector(_cmd));
+    if (self.isSdkInitialized) {
+        if (!self.adView.rootViewController) {
+            self.adView.rootViewController = [self.adapterDelegate viewControllerForPresentingModalView];
+        }
+        [self.adView loadRequest:[GADRequest request]];
+    } else {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self loadAd];
+        });
     }
-    [self.adView loadRequest:[GADRequest request]];
 }
 
 - (void)startRefreshing {

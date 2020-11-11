@@ -51,8 +51,6 @@
                                              selector:@selector(appNotificationForAdView:)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
-    
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,12 +102,12 @@
 
 - (void)appNotificationForAdView:(NSNotification *)notification {
     if (notification.name == UIApplicationDidBecomeActiveNotification) {
-        NSLog(@"[LogMe][MoPub] > Application Did Become Active - Banner will refresh");
+        NSLog(@"[LogMe] > Application Did Become Active - Banner will refresh");
         [self startAd];
     }
     
     if (notification.name == UIApplicationWillResignActiveNotification) {
-        NSLog(@"[LogMe][MoPub] > Application Will Resign Active - Banner will hide");
+        NSLog(@"[LogMe] > Application Will Resign Active - Banner will hide");
         [self pauseAd];
     }
 }

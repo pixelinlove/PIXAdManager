@@ -19,11 +19,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    NSDictionary *mopubConfiguration = @{@"adUnitID": @"5d0ff333b3a745118af4429d08d362be"};
-    [[PIXAdManager sharedManager] initializeMediationPartner:MediationPartnerMoPub withConfiguration:mopubConfiguration];
+    NSDictionary *testMopubConfiguration = @{@"adUnitID": @"0ac59b0996d947309c33f59d6676399f"};
+    [[PIXAdManager sharedManager] initializeMediationPartner:MediationPartnerMoPub withConfiguration:testMopubConfiguration];
     
-//    NSDictionary *admobConfiguration = @{@"adUnitID": @"5d0ff333b3a745118af4429d08d362be"};
-//    [[PIXAdManager sharedManager] initializeMediationPartner:MediationPartnerAdMob withConfiguration:admobConfiguration];
+//    AdMob requires the App Unit ID to be set in the info.plist key "GADApplicationIdentifier"
+//    NSDictionary *testAdmobConfiguration = @{@"appUnitID": @"ca-app-pub-3940256099942544~1458002511",
+//                                             @"adUnitID": @"ca-app-pub-3940256099942544/2934735716"};
+//    [[PIXAdManager sharedManager] initializeMediationPartner:MediationPartnerAdMob withConfiguration:testAdmobConfiguration];
     
     return YES;
 }
