@@ -27,8 +27,8 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
 - (UIView *)adapterAdView {
     if (!self.adView) {
         self.adView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
-        self.adView.adUnitID = self.adUnitID;
         self.adView.delegate = self;
+        self.adView.adUnitID = self.adUnitID;
     }
     return self.adView;
 }
@@ -38,9 +38,14 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
     NSString *configurationAdUnitID = configuration[@"adUnitID"];
     self.adUnitID = configurationAdUnitID ? configurationAdUnitID : kTestindAdUnitID;
     
-    [[GADMobileAds sharedInstance] startWithCompletionHandler:nil];
+    [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus * _Nonnull status) {
+        // SDK initialization complete. Ready to make ad requests.
+        NSLog(@"[AdManager][%@] > %@ ", self.adapterName, NSStringFromSelector(_cmd));
+    }];
     
 }
+
+// GADBannerView ad loading
 
 - (void)loadAd {
     if (!self.adView.rootViewController) {
@@ -57,13 +62,15 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
     self.adView.autoloadEnabled = NO;
 }
 
+// GADBannerView delegate calls
+
 - (void)adViewDidReceiveAd:(GADBannerView *)adView {
-    NSLog(@"[AdManager][AdMob] > %@ > %@", NSStringFromSelector(_cmd), adView);
+    NSLog(@"[AdManager][%@] > %@ : %@", self.adapterName, NSStringFromSelector(_cmd), adView);
     [self.adapterDelegate adapterDidLoadAd:adView];
 }
 
 - (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
-    NSLog(@"[AdManager][AdMob] > %@ > %@", NSStringFromSelector(_cmd), [error localizedDescription]);
+    NSLog(@"[AdManager][%@] > %@ : %@", self.adapterName, NSStringFromSelector(_cmd), [error localizedDescription]);
     [self.adapterDelegate adapterDidFailToLoadAdWithError:error];
 }
 

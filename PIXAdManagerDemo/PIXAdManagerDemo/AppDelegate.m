@@ -19,10 +19,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-//    NSDictionary *configuration = @{@"adUnitID": @"5d0ff333b3a745118af4429d08d362be"};
-//    [[PIXAdManager sharedManager] initializeMediationPartner:MediationPartnerMoPub withConfiguration:configuration];
+    NSDictionary *mopubConfiguration = @{@"adUnitID": @"5d0ff333b3a745118af4429d08d362be"};
+    [[PIXAdManager sharedManager] initializeMediationPartner:MediationPartnerMoPub withConfiguration:mopubConfiguration];
     
-    [[PIXAdManager sharedManager] initializeMediationPartner:MediationPartnerAdMob withConfiguration:nil];
+//    NSDictionary *admobConfiguration = @{@"adUnitID": @"5d0ff333b3a745118af4429d08d362be"};
+//    [[PIXAdManager sharedManager] initializeMediationPartner:MediationPartnerAdMob withConfiguration:admobConfiguration];
     
     return YES;
 }
