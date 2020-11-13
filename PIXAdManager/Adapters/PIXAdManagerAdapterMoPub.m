@@ -35,6 +35,7 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
 }
 
 - (void)initializeWithConfiguration:(NSDictionary *)configuration {
+    NSLog(@"[AdManager][%@] > %@ ", self.adapterName, NSStringFromSelector(_cmd));
     
     self.configuration = configuration;
     NSString *configurationAdUnitID = self.configuration[@"adUnitID"];
@@ -44,8 +45,24 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
 
     [[MoPub sharedInstance] initializeSdkWithConfiguration:sdkConfig completion:^{
         // SDK initialization complete. Ready to make ad requests.
-        NSLog(@"[AdManager][%@] > %@ ", self.adapterName, NSStringFromSelector(_cmd));
+        [self initConsentDialog];
     }];
+}
+
+// Consent Dialog
+- (void)initConsentDialog {
+    NSLog(@"[AdManager][%@] > %@ : GDPR (%@) - Should show (%@) - Status (%zd)", self.adapterName, NSStringFromSelector(_cmd), [MoPub sharedInstance].isGDPRApplicable ? @"Yes" : @"No", [MoPub sharedInstance].shouldShowConsentDialog ? @"Yes" : @"No", [MoPub sharedInstance].currentConsentStatus);
+    if ([MoPub sharedInstance].shouldShowConsentDialog) {
+        [[MoPub sharedInstance] loadConsentDialogWithCompletion:^(NSError *error) {
+            if (error) {
+                // TODO: Show error
+            } else {
+                UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+                [[MoPub sharedInstance] showConsentDialogFromViewController:rootViewController
+                                                                 completion:nil];
+            }
+        }];
+    }
 }
 
 // MPAdView ad loading
