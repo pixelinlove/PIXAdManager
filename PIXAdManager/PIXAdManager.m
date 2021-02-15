@@ -77,7 +77,7 @@
 }
 
 - (UIViewController *)viewControllerForPresentingModalView {
-    NSLog(@"[log][manager] %@", self.delegate);
+    NSLog(@"[AdManager] > %@", self.delegate);
     return [self.delegate viewControllerForPresentingModalView];
 }
 

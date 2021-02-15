@@ -73,7 +73,6 @@
 		6552D5862557193100C71EA2 /* MPEngineInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D39E2557193000C71EA2 /* MPEngineInfo.m */; };
 		6552D5872557193100C71EA2 /* MPImpressionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D3A02557193000C71EA2 /* MPImpressionData.m */; };
 		6552D5882557193100C71EA2 /* MPAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D3A12557193000C71EA2 /* MPAdView.m */; };
-		6552D5892557193100C71EA2 /* MoPubSDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6552D3A62557193000C71EA2 /* MoPubSDK.xcconfig */; };
 		6552D58A2557193100C71EA2 /* MPConsentChangedReason.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D3A72557193000C71EA2 /* MPConsentChangedReason.m */; };
 		6552D58B2557193100C71EA2 /* MPNativeAdError.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D3AD2557193000C71EA2 /* MPNativeAdError.m */; };
 		6552D58C2557193100C71EA2 /* MPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D3AE2557193000C71EA2 /* MPConstants.m */; };
@@ -1785,7 +1784,7 @@
 		65F3CAD820535349009A3C86 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Andrea Ottolina";
 				TargetAttributes = {
 					65F3CADF20535349009A3C86 = {
@@ -1821,7 +1820,6 @@
 				65F3CAF020535349009A3C86 /* LaunchScreen.storyboard in Resources */,
 				6552D5912557193100C71EA2 /* MPUnmutedBtn@3x.png in Resources */,
 				6552D5992557193100C71EA2 /* MPDAAIcon@3x.png in Resources */,
-				6552D5892557193100C71EA2 /* MoPubSDK.xcconfig in Resources */,
 				65F3CAED20535349009A3C86 /* Assets.xcassets in Resources */,
 				65F3CAEB20535349009A3C86 /* Main.storyboard in Resources */,
 				6552D5952557193100C71EA2 /* MPCloseBtn.png in Resources */,
