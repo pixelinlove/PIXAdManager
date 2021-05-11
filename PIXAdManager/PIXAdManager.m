@@ -135,7 +135,7 @@
 }
 
 - (void)showAdView:(BOOL)show animated:(BOOL)animated {
-    NSLog(@"[LogMe][MoPub|AdMob] > %@", NSStringFromSelector(_cmd));
+    NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     
     UIView *adView = self.adapter.adView;
     

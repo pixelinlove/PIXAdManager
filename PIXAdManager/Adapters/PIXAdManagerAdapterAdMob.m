@@ -50,9 +50,9 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
         NSDictionary *adapterStatuses = [status adapterStatusesByClassName];
         for (NSString *adapter in adapterStatuses) {
             GADAdapterStatus *adapterStatus = adapterStatuses[adapter];
-            NSLog(@"[LogMe][AdMob] > SDK initialization > Adapter Name: %@, Description: %@, Latency: %f", adapter, adapterStatus.description, adapterStatus.latency);
+            NSLog(@"[AdManager][%@] > SDK initialization > Adapter Name: %@, Description: %@, Latency: %f", self.name, adapter, adapterStatus.description, adapterStatus.latency);
         }
-        NSLog(@"[LogMe][AdMob] > SDK initialization complete");
+        NSLog(@"[AdManager][%@] > SDK initialized ", self.name);
         self.isInitialized = YES;
     }];
 }
