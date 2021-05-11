@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		651ADA91255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */; };
 		6552D33C2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */; };
+		65B06267264A50D900C066F8 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B06266264A50D900C066F8 /* FBSDKCoreKit.framework */; };
 		65CD2C562640B2C900A05CFB /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CD2C552640B2C900A05CFB /* FBAudienceNetwork.framework */; };
 		65CD2C582640B2D500A05CFB /* AdColony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CD2C572640B2D500A05CFB /* AdColony.framework */; };
-		65CD2C602641E4A900A05CFB /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CD2C5F2641E4A900A05CFB /* FBSDKCoreKit.framework */; };
 		65DF3FC8263CAEEA002D2746 /* AdColonyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F87263CAEEA002D2746 /* AdColonyController.m */; };
 		65DF3FC9263CAEEA002D2746 /* AdColonyRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F89263CAEEA002D2746 /* AdColonyRewardedVideoCustomEvent.m */; };
 		65DF3FCA263CAEEA002D2746 /* AdColonyAdapterConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F8B263CAEEA002D2746 /* AdColonyAdapterConfiguration.m */; };
@@ -72,9 +72,9 @@
 		6552D3322556B19C00C71EA2 /* PIXAdManagerAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapter.h; sourceTree = "<group>"; };
 		6552D33A2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapterMoPub.h; sourceTree = "<group>"; };
 		6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterMoPub.m; sourceTree = "<group>"; };
+		65B06266264A50D900C066F8 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/FacebookAudienceNetwork/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		65CD2C552640B2C900A05CFB /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/FacebookAudienceNetwork/FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		65CD2C572640B2D500A05CFB /* AdColony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdColony.framework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/AdColony/AdColony.framework; sourceTree = "<group>"; };
-		65CD2C5F2641E4A900A05CFB /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/FacebookAudienceNetwork/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		65DF3F87263CAEEA002D2746 /* AdColonyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdColonyController.m; sourceTree = "<group>"; };
 		65DF3F88263CAEEA002D2746 /* AdColonyInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdColonyInterstitialCustomEvent.h; sourceTree = "<group>"; };
 		65DF3F89263CAEEA002D2746 /* AdColonyRewardedVideoCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdColonyRewardedVideoCustomEvent.m; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 				65DF3FF6263CB087002D2746 /* UserMessagingPlatform.xcframework in Frameworks */,
 				65DF3FF2263CB087002D2746 /* GoogleUtilities.xcframework in Frameworks */,
 				65DF3FF8263CB087002D2746 /* GoogleAppMeasurement.xcframework in Frameworks */,
-				65CD2C602641E4A900A05CFB /* FBSDKCoreKit.framework in Frameworks */,
+				65B06267264A50D900C066F8 /* FBSDKCoreKit.framework in Frameworks */,
 				65CD2C562640B2C900A05CFB /* FBAudienceNetwork.framework in Frameworks */,
 				65DF3FFC263CB0B8002D2746 /* MoPubSDK.xcframework in Frameworks */,
 				65DF3FF4263CB087002D2746 /* nanopb.xcframework in Frameworks */,
@@ -270,7 +270,7 @@
 		65DF3FE7263CB086002D2746 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				65CD2C5F2641E4A900A05CFB /* FBSDKCoreKit.framework */,
+				65B06266264A50D900C066F8 /* FBSDKCoreKit.framework */,
 				65CD2C572640B2D500A05CFB /* AdColony.framework */,
 				65CD2C552640B2C900A05CFB /* FBAudienceNetwork.framework */,
 				65DF3FED263CB087002D2746 /* GoogleAppMeasurement.xcframework */,
