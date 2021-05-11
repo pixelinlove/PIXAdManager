@@ -45,11 +45,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UIViewController *)viewControllerForPresentingModalView {
-    return self;
-}
-
-- (UIViewController *)viewControllerForAdView {
+- (UIViewController *)viewControllerForAdManager {
     return self;
 }
 

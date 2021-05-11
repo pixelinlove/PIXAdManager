@@ -54,7 +54,7 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
     self.adView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
     self.adView.delegate = self;
     self.adView.adUnitID = self.adUnitID;
-    self.adView.rootViewController = [self.delegate viewControllerForPresentingModalView];
+    self.adView.rootViewController = [self.delegate viewControllerForAdapter];
 }
 
 - (void)adViewAdjustSizeToView:(UIView *)view {

@@ -119,13 +119,13 @@
     
     adView.translatesAutoresizingMaskIntoConstraints = NO;
     adView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
-    UIViewController *viewControllerForAdView = [self.delegate viewControllerForAdView];
-    [viewControllerForAdView.view addSubview:adView];
+    UIViewController *rootViewController = [self.delegate viewControllerForAdManager];
+    [rootViewController.view addSubview:adView];
     
-    [self.adapter adViewAdjustSizeToView:viewControllerForAdView.view];
-    [adView.centerXAnchor constraintEqualToAnchor:viewControllerForAdView.view.centerXAnchor].active = YES;
+    [self.adapter adViewAdjustSizeToView:rootViewController.view];
+    [adView.centerXAnchor constraintEqualToAnchor:rootViewController.view.centerXAnchor].active = YES;
     if (!self.adViewBottomLayoutContraint) {
-        self.adViewBottomLayoutContraint = [adView.bottomAnchor constraintEqualToAnchor:viewControllerForAdView.bottomLayoutGuide.topAnchor];
+        self.adViewBottomLayoutContraint = [adView.bottomAnchor constraintEqualToAnchor:rootViewController.bottomLayoutGuide.topAnchor];
         self.adViewBottomLayoutContraint.active = YES;
     }
     [adView layoutIfNeeded];
@@ -182,8 +182,8 @@
     [self showAdView:NO animated:YES];
 }
 
-- (UIViewController *)viewControllerForPresentingModalView {
-    return [self.delegate viewControllerForPresentingModalView];
+- (UIViewController *)viewControllerForAdapter {
+    return [self.delegate viewControllerForAdManager];
 }
 
 @end

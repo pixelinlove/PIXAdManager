@@ -79,7 +79,7 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
 // MPAdView delegate calls
 
 - (UIViewController *)viewControllerForPresentingModalView {
-    return [self.delegate viewControllerForPresentingModalView];
+    return [self.delegate viewControllerForAdapter];
 }
 
 - (void)adViewDidLoadAd:(MPAdView *)view adSize:(CGSize)adSize {

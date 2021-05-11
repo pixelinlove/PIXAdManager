@@ -23,8 +23,7 @@ typedef enum {
 
 @required
 
-- (UIViewController *)viewControllerForPresentingModalView;
-- (UIViewController *)viewControllerForAdView;
+- (UIViewController *)viewControllerForAdManager;
 
 @optional
 

@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol PIXAdManagerAdapterDelegate <NSObject>
 
 @required
-- (UIViewController *)viewControllerForPresentingModalView;
+- (UIViewController *)viewControllerForAdapter;
 
 @optional
 - (void)adapterDidLoadAd:(nonnull UIView *)ad;
