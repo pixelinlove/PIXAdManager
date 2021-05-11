@@ -26,15 +26,6 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
     return kMediationPartner;
 }
 
-- (UIView *)adapterAdView {
-    if (!self.adView) {
-        self.adView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
-        self.adView.delegate = self;
-        self.adView.adUnitID = self.adUnitID;
-    }
-    return self.adView;
-}
-
 - (void)initWithConfiguration:(NSDictionary *)configuration {
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
