@@ -577,7 +577,6 @@
 					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/FacebookAudienceNetwork",
 					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/AdColony",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/Facebook",
 					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/FacebookAudienceNetwork",
 				);
 				INFOPLIST_FILE = PIXAdManagerDemo/Info.plist;
@@ -605,7 +604,6 @@
 					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/FacebookAudienceNetwork",
 					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/AdColony",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/Facebook",
 					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/FacebookAudienceNetwork",
 				);
 				INFOPLIST_FILE = PIXAdManagerDemo/Info.plist;
