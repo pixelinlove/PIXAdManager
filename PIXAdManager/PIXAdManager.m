@@ -28,7 +28,7 @@
     return sharedInstance;
 }
 
-- (void)initMediationPartner:(MediationPartner)partner withConfiguration:(NSDictionary *)configuration {
+- (void)initializeWithMediationPartner:(MediationPartner)partner andConfiguration:(NSDictionary *)configuration {
     if (_initialisedMediationPartner != 0) {
         //TODO: Raise error. Mediation Partner already initialised and can't be changed.
         [NSException raise:NSInternalInconsistencyException

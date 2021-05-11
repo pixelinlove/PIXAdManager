@@ -30,7 +30,7 @@
     
     PIXAdManager *adManager = [PIXAdManager sharedManager];
     adManager.delegate = self;
-    [adManager initMediationPartner:MediationPartnerAdMob withConfiguration:adMobConfiguration];
+    [adManager initializeWithMediationPartner:MediationPartnerAdMob andConfiguration:adMobConfiguration];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
