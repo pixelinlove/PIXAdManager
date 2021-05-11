@@ -29,8 +29,8 @@
     NSDictionary *adMobConfiguration = @{@"adUnitID": @"ca-app-pub-3008186008208131/8209379850"};
     
     PIXAdManager *adManager = [PIXAdManager sharedManager];
-    [adManager initMediationPartner:MediationPartnerMoPub withConfiguration:testMopubConfiguration];
     adManager.delegate = self;
+    [adManager initMediationPartner:MediationPartnerAdMob withConfiguration:adMobConfiguration];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
