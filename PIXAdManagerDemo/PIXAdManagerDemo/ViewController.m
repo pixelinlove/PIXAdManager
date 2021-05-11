@@ -8,8 +8,6 @@
 
 #import "ViewController.h"
 
-#define MEDIATION_PARTNER 1
-
 @interface ViewController ()
 
 @property (nonatomic, strong) UIView *adView;
@@ -30,7 +28,7 @@
     
     PIXAdManager *adManager = [PIXAdManager sharedManager];
     adManager.delegate = self;
-    [adManager initializeWithMediationPartner:MediationPartnerAdMob andConfiguration:adMobConfiguration];
+    [adManager initializeWithMediationAdapter:MediationAdapterAdMob andConfiguration:adMobConfiguration];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

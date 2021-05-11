@@ -8,7 +8,7 @@
 
 #import "PIXAdManagerAdapterMoPub.h"
 
-static NSString * const kMediationPartner = @"MoPub";
+static NSString * const kMediationAdapter = @"MoPub";
 static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
 
 @interface PIXAdManagerAdapterMoPub ()
@@ -25,7 +25,7 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
 }
 
 - (NSString *)name {
-    return kMediationPartner;
+    return kMediationAdapter;
 }
 
 - (void)initWithConfiguration:(NSDictionary *)configuration {

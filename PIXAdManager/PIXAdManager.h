@@ -10,10 +10,10 @@
 #import "PIXAdManagerAdapter.h"
 
 typedef enum {
-    MediationPartnerNone = 0,
-    MediationPartnerMoPub,
-    MediationPartnerAdMob
-} MediationPartner;
+    MediationAdapterNone = 0,
+    MediationAdapterMoPub,
+    MediationAdapterAdMob
+} MediationAdapter;
 
 
 @class PIXAdManager;
@@ -41,7 +41,7 @@ typedef enum {
 
 + (PIXAdManager *)sharedManager;
 
-- (void)initializeWithMediationPartner:(MediationPartner)partner andConfiguration:(NSDictionary *)configuration;
+- (void)initializeWithMediationAdapter:(MediationAdapter)adapter andConfiguration:(NSDictionary *)configuration;
 - (void)resume;
 - (void)pause;
 

@@ -11,7 +11,7 @@
 
 @interface PIXAdManager ()
 
-@property (nonatomic, assign) MediationPartner initialisedMediationPartner; //current Mediation partner
+@property (nonatomic, assign) MediationAdapter initialisedMediationAdapter;
 @property (nonatomic, strong) id<PIXAdManagerAdapter> adapter;
 @property (nonatomic, strong) NSLayoutConstraint *adViewBottomLayoutContraint;
 
@@ -28,16 +28,16 @@
     return sharedInstance;
 }
 
-- (void)initializeWithMediationPartner:(MediationPartner)partner andConfiguration:(NSDictionary *)configuration {
-    if (_initialisedMediationPartner != 0) {
-        //TODO: Raise error. Mediation Partner already initialised and can't be changed.
+- (void)initializeWithMediationAdapter:(MediationAdapter)adapter andConfiguration:(NSDictionary *)configuration {
+    if (_initialisedMediationAdapter != 0) {
+        //TODO: Raise error. Mediation Adapter already initialised and can't be changed.
         [NSException raise:NSInternalInconsistencyException
                     format:@"PIXAdManager can be initialised only once"];
         return;
     }
-    _initialisedMediationPartner = partner;
+    _initialisedMediationAdapter = adapter;
 
-    Class adapterClass = NSClassFromString([self classNameForPartner:partner]);
+    Class adapterClass = NSClassFromString([self classNameForAdapter:adapter]);
     if (adapterClass == nil) {
         //TODO: Raise error. Adapter Class Files couldn't be loaded.
         [NSException raise:NSInternalInconsistencyException
@@ -53,12 +53,12 @@
     [self applicationNotificationsActive:YES];
 }
 
-- (NSString *)classNameForPartner:(MediationPartner)partner {
+- (NSString *)classNameForAdapter:(MediationAdapter)adapter {
     NSString *className = nil;
-    if (partner == MediationPartnerAdMob) {
+    if (adapter == MediationAdapterAdMob) {
         className = @"PIXAdManagerAdapterAdMob";
     }
-    if (partner == MediationPartnerMoPub) {
+    if (adapter == MediationAdapterMoPub) {
         className = @"PIXAdManagerAdapterMoPub";
     }
     return className;
