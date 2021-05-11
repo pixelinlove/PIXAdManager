@@ -50,7 +50,7 @@
     [self.adapter initWithConfiguration:configuration];
     [self.adapter adViewInit];
     
-    [self initAppNotifications];
+    [self applicationNotificationsActive:YES];
 }
 
 - (NSString *)classNameForPartner:(MediationPartner)partner {
@@ -64,25 +64,31 @@
     return className;
 }
 
-- (void)initAppNotifications {
+- (void)applicationNotificationsActive:(BOOL)active {
     
-    [[NSNotificationCenter defaultCenter] addObserver:self.adapter.delegate
-                                             selector:@selector(appNotificationForAdView:)
-                                                 name:UIApplicationDidEnterBackgroundNotification
-                                               object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self.adapter.delegate
-                                             selector:@selector(appNotificationForAdView:)
-                                                 name:UIApplicationWillResignActiveNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self.adapter.delegate
-                                             selector:@selector(appNotificationForAdView:)
-                                                 name:UIApplicationDidBecomeActiveNotification
-                                               object:nil];
+    if (active) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationNotificationForAdManager:)
+                                                     name:UIApplicationDidEnterBackgroundNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationNotificationForAdManager:)
+                                                     name:UIApplicationWillResignActiveNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationNotificationForAdManager:)
+                                                     name:UIApplicationDidBecomeActiveNotification
+                                                   object:nil];
+    }
 }
 
-- (void)appNotificationForAdView:(NSNotification *)notification {
+- (void)applicationNotificationForAdManager:(NSNotification *)notification {
     if (notification.name == UIApplicationDidBecomeActiveNotification) {
         NSLog(@"[AdManager] > Application Did Become Active - Banner will refresh");
         [self resumeRequest];
