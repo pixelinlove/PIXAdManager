@@ -20,7 +20,7 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
 
 @implementation PIXAdManagerAdapterAdMob
 
-@dynamic isInitialized;
+@synthesize isInitialized = _isInitialized;
 
 - (NSString *)name {
     return kMediationPartner;
@@ -44,7 +44,7 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
             NSLog(@"[AdManager][%@] > SDK initialization > Adapter Name: %@, Description: %@, Latency: %f", self.name, adapter, adapterStatus.description, adapterStatus.latency);
         }
         NSLog(@"[AdManager][%@] > SDK initialized ", self.name);
-        self.isInitialized = YES;
+        self->_isInitialized = YES;
     }];
 }
 

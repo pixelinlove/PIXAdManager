@@ -20,8 +20,6 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
 
 @implementation PIXAdManagerAdapterMoPub
 
-@dynamic isInitialized;
-
 - (BOOL)isInitialized {
     return [MoPub sharedInstance].isSdkInitialized;
 }
