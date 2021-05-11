@@ -42,8 +42,7 @@ typedef enum {
 + (PIXAdManager *)sharedManager;
 
 - (void)initMediationPartner:(MediationPartner)partner withConfiguration:(NSDictionary *)configuration;
-//- (void)loadAd;
-//- (void)startRefreshing;
-//- (void)stopRefreshing;
+- (void)resume;
+- (void)pause;
 
 @end

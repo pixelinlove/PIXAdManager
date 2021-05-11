@@ -36,8 +36,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-//    PIXAdManager *adManager = [PIXAdManager sharedManager];
-//    [adManager loadAd];
+    PIXAdManager *adManager = [PIXAdManager sharedManager];
+    [adManager resume];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -91,16 +91,16 @@
 - (void)applicationNotificationForAdManager:(NSNotification *)notification {
     if (notification.name == UIApplicationDidBecomeActiveNotification) {
         NSLog(@"[AdManager] > Application Did Become Active - Banner will refresh");
-        [self resumeRequest];
+        [self resume];
     }
     
     if (notification.name == UIApplicationWillResignActiveNotification) {
         NSLog(@"[AdManger] > Application Will Resign Active - Banner will hide");
-        [self pauseRequest];
+        [self pause];
     }
 }
 
-- (void)resumeRequest {
+- (void)resume {
     NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
     
     // Check if adView is attached to the superview. If not, set it up.
@@ -113,7 +113,7 @@
     [self.adapter adViewLoadAd];
 }
 
-- (void)pauseRequest {
+- (void)pause {
     [self.adapter adViewStopAd];
     [self showAdView:NO animated:NO];
 }
