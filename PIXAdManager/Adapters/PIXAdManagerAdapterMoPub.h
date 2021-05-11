@@ -7,15 +7,16 @@
 //
 
 #import "PIXAdManagerAdapter.h"
-#import "MoPub.h"
+#import <MoPubSDK/MoPub.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PIXAdManagerAdapterMoPub : NSObject <PIXAdManagerAdapter, MPAdViewDelegate>
 
-@property (nonatomic, copy, readonly) NSString *adapterName;
-@property (nonatomic, weak) id<PIXAdManagerAdapterDelegate> adapterDelegate;
-@property (nonatomic, strong, readonly) UIView *adapterAdView;
+@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, strong) MPAdView *adView;
+@property (nonatomic, assign, readwrite) BOOL isInitialized;
+@property (nonatomic, weak) id<PIXAdManagerAdapterDelegate> delegate;
 
 @end
 

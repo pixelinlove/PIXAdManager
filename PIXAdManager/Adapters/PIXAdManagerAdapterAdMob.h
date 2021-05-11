@@ -13,9 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PIXAdManagerAdapterAdMob : NSObject <PIXAdManagerAdapter, GADBannerViewDelegate>
 
-@property (nonatomic, copy, readonly) NSString *adapterName;
-@property (nonatomic, weak) id<PIXAdManagerAdapterDelegate> adapterDelegate;
-@property (nonatomic, strong, readonly) UIView *adapterAdView;
+@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, strong) GADBannerView *adView;
+@property (nonatomic, assign, readwrite) BOOL isInitialized;
+@property (nonatomic, weak) id<PIXAdManagerAdapterDelegate> delegate;
 
 @end
 

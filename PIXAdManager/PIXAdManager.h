@@ -24,11 +24,12 @@ typedef enum {
 @required
 
 - (UIViewController *)viewControllerForPresentingModalView;
+- (UIViewController *)viewControllerForAdView;
 
 @optional
 
-- (void)adManagerDidLoadAd:(UIView *)ad;
-- (void)adManagerDidFailWithError:(NSError *)error;
+//- (void)adManagerDidLoadAd:(UIView *)adView;
+//- (void)adManagerDidFailWithError:(NSError *)error;
 
 @end
 
@@ -41,9 +42,9 @@ typedef enum {
 
 + (PIXAdManager *)sharedManager;
 
-- (void)initializeMediationPartner:(MediationPartner)partner withConfiguration:(NSDictionary *)configuration;
-- (void)loadAd;
-- (void)startRefreshing;
-- (void)stopRefreshing;
+- (void)initMediationPartner:(MediationPartner)partner withConfiguration:(NSDictionary *)configuration;
+//- (void)loadAd;
+//- (void)startRefreshing;
+//- (void)stopRefreshing;
 
 @end

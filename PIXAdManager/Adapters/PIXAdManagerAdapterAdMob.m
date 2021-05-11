@@ -15,14 +15,14 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
 
 @property (nonatomic, strong) NSDictionary *configuration;
 @property (nonatomic, copy) NSString *adUnitID;
-@property (nonatomic, strong) GADBannerView *adView;
-@property (nonatomic, assign) BOOL isSdkInitialized;
 
 @end
 
 @implementation PIXAdManagerAdapterAdMob
 
-- (NSString *)adapterName {
+@dynamic isInitialized;
+
+- (NSString *)name {
     return kMediationPartner;
 }
 
@@ -35,59 +35,78 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
     return self.adView;
 }
 
-- (void)initializeWithConfiguration:(nonnull NSDictionary *)configuration {
+- (void)initWithConfiguration:(NSDictionary *)configuration {
+    NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
     self.configuration = configuration;
+    
     NSString *configurationAdUnitID = self.configuration[@"adUnitID"];
     self.adUnitID = configurationAdUnitID ? configurationAdUnitID : kTestindAdUnitID;
     
-    NSLog(@"[AdManager][%@] > 1%@ ", self.adapterName, NSStringFromSelector(_cmd));
-    [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus * _Nonnull status) {
-        // SDK initialization complete. Ready to make ad requests.
-        NSLog(@"[AdManager][%@] > 2%@ ", self.adapterName, NSStringFromSelector(_cmd));
-        self.isSdkInitialized = YES;
-    }];
-    
-}
-
-// GADBannerView ad loading
-
-- (BOOL)isSdkInitialized {
-    return _isSdkInitialized;
-}
-
-- (void)loadAd {
-    NSLog(@"[AdManager][%@] > %@ ", self.adapterName, NSStringFromSelector(_cmd));
-    if (self.isSdkInitialized) {
-        if (!self.adView.rootViewController) {
-            self.adView.rootViewController = [self.adapterDelegate viewControllerForPresentingModalView];
+    // AdMob initialisation
+    GADMobileAds *ads = [GADMobileAds sharedInstance];
+    [ads startWithCompletionHandler:^(GADInitializationStatus *status) {
+        // Optional: Log each adapter's initialization latency.
+        NSDictionary *adapterStatuses = [status adapterStatusesByClassName];
+        for (NSString *adapter in adapterStatuses) {
+            GADAdapterStatus *adapterStatus = adapterStatuses[adapter];
+            NSLog(@"[LogMe][AdMob] > SDK initialization > Adapter Name: %@, Description: %@, Latency: %f", adapter, adapterStatus.description, adapterStatus.latency);
         }
+        NSLog(@"[LogMe][AdMob] > SDK initialization complete");
+        self.isInitialized = YES;
+    }];
+}
+
+- (void)adViewInit {
+    NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
+    
+    self.adView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    self.adView.delegate = self;
+    self.adView.adUnitID = self.adUnitID;
+    self.adView.rootViewController = [self.delegate viewControllerForPresentingModalView];
+}
+
+- (void)adViewAdjustSizeToView:(UIView *)view {
+    NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
+    
+    CGRect frame = view.frame;
+    // Here safe area is taken into account, hence the view frame is used after the view has been laid out.
+    if (@available(iOS 11.0, *)) {
+        frame = UIEdgeInsetsInsetRect(view.frame, view.safeAreaInsets);
+    }
+    CGFloat viewWidth = frame.size.width;
+    self.adView.adSize = GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth);
+}
+
+- (void)adViewLoadAd {
+    NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
+    
+    if (self.isInitialized) {
         [self.adView loadRequest:[GADRequest request]];
+        self.adView.autoloadEnabled = YES;
     } else {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self loadAd];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self adViewLoadAd];
         });
     }
 }
 
-- (void)startRefreshing {
-    self.adView.autoloadEnabled = YES;
-}
-
-- (void)stopRefreshing {
+- (void)adViewStopAd {
+    NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
+    
     self.adView.autoloadEnabled = NO;
 }
 
 // GADBannerView delegate calls
 
-- (void)adViewDidReceiveAd:(GADBannerView *)adView {
-    NSLog(@"[AdManager][%@] > %@ : %@", self.adapterName, NSStringFromSelector(_cmd), adView);
-    [self.adapterDelegate adapterDidLoadAd:adView];
+- (void)bannerViewDidReceiveAd:(GADBannerView *)bannerView {
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), bannerView);
+    [self.delegate adapterDidLoadAd:bannerView];
 }
 
-- (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
-    NSLog(@"[AdManager][%@] > %@ : %@", self.adapterName, NSStringFromSelector(_cmd), [error localizedDescription]);
-    [self.adapterDelegate adapterDidFailToLoadAdWithError:error];
+- (void)bannerView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(NSError *)error {
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), [error localizedDescription]);
+    [self.delegate adapterDidFailToLoadAdWithError:error];
 }
 
 @end

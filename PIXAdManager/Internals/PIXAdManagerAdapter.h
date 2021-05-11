@@ -25,14 +25,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @required
 
-@property (nonatomic, copy, readonly) NSString *adapterName;
-@property (nonatomic, weak) id<PIXAdManagerAdapterDelegate> adapterDelegate;
-@property (nonatomic, strong, readonly) UIView *adapterAdView;
+@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, strong, readonly) UIView *adView;
+@property (nonatomic, assign, readonly) BOOL isInitialized;
+@property (nonatomic, weak) id<PIXAdManagerAdapterDelegate> delegate;
 
-- (void)initializeWithConfiguration:(NSDictionary *)configuration;
-- (void)loadAd;
-- (void)startRefreshing;
-- (void)stopRefreshing;
+- (void)initWithConfiguration:(NSDictionary *)configuration;
+- (void)adViewInit;
+- (void)adViewAdjustSizeToView:(UIView *)view;
+- (void)adViewLoadAd;
+- (void)adViewStopAd;
 
 @end
 

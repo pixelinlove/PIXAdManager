@@ -15,39 +15,88 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
 
 @property (nonatomic, strong) NSDictionary *configuration;
 @property (nonatomic, copy) NSString *adUnitID;
-@property (nonatomic, strong) MPAdView *adView;
-@property (nonatomic, assign) BOOL isSdkInitialized;
 
 @end
 
 @implementation PIXAdManagerAdapterMoPub
 
-- (NSString *)adapterName {
+@dynamic isInitialized;
+
+- (BOOL)isInitialized {
+    return [MoPub sharedInstance].isSdkInitialized;
+}
+
+- (NSString *)name {
     return kMediationPartner;
 }
 
-- (UIView *)adapterAdView {
-    if (!self.adView) {
-        self.adView = [[MPAdView alloc] initWithAdUnitId:self.adUnitID];
-        self.adView.delegate = self;
-    }
-    return self.adView;
-}
-
-- (void)initializeWithConfiguration:(NSDictionary *)configuration {
-    NSLog(@"[AdManager][%@] > %@ ", self.adapterName, NSStringFromSelector(_cmd));
+- (void)initWithConfiguration:(NSDictionary *)configuration {
+    NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
     self.configuration = configuration;
+    
     NSString *configurationAdUnitID = self.configuration[@"adUnitID"];
     self.adUnitID = configurationAdUnitID ? configurationAdUnitID : kTestindAdUnitID;
     
     MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization:self.adUnitID];
 
     [[MoPub sharedInstance] initializeSdkWithConfiguration:sdkConfig completion:^{
-        // SDK initialization complete. Ready to make ad requests.
-        [self initConsentDialog];
+        NSLog(@"[AdManager][%@] > SDK initialized ", self.name);
     }];
 }
+
+- (void)adViewInit {
+    NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
+
+    self.adView = [[MPAdView alloc] initWithAdUnitId:self.adUnitID];
+    self.adView.delegate = self;
+}
+
+- (void)adViewAdjustSizeToView:(UIView *)view {
+    NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
+    
+    [self.adView.widthAnchor constraintEqualToAnchor:view.widthAnchor].active = YES;
+    [self.adView.heightAnchor constraintEqualToConstant:kMPPresetMaxAdSize50Height.height].active = YES;
+}
+
+- (void)adViewLoadAd {
+    NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
+    
+    if (self.isInitialized) {
+        [self.adView loadAdWithMaxAdSize:kMPPresetMaxAdSize50Height];
+        [self.adView startAutomaticallyRefreshingContents];
+    } else {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self adViewLoadAd];
+        });
+    }
+}
+
+- (void)adViewStopAd {
+    NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
+    
+    [self.adView stopAutomaticallyRefreshingContents];
+}
+
+// MPAdView delegate calls
+
+- (UIViewController *)viewControllerForPresentingModalView {
+    return [self.delegate viewControllerForPresentingModalView];
+}
+
+- (void)adViewDidLoadAd:(MPAdView *)view adSize:(CGSize)adSize {
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), view);
+    [self.delegate adapterDidLoadAd:view];
+}
+
+- (void)adView:(MPAdView *)view didFailToLoadAdWithError:(NSError *)error {
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), [error localizedDescription]);
+    [self.delegate adapterDidFailToLoadAdWithError:error];
+}
+
+@end
+
+/*
 
 // Consent Dialog
 - (void)initConsentDialog {
@@ -65,45 +114,4 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
     }
 }
 
-// MPAdView ad loading
-
-- (BOOL)isSdkInitialized {
-    return [MoPub sharedInstance].isSdkInitialized;
-}
-
-- (void)loadAd {
-    NSLog(@"[AdManager][%@] > %@ ", self.adapterName, NSStringFromSelector(_cmd));
-    if (self.isSdkInitialized) {
-        [self.adView loadAdWithMaxAdSize:kMPPresetMaxAdSize50Height];
-    } else {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self loadAd];
-        });
-    }
-}
-
-- (void)startRefreshing {
-    [self.adView startAutomaticallyRefreshingContents];
-}
-
-- (void)stopRefreshing {
-    [self.adView stopAutomaticallyRefreshingContents];
-}
-
-// MPAdView delegate calls
-
-- (UIViewController *)viewControllerForPresentingModalView {
-    return [self.adapterDelegate viewControllerForPresentingModalView];
-}
-
-- (void)adViewDidLoadAd:(MPAdView *)view adSize:(CGSize)adSize {
-    NSLog(@"[AdManager][%@] > %@ : %@", self.adapterName, NSStringFromSelector(_cmd), view);
-    [self.adapterDelegate adapterDidLoadAd:view];
-}
-
-- (void)adView:(MPAdView *)view didFailToLoadAdWithError:(NSError *)error {
-    NSLog(@"[AdManager][%@] > %@ : %@", self.adapterName, NSStringFromSelector(_cmd), [error localizedDescription]);
-    [self.adapterDelegate adapterDidFailToLoadAdWithError:error];
-}
-
-@end
+*/
