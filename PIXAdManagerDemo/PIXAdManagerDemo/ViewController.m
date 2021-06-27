@@ -35,6 +35,9 @@
     PIXAdManager *adManager = [PIXAdManager sharedManager];
     adManager.delegate = self;
     [adManager initializeWithMediationAdapter:MediationAdapterMoPub andConfiguration:mopubConfiguration];
+    #if DEBUG
+        [adManager debugEnabled:YES];
+    #endif
 }
 
 - (void)viewDidAppear:(BOOL)animated {
