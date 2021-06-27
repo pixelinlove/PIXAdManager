@@ -127,4 +127,10 @@ static NSString * const kMediationAdapter = @"AdMob";
     }
 }
 
+#pragma mark - Dealloc
+
+- (void)dealloc {
+    NSLog(@"[AdManager][%@] > %@", self.name, NSStringFromSelector(_cmd));
+}
+
 @end

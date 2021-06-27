@@ -108,4 +108,10 @@ static NSString * const kMediationAdapter = @"MoPub";
     // Implement MoPub Testing suite if available.
 }
 
+#pragma mark - Dealloc
+
+- (void)dealloc {
+    NSLog(@"[AdManager][%@] > %@", self.name, NSStringFromSelector(_cmd));
+}
+
 @end
