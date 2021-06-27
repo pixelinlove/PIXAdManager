@@ -144,6 +144,7 @@
 #pragma mark - Debugging
 
 - (void)debugEnabled:(BOOL)enabled {
+    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
     if (enabled) {
         /*
         NSLog(@"[LogMe][MoPub|AdMob] > IDFA: %@", [ASIdentifierManager sharedManager].advertisingIdentifier);
