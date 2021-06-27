@@ -51,10 +51,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc {
-    NSLog(@"[AdManager][%@] > %@", NSStringFromClass(self.class), NSStringFromSelector(_cmd));
-}
-
 #pragma mark - AdManager AdView support methods
 
 - (void)setupAdView {
