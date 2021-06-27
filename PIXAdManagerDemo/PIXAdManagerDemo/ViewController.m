@@ -30,11 +30,11 @@
     NSDictionary *mopubConfigurationTest = @{@"adUnitID": @"b195f8dd8ded45fe847ad89ed1d016da"};
     NSDictionary *admobConfigurationTest = @{@"adUnitID": @"ca-app-pub-3940256099942544/2934735716"};
     NSDictionary *mopubConfiguration = @{@"adUnitID": @"2e8c909d6e114a67aad04c5ca014f85c"};
-    NSDictionary *adMobConfiguration = @{@"adUnitID": @"ca-app-pub-3008186008208131/8209379850"};
+    NSDictionary *admobConfiguration = @{@"adUnitID": @"ca-app-pub-3008186008208131/8209379850"};
     
     PIXAdManager *adManager = [PIXAdManager sharedManager];
     adManager.delegate = self;
-    [adManager initializeWithMediationAdapter:MediationAdapterMoPub andConfiguration:mopubConfiguration];
+    [adManager initializeWithMediationAdapter:MediationAdapterAdMob andConfiguration:admobConfiguration];
     #if DEBUG
         [adManager debugEnabled:YES];
     #endif
