@@ -144,6 +144,26 @@
 
 - (void)debugEnabled:(BOOL)enabled {
     if (enabled) {
+        /*
+        NSLog(@"[LogMe][MoPub|AdMob] > IDFA: %@", [ASIdentifierManager sharedManager].advertisingIdentifier);
+        // Implement MoPub Testing suite if available.
+
+        // Facebook Audience Network debug options
+        [FBAdSettings addTestDevices:@[
+        @"8f43ab85f1144df4cdc5d2b4e30cdd0ff111905d", // iPhone 11 Pro Brain
+        @"b602d594afd2b0b327e07a06f36ca6a7e42546d0", // iPhone X
+        @"00000000-0000-0000-0000-000000000000"  // Simulator
+        ]];
+        // [FBAdSettings clearTestDevices];
+
+        // Google AdMob debug options
+        GADMobileAds *ads = [GADMobileAds sharedInstance];
+        [ads requestConfiguration].testDeviceIdentifiers = @[
+        @"813f677da12329e42f5d8c139f4fadcf", // iPhone 11 Pro Brain
+        @"c4a3d37c376300f94a8f497ca4c7e55c" // iPhone SE 2 Brain
+        ];
+         */
+        
         [self.adapter adapterViewDebug];
     }
 }
