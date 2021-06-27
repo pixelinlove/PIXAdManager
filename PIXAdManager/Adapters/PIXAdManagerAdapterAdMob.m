@@ -110,9 +110,10 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
 #pragma mark - Debug methods
 
 - (void)adapterViewDebug {
+    UIView *gestureTriggerView = [self.delegate viewControllerForAdapter].view;
     UITapGestureRecognizer *adViewDebugGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleViewDebugGesture:)];
     adViewDebugGestureRecognizer.numberOfTapsRequired = 3;
-    [self.adView addGestureRecognizer:adViewDebugGestureRecognizer];
+    [gestureTriggerView addGestureRecognizer:adViewDebugGestureRecognizer];
 }
 
 - (void)handleViewDebugGesture:(UITapGestureRecognizer *)sender {
