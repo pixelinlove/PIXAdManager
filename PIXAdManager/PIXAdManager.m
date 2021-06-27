@@ -67,12 +67,12 @@
 }
 
 - (void)adViewSetupSize {
-    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
+    NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     [self.adapter adapterViewAdjustSizeToSuperView];
 }
 
 - (void)loadAd {
-    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
+    NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     
     UIView *adView = self.adapter.adView;
     if (adView.superview == nil) {
@@ -83,7 +83,7 @@
 }
 
 - (void)pauseAd {
-    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
+    NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     [self.adapter adapterViewStopAd];
     [self.delegate adManagerDidPauseAd];
 }
@@ -91,7 +91,7 @@
 #pragma mark - Application notifications handling
 
 - (void)applicationNotificationsEnabled:(BOOL)enabled {
-    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
+    NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
@@ -122,7 +122,7 @@
     }
     
     if (notification.name == UIApplicationWillResignActiveNotification) {
-        NSLog(@"[AdManger] > Application Will Resign Active - Banner will hide");
+        NSLog(@"[AdManager] > Application Will Resign Active - Banner will hide");
         [self pauseAd];
     }
 }
@@ -144,7 +144,7 @@
 #pragma mark - Debugging
 
 - (void)debugEnabled:(BOOL)enabled {
-    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
+    NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     if (enabled) {
         /*
         NSLog(@"[LogMe][MoPub|AdMob] > IDFA: %@", [ASIdentifierManager sharedManager].advertisingIdentifier);
