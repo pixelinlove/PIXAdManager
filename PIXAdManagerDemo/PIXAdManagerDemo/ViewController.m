@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+#define DEBUG 1
+
 @interface ViewController ()
 
 @property (nonatomic, strong) NSLayoutConstraint *adViewBottomLayoutContraint;
@@ -35,7 +37,9 @@
     PIXAdManager *adManager = [PIXAdManager sharedManager];
     adManager.delegate = self;
     [adManager initializeWithMediationAdapter:MediationAdapterAdMob andConfiguration:admobConfiguration];
+    
     #if DEBUG
+        NSLog(@"[AdManager] > *** WARNING *** Debug mode enabled");
         [adManager debugEnabled:YES];
     #endif
 }
