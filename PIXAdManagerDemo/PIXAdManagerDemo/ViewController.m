@@ -46,6 +46,7 @@
     [super viewDidAppear:animated];
     
     [self setupAdView];
+    
     PIXAdManager *adManager = [PIXAdManager sharedManager];
     [adManager applicationNotificationsEnabled:YES];
     [adManager loadAd];
