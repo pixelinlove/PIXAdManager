@@ -49,8 +49,6 @@
     [self.adapter initWithConfiguration:configuration];
     [self.adapter adapterViewInit];
     
-    //TODO: HANDLE THIS BELOW: MOVE TO VIEWCONTROLLER
-//    [self applicationNotificationsEnabled:YES];
 }
 
 - (NSString *)classNameForAdapter:(MediationAdapter)adapter {
@@ -63,6 +61,34 @@
     }
     return className;
 }
+
+- (UIView *)adView {
+    return (UIView *)self.adapter.adView;
+}
+
+- (void)adViewSetupSize {
+    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
+    [self.adapter adapterViewAdjustSizeToSuperView];
+}
+
+- (void)loadAd {
+    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
+    
+    UIView *adView = self.adapter.adView;
+    if (adView.superview == nil) {
+        NSLog(@"[AdManager] > *** WARNING *** AdView needs to be attached to the superView before loading an ad");
+    }
+    
+    [self.adapter adapterViewLoadAd];
+}
+
+- (void)pauseAd {
+    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
+    [self.adapter adapterViewStopAd];
+    [self.delegate adManagerDidPauseAd];
+}
+
+#pragma mark - Application notifications handling
 
 - (void)applicationNotificationsEnabled:(BOOL)enabled {
     
@@ -100,31 +126,7 @@
     }
 }
 
-- (void)adViewSetupSize {
-    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
-    [self.adapter adapterViewAdjustSizeToSuperView];
-}
-
-- (void)loadAd {
-    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
-    
-    UIView *adView = self.adapter.adView;
-    if (adView.superview == nil) {
-        NSLog(@"[AdManager] > *** WARNING *** AdView needs to be attached to the superView before loading an ad");
-    }
-    
-    [self.adapter adapterViewLoadAd];
-}
-
-- (void)pauseAd {
-    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
-    [self.adapter adapterViewStopAd];
-    [self.delegate adManagerDidPauseAd];
-}
-
-- (UIView *)adView {
-    return (UIView *)self.adapter.adView;
-}
+#pragma mark - Adapter delegate calls
 
 - (void)adapterDidLoadAd:(nonnull UIView *)ad {
     [self.delegate adManagerDidLoadAd:ad];
@@ -136,6 +138,14 @@
 
 - (UIViewController *)viewControllerForAdapter {
     return [self.delegate viewControllerForAdManager];
+}
+
+#pragma mark - Debugging
+
+- (void)debugEnabled:(BOOL)enabled {
+    if (enabled) {
+        [self.adapter adapterViewDebug];
+    }
 }
 
 @end

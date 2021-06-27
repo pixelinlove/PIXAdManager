@@ -50,4 +50,6 @@ typedef enum {
 - (void)loadAd;
 - (void)pauseAd;
 
+- (void)debugEnabled:(BOOL)enabled;
+
 @end
