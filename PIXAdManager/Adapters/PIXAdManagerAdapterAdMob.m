@@ -30,8 +30,12 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
     self.configuration = configuration;
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), configuration);
     
     NSString *configurationAdUnitID = self.configuration[@"adUnitID"];
+    
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), configurationAdUnitID);
+    
     self.adUnitID = configurationAdUnitID ? configurationAdUnitID : kTestindAdUnitID;
     
     // AdMob initialisation
