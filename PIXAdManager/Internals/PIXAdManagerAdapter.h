@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)adapterViewAdjustSizeToSuperView;
 - (void)adapterViewLoadAd;
 - (void)adapterViewStopAd;
+- (void)adapterViewDebug;
 
 @end
 
