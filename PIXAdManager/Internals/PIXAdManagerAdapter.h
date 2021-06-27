@@ -31,10 +31,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<PIXAdManagerAdapterDelegate> delegate;
 
 - (void)initWithConfiguration:(NSDictionary *)configuration;
-- (void)adViewInit;
-- (void)adViewAdjustSizeToView:(UIView *)view;
-- (void)adViewLoadAd;
-- (void)adViewStopAd;
+- (void)adapterViewInit;
+- (void)adapterViewAdjustSizeToSuperView;
+- (void)adapterViewLoadAd;
+- (void)adapterViewStopAd;
+- (void)adapterViewDebug;
 
 @end
 

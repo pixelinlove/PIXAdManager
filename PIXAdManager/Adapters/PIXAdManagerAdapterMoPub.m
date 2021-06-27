@@ -9,7 +9,6 @@
 #import "PIXAdManagerAdapterMoPub.h"
 
 static NSString * const kMediationAdapter = @"MoPub";
-static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
 
 @interface PIXAdManagerAdapterMoPub ()
 
@@ -32,9 +31,13 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
     self.configuration = configuration;
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), configuration);
     
     NSString *configurationAdUnitID = self.configuration[@"adUnitID"];
-    self.adUnitID = configurationAdUnitID ? configurationAdUnitID : kTestindAdUnitID;
+    
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), configurationAdUnitID);
+    
+    self.adUnitID = configurationAdUnitID;
     
     MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization:self.adUnitID];
 
@@ -43,40 +46,47 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
     }];
 }
 
-- (void)adViewInit {
+- (void)adapterViewInit {
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
 
     self.adView = [[MPAdView alloc] initWithAdUnitId:self.adUnitID];
     self.adView.delegate = self;
 }
 
-- (void)adViewAdjustSizeToView:(UIView *)view {
+- (void)adapterViewAdjustSizeToSuperView {
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
-    [self.adView.widthAnchor constraintEqualToAnchor:view.widthAnchor].active = YES;
+    UIView *superView = self.adView.superview;
+    if (superView == nil) {
+        NSLog(@"[AdManager] > *** WARNING *** > AdView needs to be attached to the superView before loading an ad");
+    }
+    
+    [self.adView.widthAnchor constraintEqualToAnchor:superView.widthAnchor].active = YES;
     [self.adView.heightAnchor constraintEqualToConstant:kMPPresetMaxAdSize50Height.height].active = YES;
+    
+    [superView layoutIfNeeded];
 }
 
-- (void)adViewLoadAd {
-    NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
+- (void)adapterViewLoadAd {
+    NSLog(@"[AdManager][%@] > %@ > Initialized? %@", self.name, NSStringFromSelector(_cmd), self.isInitialized ? @"Yes" : @"No");
     
     if (self.isInitialized) {
         [self.adView loadAdWithMaxAdSize:kMPPresetMaxAdSize50Height];
         [self.adView startAutomaticallyRefreshingContents];
     } else {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self adViewLoadAd];
+            [self adapterViewLoadAd];
         });
     }
 }
 
-- (void)adViewStopAd {
+- (void)adapterViewStopAd {
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
     [self.adView stopAutomaticallyRefreshingContents];
 }
 
-// MPAdView delegate calls
+#pragma mark - Delegate methods
 
 - (UIViewController *)viewControllerForPresentingModalView {
     return [self.delegate viewControllerForAdapter];
@@ -92,24 +102,16 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
     [self.delegate adapterDidFailToLoadAdWithError:error];
 }
 
-@end
+#pragma mark - Debug methods
 
-/*
-
-// Consent Dialog
-- (void)initConsentDialog {
-    NSLog(@"[AdManager][%@] > %@ : GDPR (%@) - Should show (%@) - Status (%zd)", self.adapterName, NSStringFromSelector(_cmd), [MoPub sharedInstance].isGDPRApplicable ? @"Yes" : @"No", [MoPub sharedInstance].shouldShowConsentDialog ? @"Yes" : @"No", [MoPub sharedInstance].currentConsentStatus);
-    if ([MoPub sharedInstance].shouldShowConsentDialog) {
-        [[MoPub sharedInstance] loadConsentDialogWithCompletion:^(NSError *error) {
-            if (error) {
-                // TODO: Show error
-            } else {
-                UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-                [[MoPub sharedInstance] showConsentDialogFromViewController:rootViewController
-                                                                 completion:nil];
-            }
-        }];
-    }
+- (void)adapterViewDebug {
+    // Implement MoPub Testing suite if available.
 }
 
-*/
+#pragma mark - Dealloc
+
+- (void)dealloc {
+    NSLog(@"[AdManager][%@] > %@", self.name, NSStringFromSelector(_cmd));
+}
+
+@end

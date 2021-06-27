@@ -13,7 +13,6 @@
 
 @property (nonatomic, assign) MediationAdapter initialisedMediationAdapter;
 @property (nonatomic, strong) id<PIXAdManagerAdapter> adapter;
-@property (nonatomic, strong) NSLayoutConstraint *adViewBottomLayoutContraint;
 
 @end
 
@@ -29,28 +28,25 @@
 }
 
 - (void)initializeWithMediationAdapter:(MediationAdapter)adapter andConfiguration:(NSDictionary *)configuration {
-    if (_initialisedMediationAdapter != 0) {
-        //TODO: Raise error. Mediation Adapter already initialised and can't be changed.
-        [NSException raise:NSInternalInconsistencyException
-                    format:@"PIXAdManager can be initialised only once"];
-        return;
-    }
+//    if (_initialisedMediationAdapter != 0) {
+//        //TODO: Raise error. Mediation Adapter already initialised and can't be changed.
+//        [NSException raise:NSInternalInconsistencyException
+//                    format:@"PIXAdManager can be initialised only once"];
+//        return;
+//    }
     _initialisedMediationAdapter = adapter;
 
     Class adapterClass = NSClassFromString([self classNameForAdapter:adapter]);
     if (adapterClass == nil) {
-        //TODO: Raise error. Adapter Class Files couldn't be loaded.
-        [NSException raise:NSInternalInconsistencyException
-                    format:@"PIXAdManager can't find required adapter class"];
+        NSLog(@"[AdManager] > *** WARNING *** > Can't find required adapter class");
         return;
     }
     self.adapter = (id<PIXAdManagerAdapter>)[[adapterClass alloc] init];
     self.adapter.delegate = self;
     
     [self.adapter initWithConfiguration:configuration];
-    [self.adapter adViewInit];
+    [self.adapter adapterViewInit];
     
-    [self applicationNotificationsActive:YES];
 }
 
 - (NSString *)classNameForAdapter:(MediationAdapter)adapter {
@@ -64,13 +60,42 @@
     return className;
 }
 
-- (void)applicationNotificationsActive:(BOOL)active {
+- (UIView *)adView {
+    return (UIView *)self.adapter.adView;
+}
+
+- (void)adViewSetupSize {
+    NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
+    [self.adapter adapterViewAdjustSizeToSuperView];
+}
+
+- (void)loadAd {
+    NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
+    
+    UIView *adView = self.adapter.adView;
+    if (adView.superview == nil) {
+        NSLog(@"[AdManager] > *** WARNING *** > AdView needs to be attached to the superView before loading an ad");
+    }
+    
+    [self.adapter adapterViewLoadAd];
+}
+
+- (void)pauseAd {
+    NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
+    [self.adapter adapterViewStopAd];
+    [self.delegate adManagerDidPauseAd];
+}
+
+#pragma mark - Application notifications handling
+
+- (void)applicationNotificationsEnabled:(BOOL)enabled {
+    NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
     
-    if (active) {
+    if (enabled) {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(applicationNotificationForAdManager:)
                                                      name:UIApplicationDidEnterBackgroundNotification
@@ -91,105 +116,56 @@
 - (void)applicationNotificationForAdManager:(NSNotification *)notification {
     if (notification.name == UIApplicationDidBecomeActiveNotification) {
         NSLog(@"[AdManager] > Application Did Become Active - Banner will refresh");
-        [self resume];
+        [self loadAd];
     }
     
     if (notification.name == UIApplicationWillResignActiveNotification) {
-        NSLog(@"[AdManger] > Application Will Resign Active - Banner will hide");
-        [self pause];
+        NSLog(@"[AdManager] > Application Will Resign Active - Banner will hide");
+        [self pauseAd];
     }
 }
 
-- (void)resume {
-    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
-    
-    // Check if adView is attached to the superview. If not, set it up.
-    // This is because the frame and constraints should be setup only after viewDidAppear.
-    UIView *adView = self.adapter.adView;
-    if (adView.superview == nil) {
-        [self adViewSetupView];
-    }
-    
-    [self.adapter adViewLoadAd];
-}
-
-- (void)pause {
-    [self.adapter adViewStopAd];
-    [self showAdView:NO animated:NO];
-}
-
-- (void)adViewSetupView {
-    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
-    
-    UIView *adView = self.adapter.adView;
-    
-    adView.translatesAutoresizingMaskIntoConstraints = NO;
-    adView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
-    UIViewController *rootViewController = [self.delegate viewControllerForAdManager];
-    [rootViewController.view addSubview:adView];
-    
-    [self.adapter adViewAdjustSizeToView:rootViewController.view];
-    [adView.centerXAnchor constraintEqualToAnchor:rootViewController.view.centerXAnchor].active = YES;
-    if (!self.adViewBottomLayoutContraint) {
-        self.adViewBottomLayoutContraint = [adView.bottomAnchor constraintEqualToAnchor:rootViewController.bottomLayoutGuide.topAnchor];
-        self.adViewBottomLayoutContraint.active = YES;
-    }
-    [adView layoutIfNeeded];
-    
-    [self showAdView:NO animated:NO];
-    
-}
-
-- (void)showAdView:(BOOL)show animated:(BOOL)animated {
-    NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
-    
-    UIView *adView = self.adapter.adView;
-    
-    // hidden values
-    CGFloat _height = adView.frame.size.height;
-    CGFloat _alpha = 0.0;
-    BOOL _hidden = YES;
-    if (show) {
-        // show values
-        _height = 0.0;
-        _alpha = 1.0;
-        _hidden = NO;
-    }
-    
-    NSTimeInterval _duration = 0.0;
-    NSTimeInterval _delay = 0.0;
-    if (animated) {
-        _duration = 0.3;
-        _delay = 0.1;
-    }
-    
-    [adView.superview layoutIfNeeded];
-    adView.hidden = NO;
-    [UIView animateWithDuration:_duration
-                          delay:_delay
-                        options:UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionBeginFromCurrentState
-                     animations:^{
-        self.adViewBottomLayoutContraint.constant = _height;
-        adView.alpha = _alpha;
-        [adView.superview layoutIfNeeded];
-    }
-                     completion:^(BOOL finished) {
-        if (finished) {
-            adView.hidden = _hidden;
-        }
-    }];
-}
+#pragma mark - Adapter delegate calls
 
 - (void)adapterDidLoadAd:(nonnull UIView *)ad {
-    [self showAdView:YES animated:YES];
+    [self.delegate adManagerDidLoadAd:ad];
 }
 
 - (void)adapterDidFailToLoadAdWithError:(nullable NSError *)error {
-    [self showAdView:NO animated:YES];
+    [self.delegate adManagerDidFailWithError:error];
 }
 
 - (UIViewController *)viewControllerForAdapter {
     return [self.delegate viewControllerForAdManager];
+}
+
+#pragma mark - Debugging
+
+- (void)debugEnabled:(BOOL)enabled {
+    NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
+    if (enabled) {
+        /*
+        NSLog(@"[LogMe][MoPub|AdMob] > IDFA: %@", [ASIdentifierManager sharedManager].advertisingIdentifier);
+        // Implement MoPub Testing suite if available.
+
+        // Facebook Audience Network debug options
+        [FBAdSettings addTestDevices:@[
+        @"8f43ab85f1144df4cdc5d2b4e30cdd0ff111905d", // iPhone 11 Pro Brain
+        @"b602d594afd2b0b327e07a06f36ca6a7e42546d0", // iPhone X
+        @"00000000-0000-0000-0000-000000000000"  // Simulator
+        ]];
+        // [FBAdSettings clearTestDevices];
+
+        // Google AdMob debug options
+        GADMobileAds *ads = [GADMobileAds sharedInstance];
+        [ads requestConfiguration].testDeviceIdentifiers = @[
+        @"813f677da12329e42f5d8c139f4fadcf", // iPhone 11 Pro Brain
+        @"c4a3d37c376300f94a8f497ca4c7e55c" // iPhone SE 2 Brain
+        ];
+         */
+        
+        [self.adapter adapterViewDebug];
+    }
 }
 
 @end
