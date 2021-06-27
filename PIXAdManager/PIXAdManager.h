@@ -27,8 +27,9 @@ typedef enum {
 
 @optional
 
-//- (void)adManagerDidLoadAd:(UIView *)adView;
-//- (void)adManagerDidFailWithError:(NSError *)error;
+- (void)adManagerDidLoadAd:(UIView *)adView;
+- (void)adManagerDidFailWithError:(NSError *)error;
+- (void)adManagerDidPauseAd;
 
 @end
 
@@ -42,7 +43,11 @@ typedef enum {
 + (PIXAdManager *)sharedManager;
 
 - (void)initializeWithMediationAdapter:(MediationAdapter)adapter andConfiguration:(NSDictionary *)configuration;
-- (void)resume;
-- (void)pause;
+- (void)applicationNotificationsEnabled:(BOOL)enabled;
+
+- (void)adViewSetupSize;
+
+- (void)loadAd;
+- (void)pauseAd;
 
 @end

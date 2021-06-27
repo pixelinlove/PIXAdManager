@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		651ADA91255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */; };
+		65376AFB268888E50020F73C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65376AFA268888E50020F73C /* FirstViewController.m */; };
 		6552D33C2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */; };
 		65B06267264A50D900C066F8 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B06266264A50D900C066F8 /* FBSDKCoreKit.framework */; };
 		65B06269264A5E5900C066F8 /* AdColonyAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B06268264A5E5900C066F8 /* AdColonyAdapter.framework */; };
@@ -72,6 +73,8 @@
 /* Begin PBXFileReference section */
 		651ADA8F255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapterAdMob.h; sourceTree = "<group>"; };
 		651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterAdMob.m; sourceTree = "<group>"; };
+		65376AF9268888E50020F73C /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		65376AFA268888E50020F73C /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		6552D3322556B19C00C71EA2 /* PIXAdManagerAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapter.h; sourceTree = "<group>"; };
 		6552D33A2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapterMoPub.h; sourceTree = "<group>"; };
 		6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterMoPub.m; sourceTree = "<group>"; };
@@ -322,11 +325,13 @@
 				65F3CAE420535349009A3C86 /* AppDelegate.m */,
 				65F3CAE620535349009A3C86 /* ViewController.h */,
 				65F3CAE720535349009A3C86 /* ViewController.m */,
+				65376AF9268888E50020F73C /* FirstViewController.h */,
+				65376AFA268888E50020F73C /* FirstViewController.m */,
 				65F3CAE920535349009A3C86 /* Main.storyboard */,
-				65F3CAEC20535349009A3C86 /* Assets.xcassets */,
 				65F3CAEE20535349009A3C86 /* LaunchScreen.storyboard */,
-				65F3CAF120535349009A3C86 /* Info.plist */,
 				65F3CAF220535349009A3C86 /* main.m */,
+				65F3CAF120535349009A3C86 /* Info.plist */,
+				65F3CAEC20535349009A3C86 /* Assets.xcassets */,
 			);
 			path = PIXAdManagerDemo;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				65DF3FDB263CAEEA002D2746 /* FacebookNativeAdAdapter.m in Sources */,
 				65DF3FDC263CAEEA002D2746 /* FacebookAdapterConfiguration.m in Sources */,
 				6552D33C2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m in Sources */,
+				65376AFB268888E50020F73C /* FirstViewController.m in Sources */,
 				65DF3FD4263CAEEA002D2746 /* GoogleAdMobAdapterConfiguration.m in Sources */,
 				65DF3FD8263CAEEA002D2746 /* FacebookNativeCustomEvent.m in Sources */,
 				65DF3FCD263CAEEA002D2746 /* AdColonyBannerCustomEvent.m in Sources */,

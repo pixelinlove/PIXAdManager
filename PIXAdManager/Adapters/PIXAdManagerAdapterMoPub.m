@@ -43,34 +43,41 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
     }];
 }
 
-- (void)adViewInit {
+- (void)adapterViewInit {
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
 
     self.adView = [[MPAdView alloc] initWithAdUnitId:self.adUnitID];
     self.adView.delegate = self;
 }
 
-- (void)adViewAdjustSizeToView:(UIView *)view {
+- (void)adapterViewAdjustSizeToSuperView {
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
-    [self.adView.widthAnchor constraintEqualToAnchor:view.widthAnchor].active = YES;
+    UIView *superView = self.adView.superview;
+    if (superView == nil) {
+        NSLog(@"[AdManager] > *** WARNING *** AdView needs to be attached to the superView before loading an ad");
+    }
+    
+    [self.adView.widthAnchor constraintEqualToAnchor:superView.widthAnchor].active = YES;
     [self.adView.heightAnchor constraintEqualToConstant:kMPPresetMaxAdSize50Height.height].active = YES;
+    
+    [superView layoutIfNeeded];
 }
 
-- (void)adViewLoadAd {
-    NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
+- (void)adapterViewLoadAd {
+    NSLog(@"[AdManager][%@] > %@ > Initialized? %@", self.name, NSStringFromSelector(_cmd), self.isInitialized ? @"Yes" : @"No");
     
     if (self.isInitialized) {
         [self.adView loadAdWithMaxAdSize:kMPPresetMaxAdSize50Height];
         [self.adView startAutomaticallyRefreshingContents];
     } else {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self adViewLoadAd];
+            [self adapterViewLoadAd];
         });
     }
 }
 
-- (void)adViewStopAd {
+- (void)adapterViewStopAd {
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
     [self.adView stopAutomaticallyRefreshingContents];

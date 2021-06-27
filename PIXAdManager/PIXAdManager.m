@@ -13,7 +13,6 @@
 
 @property (nonatomic, assign) MediationAdapter initialisedMediationAdapter;
 @property (nonatomic, strong) id<PIXAdManagerAdapter> adapter;
-@property (nonatomic, strong) NSLayoutConstraint *adViewBottomLayoutContraint;
 
 @end
 
@@ -48,9 +47,10 @@
     self.adapter.delegate = self;
     
     [self.adapter initWithConfiguration:configuration];
-    [self.adapter adViewInit];
+    [self.adapter adapterViewInit];
     
-    [self applicationNotificationsActive:YES];
+    //TODO: HANDLE THIS BELOW: MOVE TO VIEWCONTROLLER
+//    [self applicationNotificationsEnabled:YES];
 }
 
 - (NSString *)classNameForAdapter:(MediationAdapter)adapter {
@@ -64,13 +64,13 @@
     return className;
 }
 
-- (void)applicationNotificationsActive:(BOOL)active {
+- (void)applicationNotificationsEnabled:(BOOL)enabled {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
     
-    if (active) {
+    if (enabled) {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(applicationNotificationForAdManager:)
                                                      name:UIApplicationDidEnterBackgroundNotification
@@ -91,101 +91,47 @@
 - (void)applicationNotificationForAdManager:(NSNotification *)notification {
     if (notification.name == UIApplicationDidBecomeActiveNotification) {
         NSLog(@"[AdManager] > Application Did Become Active - Banner will refresh");
-        [self resume];
+        [self loadAd];
     }
     
     if (notification.name == UIApplicationWillResignActiveNotification) {
         NSLog(@"[AdManger] > Application Will Resign Active - Banner will hide");
-        [self pause];
+        [self pauseAd];
     }
 }
 
-- (void)resume {
+- (void)adViewSetupSize {
+    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
+    [self.adapter adapterViewAdjustSizeToSuperView];
+}
+
+- (void)loadAd {
     NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
     
-    // Check if adView is attached to the superview. If not, set it up.
-    // This is because the frame and constraints should be setup only after viewDidAppear.
     UIView *adView = self.adapter.adView;
     if (adView.superview == nil) {
-        [self adViewSetupView];
+        NSLog(@"[AdManager] > *** WARNING *** AdView needs to be attached to the superView before loading an ad");
     }
     
-    [self.adapter adViewLoadAd];
+    [self.adapter adapterViewLoadAd];
 }
 
-- (void)pause {
-    [self.adapter adViewStopAd];
-    [self showAdView:NO animated:NO];
-}
-
-- (void)adViewSetupView {
+- (void)pauseAd {
     NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
-    
-    UIView *adView = self.adapter.adView;
-    
-    adView.translatesAutoresizingMaskIntoConstraints = NO;
-    adView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
-    UIViewController *rootViewController = [self.delegate viewControllerForAdManager];
-    [rootViewController.view addSubview:adView];
-    
-    [self.adapter adViewAdjustSizeToView:rootViewController.view];
-    [adView.centerXAnchor constraintEqualToAnchor:rootViewController.view.centerXAnchor].active = YES;
-    if (!self.adViewBottomLayoutContraint) {
-        self.adViewBottomLayoutContraint = [adView.bottomAnchor constraintEqualToAnchor:rootViewController.bottomLayoutGuide.topAnchor];
-        self.adViewBottomLayoutContraint.active = YES;
-    }
-    [adView layoutIfNeeded];
-    
-    [self showAdView:NO animated:NO];
-    
+    [self.adapter adapterViewStopAd];
+    [self.delegate adManagerDidPauseAd];
 }
 
-- (void)showAdView:(BOOL)show animated:(BOOL)animated {
-    NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
-    
-    UIView *adView = self.adapter.adView;
-    
-    // hidden values
-    CGFloat _height = adView.frame.size.height;
-    CGFloat _alpha = 0.0;
-    BOOL _hidden = YES;
-    if (show) {
-        // show values
-        _height = 0.0;
-        _alpha = 1.0;
-        _hidden = NO;
-    }
-    
-    NSTimeInterval _duration = 0.0;
-    NSTimeInterval _delay = 0.0;
-    if (animated) {
-        _duration = 0.3;
-        _delay = 0.1;
-    }
-    
-    [adView.superview layoutIfNeeded];
-    adView.hidden = NO;
-    [UIView animateWithDuration:_duration
-                          delay:_delay
-                        options:UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionBeginFromCurrentState
-                     animations:^{
-        self.adViewBottomLayoutContraint.constant = _height;
-        adView.alpha = _alpha;
-        [adView.superview layoutIfNeeded];
-    }
-                     completion:^(BOOL finished) {
-        if (finished) {
-            adView.hidden = _hidden;
-        }
-    }];
+- (UIView *)adView {
+    return (UIView *)self.adapter.adView;
 }
 
 - (void)adapterDidLoadAd:(nonnull UIView *)ad {
-    [self showAdView:YES animated:YES];
+    [self.delegate adManagerDidLoadAd:ad];
 }
 
 - (void)adapterDidFailToLoadAdWithError:(nullable NSError *)error {
-    [self showAdView:NO animated:YES];
+    [self.delegate adManagerDidFailWithError:error];
 }
 
 - (UIViewController *)viewControllerForAdapter {
