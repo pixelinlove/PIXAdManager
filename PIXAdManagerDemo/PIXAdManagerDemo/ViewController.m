@@ -8,8 +8,6 @@
 
 #import "ViewController.h"
 
-#define DEBUG 1
-
 @interface ViewController ()
 
 @property (nonatomic, strong) NSLayoutConstraint *adViewBottomLayoutContraint;
@@ -55,6 +53,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     PIXAdManager *adManager = [PIXAdManager sharedManager];
+    [adManager applicationNotificationsEnabled:NO];
     [adManager pauseAd];
     
     [super viewDidDisappear:animated];
