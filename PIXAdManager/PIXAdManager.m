@@ -28,12 +28,12 @@
 }
 
 - (void)initializeWithMediationAdapter:(MediationAdapter)adapter andConfiguration:(NSDictionary *)configuration {
-    if (_initialisedMediationAdapter != 0) {
-        //TODO: Raise error. Mediation Adapter already initialised and can't be changed.
-        [NSException raise:NSInternalInconsistencyException
-                    format:@"PIXAdManager can be initialised only once"];
-        return;
-    }
+//    if (_initialisedMediationAdapter != 0) {
+//        //TODO: Raise error. Mediation Adapter already initialised and can't be changed.
+//        [NSException raise:NSInternalInconsistencyException
+//                    format:@"PIXAdManager can be initialised only once"];
+//        return;
+//    }
     _initialisedMediationAdapter = adapter;
 
     Class adapterClass = NSClassFromString([self classNameForAdapter:adapter]);
