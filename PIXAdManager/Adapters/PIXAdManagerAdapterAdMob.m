@@ -9,7 +9,6 @@
 #import "PIXAdManagerAdapterAdMob.h"
 
 static NSString * const kMediationAdapter = @"AdMob";
-static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735716";
 
 @interface PIXAdManagerAdapterAdMob ()
 
@@ -36,7 +35,7 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
     
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), configurationAdUnitID);
     
-    self.adUnitID = configurationAdUnitID ? configurationAdUnitID : kTestindAdUnitID;
+    self.adUnitID = configurationAdUnitID;
     
     // AdMob initialisation
     GADMobileAds *ads = [GADMobileAds sharedInstance];

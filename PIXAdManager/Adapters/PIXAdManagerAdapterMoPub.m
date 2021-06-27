@@ -9,7 +9,6 @@
 #import "PIXAdManagerAdapterMoPub.h"
 
 static NSString * const kMediationAdapter = @"MoPub";
-static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
 
 @interface PIXAdManagerAdapterMoPub ()
 
@@ -32,9 +31,13 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
     self.configuration = configuration;
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), configuration);
     
     NSString *configurationAdUnitID = self.configuration[@"adUnitID"];
-    self.adUnitID = configurationAdUnitID ? configurationAdUnitID : kTestindAdUnitID;
+    
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), configurationAdUnitID);
+    
+    self.adUnitID = configurationAdUnitID;
     
     MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization:self.adUnitID];
 
