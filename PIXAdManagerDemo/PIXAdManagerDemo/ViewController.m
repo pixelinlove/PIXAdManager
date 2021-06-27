@@ -85,7 +85,9 @@
     
     [[PIXAdManager sharedManager] adViewSetupSize];
     [adView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
-    if (!self.adViewBottomLayoutContraint) {
+    if (self.adViewBottomLayoutContraint.firstItem != adView) {
+        NSLog(@"[AdManager][%@] > %@ > New adViewBottomLayoutContraint is needed", NSStringFromClass(self.class), NSStringFromSelector(_cmd));
+        self.adViewBottomLayoutContraint.active = NO;
         self.adViewBottomLayoutContraint = [adView.bottomAnchor constraintEqualToAnchor:self.bottomLayoutGuide.topAnchor];
         self.adViewBottomLayoutContraint.active = YES;
     }
