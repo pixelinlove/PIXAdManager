@@ -83,7 +83,7 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
     [self.adView stopAutomaticallyRefreshingContents];
 }
 
-// MPAdView delegate calls
+#pragma mark - Delegate methods
 
 - (UIViewController *)viewControllerForPresentingModalView {
     return [self.delegate viewControllerForAdapter];
@@ -99,24 +99,10 @@ static NSString * const kTestindAdUnitID = @"0ac59b0996d947309c33f59d6676399f";
     [self.delegate adapterDidFailToLoadAdWithError:error];
 }
 
-@end
+#pragma mark - Debug methods
 
-/*
-
-// Consent Dialog
-- (void)initConsentDialog {
-    NSLog(@"[AdManager][%@] > %@ : GDPR (%@) - Should show (%@) - Status (%zd)", self.adapterName, NSStringFromSelector(_cmd), [MoPub sharedInstance].isGDPRApplicable ? @"Yes" : @"No", [MoPub sharedInstance].shouldShowConsentDialog ? @"Yes" : @"No", [MoPub sharedInstance].currentConsentStatus);
-    if ([MoPub sharedInstance].shouldShowConsentDialog) {
-        [[MoPub sharedInstance] loadConsentDialogWithCompletion:^(NSError *error) {
-            if (error) {
-                // TODO: Show error
-            } else {
-                UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-                [[MoPub sharedInstance] showConsentDialogFromViewController:rootViewController
-                                                                 completion:nil];
-            }
-        }];
-    }
+- (void)adapterViewDebug {
+    // Implement MoPub Testing suite if available.
 }
 
-*/
+@end

@@ -95,7 +95,7 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
     self.adView.autoloadEnabled = NO;
 }
 
-// GADBannerView delegate calls
+#pragma mark - Delegate methods
 
 - (void)bannerViewDidReceiveAd:(GADBannerView *)bannerView {
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), bannerView);
@@ -105,6 +105,22 @@ static NSString * const kTestindAdUnitID = @"ca-app-pub-3940256099942544/2934735
 - (void)bannerView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(NSError *)error {
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), [error localizedDescription]);
     [self.delegate adapterDidFailToLoadAdWithError:error];
+}
+
+#pragma mark - Debug methods
+
+- (void)adapterViewDebug {
+    UITapGestureRecognizer *adViewDebugGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleAdViewDebugGesture:)];
+    adViewDebugGestureRecognizer.numberOfTapsRequired = 3;
+    [self.adView addGestureRecognizer:adViewDebugGestureRecognizer];
+}
+
+- (void)handleViewDebugGesture:(UITapGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateRecognized) {
+        [[GADMobileAds sharedInstance] presentAdInspectorFromViewController:[self.delegate viewControllerForAdapter] completionHandler:^(NSError * _Nullable error) {
+            NSLog(@"[AdManager][%@] > %@ : Ad Inspector not loaded: %@", self.name, NSStringFromSelector(_cmd), [error localizedDescription]);
+        }];
+    }
 }
 
 @end
