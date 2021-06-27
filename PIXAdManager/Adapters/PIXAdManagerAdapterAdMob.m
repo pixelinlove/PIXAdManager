@@ -65,7 +65,7 @@ static NSString * const kMediationAdapter = @"AdMob";
     
     UIView *superView = self.adView.superview;
     if (superView == nil) {
-        NSLog(@"[AdManager] > *** WARNING *** AdView needs to be attached to the superView before loading an ad");
+        NSLog(@"[AdManager] > *** WARNING *** > AdView needs to be attached to the superView before loading an ad");
     }
     
     CGRect frame = superView.frame;

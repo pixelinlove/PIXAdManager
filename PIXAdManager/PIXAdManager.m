@@ -38,9 +38,7 @@
 
     Class adapterClass = NSClassFromString([self classNameForAdapter:adapter]);
     if (adapterClass == nil) {
-        //TODO: Raise error. Adapter Class Files couldn't be loaded.
-        [NSException raise:NSInternalInconsistencyException
-                    format:@"PIXAdManager can't find required adapter class"];
+        NSLog(@"[AdManager] > *** WARNING *** > Can't find required adapter class");
         return;
     }
     self.adapter = (id<PIXAdManagerAdapter>)[[adapterClass alloc] init];
@@ -76,7 +74,7 @@
     
     UIView *adView = self.adapter.adView;
     if (adView.superview == nil) {
-        NSLog(@"[AdManager] > *** WARNING *** AdView needs to be attached to the superView before loading an ad");
+        NSLog(@"[AdManager] > *** WARNING *** > AdView needs to be attached to the superView before loading an ad");
     }
     
     [self.adapter adapterViewLoadAd];

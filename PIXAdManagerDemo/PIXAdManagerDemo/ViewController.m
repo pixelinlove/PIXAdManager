@@ -37,7 +37,7 @@
     [adManager initializeWithMediationAdapter:MediationAdapterAdMob andConfiguration:admobConfiguration];
     
     #if DEBUG
-        NSLog(@"[AdManager] > *** WARNING *** Debug mode enabled");
+        NSLog(@"[AdManager] > *** WARNING *** > Debug mode enabled");
         [adManager debugEnabled:YES];
     #endif
 }

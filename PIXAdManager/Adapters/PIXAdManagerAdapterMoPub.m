@@ -58,7 +58,7 @@ static NSString * const kMediationAdapter = @"MoPub";
     
     UIView *superView = self.adView.superview;
     if (superView == nil) {
-        NSLog(@"[AdManager] > *** WARNING *** AdView needs to be attached to the superView before loading an ad");
+        NSLog(@"[AdManager] > *** WARNING *** > AdView needs to be attached to the superView before loading an ad");
     }
     
     [self.adView.widthAnchor constraintEqualToAnchor:superView.widthAnchor].active = YES;
