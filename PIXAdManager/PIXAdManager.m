@@ -91,6 +91,7 @@
 #pragma mark - Application notifications handling
 
 - (void)applicationNotificationsEnabled:(BOOL)enabled {
+    NSLog(@"[AdManger] > %@", NSStringFromSelector(_cmd));
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
