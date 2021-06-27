@@ -58,6 +58,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+    PIXAdManager *adManager = [PIXAdManager sharedManager];
+    // Check as the delegate could be set to another viewController
+    if (adManager.delegate == self) {
+        adManager.delegate = nil;
+    }
+}
+
 #pragma mark - AdManager AdView support methods
 
 - (void)setupAdView {
