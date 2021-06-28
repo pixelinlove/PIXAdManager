@@ -32,7 +32,7 @@
     
     PIXAdManager *adManager = [PIXAdManager sharedManager];
     adManager.delegate = self;
-    [adManager initializeWithMediationAdapter:MediationAdapterAdMob andConfiguration:admobTestConfiguration];
+    [adManager initializeWithMediationAdapter:AdManagerAdapterAdMob andConfiguration:admobTestConfiguration];
     
     #if DEBUG
         NSLog(@"[AdManager] > *** WARNING *** > Debug mode enabled");
