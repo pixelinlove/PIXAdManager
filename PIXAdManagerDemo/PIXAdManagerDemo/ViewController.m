@@ -65,6 +65,7 @@
 
 - (void)dealloc {
     PIXAdManager *adManager = [PIXAdManager sharedManager];
+    [adManager applicationNotificationsEnabled:NO];
     // Check as the delegate could be set to another viewController
     if (adManager.delegate == self) {
         adManager.delegate = nil;
