@@ -8,7 +8,13 @@
 
 #import "PIXAdManager.h"
 #import "PIXAdManagerAdapter.h"
+
+#if DEBUG
 #import <AdSupport/ASIdentifierManager.h>
+#import <FBAudienceNetwork/FBAdSettings.h>
+@import GoogleMobileAds;
+#endif
+
 
 @interface PIXAdManager ()
 
@@ -148,7 +154,6 @@
         
         NSLog(@"[AdManager] > IDFA: %@", [ASIdentifierManager sharedManager].advertisingIdentifier);
         
-        /*
         // Implement MoPub Testing suite if available.
 
         // Facebook Audience Network debug options
@@ -157,15 +162,15 @@
         @"b602d594afd2b0b327e07a06f36ca6a7e42546d0", // iPhone X
         @"00000000-0000-0000-0000-000000000000"  // Simulator
         ]];
+        
         // [FBAdSettings clearTestDevices];
 
         // Google AdMob debug options
         GADMobileAds *ads = [GADMobileAds sharedInstance];
         [ads requestConfiguration].testDeviceIdentifiers = @[
-        @"813f677da12329e42f5d8c139f4fadcf", // iPhone 11 Pro Brain
+        @"d7a9eedb0e0697d89ece1697ccdc8a93", // iPhone 11 Pro Brain
         @"c4a3d37c376300f94a8f497ca4c7e55c" // iPhone SE 2 Brain
         ];
-         */
         
         [self.adapter adapterViewDebug];
     }
