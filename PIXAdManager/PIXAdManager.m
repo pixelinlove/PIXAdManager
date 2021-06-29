@@ -8,6 +8,7 @@
 
 #import "PIXAdManager.h"
 #import "PIXAdManagerAdapter.h"
+#import <AdSupport/ASIdentifierManager.h>
 
 @interface PIXAdManager ()
 
@@ -144,8 +145,10 @@
 - (void)debugEnabled:(BOOL)enabled {
     NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     if (enabled) {
+        
+        NSLog(@"[AdManager] > IDFA: %@", [ASIdentifierManager sharedManager].advertisingIdentifier);
+        
         /*
-        NSLog(@"[LogMe][MoPub|AdMob] > IDFA: %@", [ASIdentifierManager sharedManager].advertisingIdentifier);
         // Implement MoPub Testing suite if available.
 
         // Facebook Audience Network debug options
