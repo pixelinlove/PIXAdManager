@@ -151,7 +151,8 @@
 - (void)debugEnabled:(BOOL)enabled {
     NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     if (enabled) {
-        
+
+#if DEBUG
         NSLog(@"[AdManager] > IDFA: %@", [ASIdentifierManager sharedManager].advertisingIdentifier);
         
         // Implement MoPub Testing suite if available.
@@ -171,6 +172,7 @@
         @"d7a9eedb0e0697d89ece1697ccdc8a93", // iPhone 11 Pro Brain
         @"c4a3d37c376300f94a8f497ca4c7e55c" // iPhone SE 2 Brain
         ];
+#endif
         
         [self.adapter adapterViewDebug];
     }
