@@ -35,8 +35,16 @@
     [adManager initializeWithMediationAdapter:AdManagerAdapterAdMob andConfiguration:admobTestConfiguration];
     
     #if DEBUG
-        NSLog(@"[AdManager] > *** WARNING *** > Debug mode enabled");
-        [adManager debugEnabled:YES];
+        NSDictionary *debugConfiguration = @{
+            @"testDevices": @{
+                @"facebook": @[@"8f43ab85f1144df4cdc5d2b4e30cdd0ff111905d", // iPhone 11 Pro Brain
+                               @"b602d594afd2b0b327e07a06f36ca6a7e42546d0", // iPhone X
+                               @"00000000-0000-0000-0000-000000000000"], // Simulator
+                @"admob": @[@"d7a9eedb0e0697d89ece1697ccdc8a93", // iPhone 11 Pro Brain
+                            @"c4a3d37c376300f94a8f497ca4c7e55c"] // iPhone SE 2 Brain
+            }
+        };
+        [adManager debugEnabledWithConfiguration:debugConfiguration];
     #endif
 }
 

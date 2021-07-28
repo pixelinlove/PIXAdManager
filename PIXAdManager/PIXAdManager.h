@@ -50,6 +50,6 @@ typedef enum {
 - (void)loadAd;
 - (void)pauseAd;
 
-- (void)debugEnabled:(BOOL)enabled;
+- (void)debugEnabledWithConfiguration:(NSDictionary *)configuration;
 
 @end

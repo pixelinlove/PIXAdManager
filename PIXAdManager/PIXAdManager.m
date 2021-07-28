@@ -10,9 +10,17 @@
 #import "PIXAdManagerAdapter.h"
 
 #if DEBUG
-#import <AdSupport/ASIdentifierManager.h>
-#import <FBAudienceNetwork/FBAdSettings.h>
-@import GoogleMobileAds;
+    // Import Libraries and SDK necessary to setup DEBUG Mode
+    #import <AdSupport/ASIdentifierManager.h>
+    #if __has_include(<MoPubSDK/MoPub.h>)
+        #import <MoPubSDK/MoPub.h>
+    #endif
+    #if __has_include(<GoogleMobileAds/GoogleMobileAds.h>)
+        @import GoogleMobileAds;
+    #endif
+    #if __has_include(<FBAudienceNetwork/FBAdSettings.h>)
+        #import <FBAudienceNetwork/FBAdSettings.h>
+    #endif
 #endif
 
 
@@ -148,34 +156,31 @@
 
 #pragma mark - Debugging
 
-- (void)debugEnabled:(BOOL)enabled {
+- (void)debugEnabledWithConfiguration:(NSDictionary *)configuration {
     NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
-    if (enabled) {
+    NSLog(@"[AdManager] > *** WARNING *** > Debug mode enabled");
 
 #if DEBUG
-        NSLog(@"[AdManager] > IDFA: %@", [ASIdentifierManager sharedManager].advertisingIdentifier);
-        
-        // Implement MoPub Testing suite if available.
-
-        // Facebook Audience Network debug options
-        [FBAdSettings addTestDevices:@[
-        @"8f43ab85f1144df4cdc5d2b4e30cdd0ff111905d", // iPhone 11 Pro Brain
-        @"b602d594afd2b0b327e07a06f36ca6a7e42546d0", // iPhone X
-        @"00000000-0000-0000-0000-000000000000"  // Simulator
-        ]];
-        
-        // [FBAdSettings clearTestDevices];
-
-        // Google AdMob debug options
+    NSLog(@"[AdManager] > IDFA: %@", [ASIdentifierManager sharedManager].advertisingIdentifier);
+    
+    NSDictionary *testDevices = [configuration objectForKey:@"testDevices"];
+    
+    // MoPub debug options
+    
+    // AdMob debug options
+    if ([GADMobileAds class] && [testDevices objectForKey:@"admob"]) {
         GADMobileAds *ads = [GADMobileAds sharedInstance];
-        [ads requestConfiguration].testDeviceIdentifiers = @[
-        @"d7a9eedb0e0697d89ece1697ccdc8a93", // iPhone 11 Pro Brain
-        @"c4a3d37c376300f94a8f497ca4c7e55c" // iPhone SE 2 Brain
-        ];
-#endif
-        
-        [self.adapter adapterViewDebug];
+        [ads requestConfiguration].testDeviceIdentifiers = [testDevices objectForKey:@"admob"];
     }
+    
+    // Facebook Audience Network debug options
+    if ([FBAdSettings class] && [testDevices objectForKey:@"facebook"]) {
+        // [FBAdSettings clearTestDevices];
+        [FBAdSettings addTestDevices:[testDevices objectForKey:@"facebook"]];
+    }
+#endif
+    
+    [self.adapter adapterViewDebug];
 }
 
 @end
