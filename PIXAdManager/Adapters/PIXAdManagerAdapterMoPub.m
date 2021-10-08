@@ -14,6 +14,7 @@ static NSString * const kMediationAdapter = @"MoPub";
 
 @property (nonatomic, strong) NSDictionary *configuration;
 @property (nonatomic, copy) NSString *adUnitID;
+@property (nonatomic, assign) CGSize adSize;
 
 @end
 
@@ -33,12 +34,13 @@ static NSString * const kMediationAdapter = @"MoPub";
     self.configuration = configuration;
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), configuration);
     
-    NSString *configurationAdUnitID = self.configuration[@"adUnitID"];
+    self.adUnitID = self.configuration[kAdManagerConfigurationAdUnitKey];
+    self.adSize = CGSizeFromString(self.configuration[kAdManagerConfigurationAdSizeKey]);
     
-    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), configurationAdUnitID);
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.adUnitID);
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), NSStringFromCGSize(self.adSize));
     
-    self.adUnitID = configurationAdUnitID;
-    
+    // MoPub initialisation
     MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization:self.adUnitID];
 
     [[MoPub sharedInstance] initializeSdkWithConfiguration:sdkConfig completion:^{
@@ -53,7 +55,7 @@ static NSString * const kMediationAdapter = @"MoPub";
     self.adView.delegate = self;
 }
 
-- (void)adapterViewAdjustSizeToSuperView {
+- (void)adapterViewAdjustSize {
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
     UIView *superView = self.adView.superview;
@@ -61,8 +63,24 @@ static NSString * const kMediationAdapter = @"MoPub";
         NSLog(@"[AdManager] > *** WARNING *** > AdView needs to be attached to the superView before loading an ad");
     }
     
-    [self.adView.widthAnchor constraintEqualToAnchor:superView.widthAnchor].active = YES;
-    [self.adView.heightAnchor constraintEqualToConstant:kMPPresetMaxAdSize50Height.height].active = YES;
+    CGRect frame = superView.frame;
+    // Here safe area is taken into account, hence the view frame is used after the view has been laid out.
+    if (@available(iOS 11.0, *)) {
+        frame = UIEdgeInsetsInsetRect(superView.frame, superView.safeAreaInsets);
+    }
+    
+    // Assume full width and height
+    CGSize adSize = CGSizeMake(frame.size.width, 50.0f);
+    if (self.adSize.width > 0.0f) {
+        adSize.width = MIN(adSize.width, self.adSize.width);
+    }
+    if (self.adSize.height > 0.0f) {
+        adSize.height = MAX(adSize.height, self.adSize.height);
+    }
+    
+    // AdView Size customisation logic
+    [self.adView.widthAnchor constraintEqualToConstant:adSize.width].active = YES;
+    [self.adView.heightAnchor constraintEqualToConstant:adSize.height].active = YES;
     
     [superView layoutIfNeeded];
 }
@@ -71,7 +89,7 @@ static NSString * const kMediationAdapter = @"MoPub";
     NSLog(@"[AdManager][%@] > %@ > Initialized? %@", self.name, NSStringFromSelector(_cmd), self.isInitialized ? @"Yes" : @"No");
     
     if (self.isInitialized) {
-        [self.adView loadAdWithMaxAdSize:kMPPresetMaxAdSize50Height];
+        [self.adView loadAdWithMaxAdSize:kMPPresetMaxAdSizeMatchFrame];
         [self.adView startAutomaticallyRefreshingContents];
     } else {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

@@ -81,7 +81,7 @@
 
 - (void)adViewSetupSize {
     NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
-    [self.adapter adapterViewAdjustSizeToSuperView];
+    [self.adapter adapterViewAdjustSize];
 }
 
 - (void)loadAd {

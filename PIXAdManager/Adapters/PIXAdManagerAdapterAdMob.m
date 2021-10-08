@@ -14,6 +14,7 @@ static NSString * const kMediationAdapter = @"AdMob";
 
 @property (nonatomic, strong) NSDictionary *configuration;
 @property (nonatomic, copy) NSString *adUnitID;
+@property (nonatomic, assign) CGSize adSize;
 
 @end
 
@@ -31,11 +32,11 @@ static NSString * const kMediationAdapter = @"AdMob";
     self.configuration = configuration;
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), configuration);
     
-    NSString *configurationAdUnitID = self.configuration[@"adUnitID"];
+    self.adUnitID = self.configuration[kAdManagerConfigurationAdUnitKey];
+    self.adSize = CGSizeFromString(self.configuration[kAdManagerConfigurationAdSizeKey]);
     
-    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), configurationAdUnitID);
-    
-    self.adUnitID = configurationAdUnitID;
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.adUnitID);
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), NSStringFromCGSize(self.adSize));
     
     // AdMob initialisation
     GADMobileAds *ads = [GADMobileAds sharedInstance];
@@ -60,7 +61,7 @@ static NSString * const kMediationAdapter = @"AdMob";
     self.adView.rootViewController = [self.delegate viewControllerForAdapter];
 }
 
-- (void)adapterViewAdjustSizeToSuperView {
+- (void)adapterViewAdjustSize {
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
     UIView *superView = self.adView.superview;
@@ -73,8 +74,21 @@ static NSString * const kMediationAdapter = @"AdMob";
     if (@available(iOS 11.0, *)) {
         frame = UIEdgeInsetsInsetRect(superView.frame, superView.safeAreaInsets);
     }
-    CGFloat viewWidth = frame.size.width;
-    self.adView.adSize = GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth);
+    
+    // Assume full width and height
+    CGSize adSize = CGSizeMake(frame.size.width, 50.0f);
+    if (self.adSize.width > 0.0f) {
+        adSize.width = MIN(adSize.width, self.adSize.width);
+    }
+    if (self.adSize.height > 0.0f) {
+        adSize.height = MAX(adSize.height, self.adSize.height);
+    }
+    
+    // AdView Size customisation logic
+    self.adView.adSize = GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth(adSize.width);
+    if (self.adSize.height > 0.0f) {
+        self.adView.adSize = GADAdSizeFromCGSize(adSize);
+    }
     
     [superView layoutIfNeeded];
 }

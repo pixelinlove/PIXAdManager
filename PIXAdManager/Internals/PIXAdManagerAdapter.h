@@ -10,6 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+static NSString *const kAdManagerConfigurationAdUnitKey = @"adUnitID";
+static NSString *const kAdManagerConfigurationAdSizeKey = @"adUnitSize";
+
 @protocol PIXAdManagerAdapterDelegate <NSObject>
 
 @required
@@ -32,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)initWithConfiguration:(NSDictionary *)configuration;
 - (void)adapterViewInit;
-- (void)adapterViewAdjustSizeToSuperView;
+- (void)adapterViewAdjustSize;
 - (void)adapterViewLoadAd;
 - (void)adapterViewStopAd;
 - (void)adapterViewDebug;
