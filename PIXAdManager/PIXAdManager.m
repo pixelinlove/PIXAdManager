@@ -26,7 +26,6 @@
 
 @interface PIXAdManager ()
 
-@property (nonatomic, assign) AdManagerAdapter initialisedMediationAdapter;
 @property (nonatomic, strong) id<PIXAdManagerAdapter> adapter;
 
 @end
@@ -42,6 +41,10 @@
     return sharedInstance;
 }
 
+- (NSString *)adapterName {
+    return self.adapter.name;
+}
+
 - (void)initializeWithMediationAdapter:(AdManagerAdapter)adapter andConfiguration:(NSDictionary *)configuration {
 //    if (_initialisedMediationAdapter != 0) {
 //        //TODO: Raise error. Mediation Adapter already initialised and can't be changed.
@@ -49,7 +52,6 @@
 //                    format:@"PIXAdManager can be initialised only once"];
 //        return;
 //    }
-    _initialisedMediationAdapter = adapter;
 
     Class adapterClass = NSClassFromString([self classNameForAdapter:adapter]);
     if (adapterClass == nil) {

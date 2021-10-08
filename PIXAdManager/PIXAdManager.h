@@ -37,7 +37,7 @@ typedef enum {
 @interface PIXAdManager : NSObject <PIXAdManagerAdapterDelegate>
 
 @property (nonatomic, strong) UIView *adView;
-@property (nonatomic, copy) NSString *mediationClass;
+@property (nonatomic, copy, readonly) NSString *adapterName;
 @property (nonatomic, weak) id<PIXAdManagerDelegate> delegate;
 
 + (PIXAdManager *)sharedManager;
