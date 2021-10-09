@@ -15,6 +15,7 @@ static NSString * const kMediationAdapter = @"AdMob";
 @property (nonatomic, strong) NSDictionary *configuration;
 @property (nonatomic, copy) NSString *adUnitID;
 @property (nonatomic, assign) CGSize adSize;
+@property (nonatomic, assign) BOOL FBTrackingEnabled;
 
 @end
 
@@ -30,13 +31,18 @@ static NSString * const kMediationAdapter = @"AdMob";
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
     self.configuration = configuration;
-    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), configuration);
-    
     self.adUnitID = self.configuration[kAdManagerConfigurationAdUnitKey];
     self.adSize = CGSizeFromString(self.configuration[kAdManagerConfigurationAdSizeKey]);
+    self.FBTrackingEnabled = [self.configuration[kAdManagerConfigurationFBTrackingEnabledKey] boolValue];
     
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.configuration);
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.adUnitID);
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), NSStringFromCGSize(self.adSize));
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.FBTrackingEnabled ? @"Y" : @"N");
+    
+    if (NSClassFromString(@"FBAdSettings") != nil) {
+        [FBAdSettings setAdvertiserTrackingEnabled:self.FBTrackingEnabled];
+    }
     
     // AdMob initialisation
     GADMobileAds *ads = [GADMobileAds sharedInstance];

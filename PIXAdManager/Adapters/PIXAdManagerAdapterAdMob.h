@@ -9,6 +9,10 @@
 #import "PIXAdManagerAdapter.h"
 @import GoogleMobileAds;
 
+#if __has_include(<FBAudienceNetwork/FBAdSettings.h>)
+  #import <FBAudienceNetwork/FBAdSettings.h>
+#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PIXAdManagerAdapterAdMob : NSObject <PIXAdManagerAdapter, GADBannerViewDelegate>

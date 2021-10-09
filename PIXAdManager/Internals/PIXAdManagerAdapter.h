@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 static NSString *const kAdManagerConfigurationAdUnitKey = @"adUnitID";
-static NSString *const kAdManagerConfigurationAdSizeKey = @"adUnitSize";
+static NSString *const kAdManagerConfigurationAdSizeKey = @"adSize";
+static NSString *const kAdManagerConfigurationFBTrackingEnabledKey = @"FBTrackingEnabled";
 
 @protocol PIXAdManagerAdapterDelegate <NSObject>
 
