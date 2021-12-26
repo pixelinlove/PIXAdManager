@@ -74,6 +74,9 @@
     if (adapter == AdManagerAdapterAdMob) {
         className = @"PIXAdManagerAdapterAdMob";
     }
+    if (adapter == AdManagerAdapterAppLovin) {
+        className = @"PIXAdManagerAdapterAppLovin";
+    }
     return className;
 }
 
@@ -144,7 +147,7 @@
 
 #pragma mark - Adapter delegate calls
 
-- (void)adapterDidLoadAd:(nonnull UIView *)ad {
+- (void)adapterDidLoadAd:(nullable UIView *)ad {
     [self.delegate adManagerDidLoadAd:ad];
 }
 

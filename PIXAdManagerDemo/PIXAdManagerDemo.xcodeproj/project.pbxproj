@@ -14,6 +14,7 @@
 		6555E99B277803970015F1D5 /* FacebookAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555E99A277803970015F1D5 /* FacebookAdapter.xcframework */; };
 		6555E99D2778039F0015F1D5 /* AdColonyAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555E99C2778039F0015F1D5 /* AdColonyAdapter.xcframework */; };
 		65AA414F27780774002FB69C /* AppLovinSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65AA413D27780773002FB69C /* AppLovinSDKResources.bundle */; };
+		65AA415D27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */; };
 		65B2A81D2778015200022C02 /* MoPubSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81B2778015200022C02 /* MoPubSDK.xcframework */; };
 		65B2A81E2778015200022C02 /* OMSDK_Mopub.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81C2778015200022C02 /* OMSDK_Mopub.xcframework */; };
 		65B2A8272778015C00022C02 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81F2778015C00022C02 /* nanopb.xcframework */; };
@@ -85,6 +86,8 @@
 		6555E99A277803970015F1D5 /* FacebookAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FacebookAdapter.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/FacebookAudienceNetwork/FacebookAdapter.xcframework; sourceTree = "<group>"; };
 		6555E99C2778039F0015F1D5 /* AdColonyAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AdColonyAdapter.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/AdColony/AdColonyAdapter.xcframework; sourceTree = "<group>"; };
 		65AA413D27780773002FB69C /* AppLovinSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AppLovinSDKResources.bundle; sourceTree = "<group>"; };
+		65AA415B27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapterAppLovin.h; sourceTree = "<group>"; };
+		65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterAppLovin.m; sourceTree = "<group>"; };
 		65B2A81B2778015200022C02 /* MoPubSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MoPubSDK.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/MoPubSDK/MoPubSDK.xcframework; sourceTree = "<group>"; };
 		65B2A81C2778015200022C02 /* OMSDK_Mopub.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OMSDK_Mopub.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/MoPubSDK/OMSDK_Mopub.xcframework; sourceTree = "<group>"; };
 		65B2A81F2778015C00022C02 /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = nanopb.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/GoogleAdMob/nanopb.xcframework; sourceTree = "<group>"; };
@@ -202,6 +205,8 @@
 				6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */,
 				651ADA8F255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.h */,
 				651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */,
+				65AA415B27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.h */,
+				65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -480,6 +485,7 @@
 				65F3CAFC205353E9009A3C86 /* PIXAdManager.m in Sources */,
 				65F3CAE520535349009A3C86 /* AppDelegate.m in Sources */,
 				65DF3FC8263CAEEA002D2746 /* AdColonyController.m in Sources */,
+				65AA415D27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m in Sources */,
 				65DF3FCF263CAEEA002D2746 /* MPGoogleAdMobNativeAdAdapter.m in Sources */,
 				65DF3FCB263CAEEA002D2746 /* AdColonyInstanceMediationSettings.m in Sources */,
 				65DF3FCE263CAEEA002D2746 /* AdColonyGlobalMediationSettings.m in Sources */,

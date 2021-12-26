@@ -43,5 +43,7 @@
 	</array>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<key>AppLovinSdkKey</key>
+	<string>_fc90lV9AL_xFhxAc3o0Zs5SVUBqwhCvLq2MTTWivVe8CZIpd4qCxveROrFIXSBuGEFqomWgFApSk6FMB3T6zC</string>
 </dict>
 </plist>

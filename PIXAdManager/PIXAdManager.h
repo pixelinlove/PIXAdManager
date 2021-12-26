@@ -12,7 +12,8 @@
 typedef enum {
     AdManagerAdapterNone = 0,
     AdManagerAdapterMoPub,
-    AdManagerAdapterAdMob
+    AdManagerAdapterAdMob,
+    AdManagerAdapterAppLovin
 } AdManagerAdapter;
 
 

@@ -20,7 +20,7 @@ static NSString *const kAdManagerConfigurationFBTrackingEnabledKey = @"FBTrackin
 - (UIViewController *)viewControllerForAdapter;
 
 @optional
-- (void)adapterDidLoadAd:(nonnull UIView *)ad;
+- (void)adapterDidLoadAd:(nullable UIView *)ad;
 - (void)adapterDidFailToLoadAdWithError:(nullable NSError *)error;
 
 @end
