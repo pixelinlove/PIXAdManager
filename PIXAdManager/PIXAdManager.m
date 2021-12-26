@@ -147,12 +147,12 @@
 
 #pragma mark - Adapter delegate calls
 
-- (void)adapterDidLoadAd:(nullable UIView *)ad {
-    [self.delegate adManagerDidLoadAd:ad];
+- (void)adapterDidLoadAd {
+    [self.delegate adManagerDidLoadAd];
 }
 
-- (void)adapterDidFailToLoadAdWithError:(nullable NSError *)error {
-    [self.delegate adManagerDidFailWithError:error];
+- (void)adapterDidFailToLoadAd {
+    [self.delegate adManagerDidFailToLoadAd];
 }
 
 - (UIViewController *)viewControllerForAdapter {

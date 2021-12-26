@@ -151,11 +151,11 @@
     return self;
 }
 
-- (void)adManagerDidLoadAd:(UIView *)adView {
+- (void)adManagerDidLoadAd {
     [self showAdView:YES animated:YES];
 }
 
-- (void)adManagerDidFailWithError:(NSError *)error {
+- (void)adManagerDidFailToLoadAd {
     [self showAdView:NO animated:YES];
 }
 

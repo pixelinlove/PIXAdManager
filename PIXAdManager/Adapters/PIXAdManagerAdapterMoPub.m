@@ -118,12 +118,12 @@ static NSString * const kMediationAdapter = @"MoPub";
 
 - (void)adViewDidLoadAd:(MPAdView *)view adSize:(CGSize)adSize {
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), view);
-    [self.delegate adapterDidLoadAd:view];
+    [self.delegate adapterDidLoadAd];
 }
 
 - (void)adView:(MPAdView *)view didFailToLoadAdWithError:(NSError *)error {
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), [error localizedDescription]);
-    [self.delegate adapterDidFailToLoadAdWithError:error];
+    [self.delegate adapterDidFailToLoadAd];
 }
 
 #pragma mark - Debug methods

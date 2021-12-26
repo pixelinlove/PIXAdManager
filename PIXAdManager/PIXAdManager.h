@@ -28,8 +28,8 @@ typedef enum {
 
 @optional
 
-- (void)adManagerDidLoadAd:(UIView *)adView;
-- (void)adManagerDidFailWithError:(NSError *)error;
+- (void)adManagerDidLoadAd;
+- (void)adManagerDidFailToLoadAd;
 - (void)adManagerDidPauseAd;
 
 @end
