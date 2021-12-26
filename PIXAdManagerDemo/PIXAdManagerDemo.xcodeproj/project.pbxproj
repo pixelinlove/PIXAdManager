@@ -13,6 +13,7 @@
 		6555E999277803900015F1D5 /* MoPubAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555E998277803900015F1D5 /* MoPubAdapter.xcframework */; };
 		6555E99B277803970015F1D5 /* FacebookAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555E99A277803970015F1D5 /* FacebookAdapter.xcframework */; };
 		6555E99D2778039F0015F1D5 /* AdColonyAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555E99C2778039F0015F1D5 /* AdColonyAdapter.xcframework */; };
+		65AA414F27780774002FB69C /* AppLovinSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65AA413D27780773002FB69C /* AppLovinSDKResources.bundle */; };
 		65B2A81D2778015200022C02 /* MoPubSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81B2778015200022C02 /* MoPubSDK.xcframework */; };
 		65B2A81E2778015200022C02 /* OMSDK_Mopub.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81C2778015200022C02 /* OMSDK_Mopub.xcframework */; };
 		65B2A8272778015C00022C02 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81F2778015C00022C02 /* nanopb.xcframework */; };
@@ -83,6 +84,7 @@
 		6555E998277803900015F1D5 /* MoPubAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MoPubAdapter.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/MoPub/MoPubAdapter.xcframework; sourceTree = "<group>"; };
 		6555E99A277803970015F1D5 /* FacebookAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FacebookAdapter.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/FacebookAudienceNetwork/FacebookAdapter.xcframework; sourceTree = "<group>"; };
 		6555E99C2778039F0015F1D5 /* AdColonyAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AdColonyAdapter.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/AdColony/AdColonyAdapter.xcframework; sourceTree = "<group>"; };
+		65AA413D27780773002FB69C /* AppLovinSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AppLovinSDKResources.bundle; sourceTree = "<group>"; };
 		65B2A81B2778015200022C02 /* MoPubSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MoPubSDK.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/MoPubSDK/MoPubSDK.xcframework; sourceTree = "<group>"; };
 		65B2A81C2778015200022C02 /* OMSDK_Mopub.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OMSDK_Mopub.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/MoPubSDK/OMSDK_Mopub.xcframework; sourceTree = "<group>"; };
 		65B2A81F2778015C00022C02 /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = nanopb.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/GoogleAdMob/nanopb.xcframework; sourceTree = "<group>"; };
@@ -204,9 +206,26 @@
 			path = Adapters;
 			sourceTree = "<group>";
 		};
+		65AA413727780773002FB69C /* AdNetworkSDKs */ = {
+			isa = PBXGroup;
+			children = (
+				65AA413B27780773002FB69C /* AppLovin */,
+			);
+			path = AdNetworkSDKs;
+			sourceTree = "<group>";
+		};
+		65AA413B27780773002FB69C /* AppLovin */ = {
+			isa = PBXGroup;
+			children = (
+				65AA413D27780773002FB69C /* AppLovinSDKResources.bundle */,
+			);
+			path = AppLovin;
+			sourceTree = "<group>";
+		};
 		65DF3F84263CAEEA002D2746 /* PIXAdManagerLibs */ = {
 			isa = PBXGroup;
 			children = (
+				65AA413727780773002FB69C /* AdNetworkSDKs */,
 				65DF3F85263CAEEA002D2746 /* MediationAdaptersMoPub */,
 			);
 			path = PIXAdManagerLibs;
@@ -422,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65F3CAF020535349009A3C86 /* LaunchScreen.storyboard in Resources */,
+				65AA414F27780774002FB69C /* AppLovinSDKResources.bundle in Resources */,
 				65F3CAED20535349009A3C86 /* Assets.xcassets in Resources */,
 				65F3CAEB20535349009A3C86 /* Main.storyboard in Resources */,
 			);
