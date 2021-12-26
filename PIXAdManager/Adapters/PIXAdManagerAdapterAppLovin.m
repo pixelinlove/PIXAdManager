@@ -123,6 +123,18 @@ static NSString * const kMediationAdapter = @"AppLovin";
     [self.delegate adapterDidFailToLoadAd];
 }
 
+- (void)didClickAd:(nonnull MAAd *)ad {}
+
+- (void)didDisplayAd:(nonnull MAAd *)ad {}
+
+- (void)didFailToDisplayAd:(nonnull MAAd *)ad withError:(nonnull MAError *)error {}
+
+- (void)didHideAd:(nonnull MAAd *)ad {}
+
+- (void)didCollapseAd:(nonnull MAAd *)ad {}
+
+- (void)didExpandAd:(nonnull MAAd *)ad {}
+
 #pragma mark - Debug methods
 
 - (void)adapterViewDebug {
@@ -134,24 +146,5 @@ static NSString * const kMediationAdapter = @"AppLovin";
 - (void)dealloc {
     NSLog(@"[AdManager][%@] > %@", self.name, NSStringFromSelector(_cmd));
 }
-
-/*
-
-- (void)didClickAd:(nonnull MAAd *)ad {
-    <#code#>
-}
-
-- (void)didFailToDisplayAd:(nonnull MAAd *)ad withError:(nonnull MAError *)error {
-    <#code#>
-}
-
-- (void)didCollapseAd:(nonnull MAAd *)ad {
-    <#code#>
-}
-
-- (void)didExpandAd:(nonnull MAAd *)ad {
-    <#code#>
-}
-*/
 
 @end
