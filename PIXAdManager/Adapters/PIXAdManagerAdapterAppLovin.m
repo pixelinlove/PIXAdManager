@@ -138,7 +138,16 @@ static NSString * const kMediationAdapter = @"AppLovin";
 #pragma mark - Debug methods
 
 - (void)adapterViewDebug {
-    // Implement MoPub Testing suite if available.
+    UIView *gestureTriggerView = [self.delegate viewControllerForAdapter].view;
+    UITapGestureRecognizer *adViewDebugGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleViewDebugGesture:)];
+    adViewDebugGestureRecognizer.numberOfTapsRequired = 3;
+    [gestureTriggerView addGestureRecognizer:adViewDebugGestureRecognizer];
+}
+
+- (void)handleViewDebugGesture:(UITapGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateRecognized) {
+        [[ALSdk shared] showMediationDebugger];
+    }
 }
 
 #pragma mark - Dealloc
