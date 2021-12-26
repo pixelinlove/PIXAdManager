@@ -15,8 +15,12 @@
 		6555E99D2778039F0015F1D5 /* AdColonyAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555E99C2778039F0015F1D5 /* AdColonyAdapter.xcframework */; };
 		65AA414F27780774002FB69C /* AppLovinSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65AA413D27780773002FB69C /* AppLovinSDKResources.bundle */; };
 		65AA415D27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */; };
-		65B2A81D2778015200022C02 /* MoPubSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81B2778015200022C02 /* MoPubSDK.xcframework */; };
-		65B2A81E2778015200022C02 /* OMSDK_Mopub.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81C2778015200022C02 /* OMSDK_Mopub.xcframework */; };
+		65AA415E27788F74002FB69C /* MoPubSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81B2778015200022C02 /* MoPubSDK.xcframework */; };
+		65AA415F27788F74002FB69C /* MoPubSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81B2778015200022C02 /* MoPubSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65AA416027788F76002FB69C /* OMSDK_Mopub.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81C2778015200022C02 /* OMSDK_Mopub.xcframework */; };
+		65AA416127788F76002FB69C /* OMSDK_Mopub.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81C2778015200022C02 /* OMSDK_Mopub.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65B1A0862778993D006CF53A /* FBSDKCoreKit_Basics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A8302778016400022C02 /* FBSDKCoreKit_Basics.xcframework */; };
+		65B1A0872778993D006CF53A /* FBSDKCoreKit_Basics.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A8302778016400022C02 /* FBSDKCoreKit_Basics.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65B2A8272778015C00022C02 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81F2778015C00022C02 /* nanopb.xcframework */; };
 		65B2A8282778015C00022C02 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A8202778015C00022C02 /* GoogleUtilities.xcframework */; };
 		65B2A8292778015C00022C02 /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A8212778015C00022C02 /* GoogleAppMeasurementIdentitySupport.xcframework */; };
@@ -26,7 +30,6 @@
 		65B2A82D2778015C00022C02 /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A8252778015C00022C02 /* UserMessagingPlatform.xcframework */; };
 		65B2A82E2778015C00022C02 /* GoogleAppMeasurement.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A8262778015C00022C02 /* GoogleAppMeasurement.xcframework */; };
 		65B2A8312778016400022C02 /* FBAudienceNetwork.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A82F2778016400022C02 /* FBAudienceNetwork.xcframework */; };
-		65B2A8322778016400022C02 /* FBSDKCoreKit_Basics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A8302778016400022C02 /* FBSDKCoreKit_Basics.xcframework */; };
 		65B2A8342778016E00022C02 /* AppLovinSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A8332778016E00022C02 /* AppLovinSDK.xcframework */; };
 		65B2A8362778018100022C02 /* AdColony.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A8352778018100022C02 /* AdColony.xcframework */; };
 		65DF3FC8263CAEEA002D2746 /* AdColonyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F87263CAEEA002D2746 /* AdColonyController.m */; };
@@ -68,6 +71,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				65AA416127788F76002FB69C /* OMSDK_Mopub.xcframework in Embed Frameworks */,
+				65B1A0872778993D006CF53A /* FBSDKCoreKit_Basics.xcframework in Embed Frameworks */,
+				65AA415F27788F74002FB69C /* MoPubSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,20 +175,20 @@
 			files = (
 				6555E99D2778039F0015F1D5 /* AdColonyAdapter.xcframework in Frameworks */,
 				65B2A8312778016400022C02 /* FBAudienceNetwork.xcframework in Frameworks */,
-				65B2A81D2778015200022C02 /* MoPubSDK.xcframework in Frameworks */,
 				65B2A82B2778015C00022C02 /* GoogleMobileAds.xcframework in Frameworks */,
 				65B2A8292778015C00022C02 /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */,
-				65B2A8322778016400022C02 /* FBSDKCoreKit_Basics.xcframework in Frameworks */,
+				65B1A0862778993D006CF53A /* FBSDKCoreKit_Basics.xcframework in Frameworks */,
 				65B2A82E2778015C00022C02 /* GoogleAppMeasurement.xcframework in Frameworks */,
 				65B2A8282778015C00022C02 /* GoogleUtilities.xcframework in Frameworks */,
 				65B2A8342778016E00022C02 /* AppLovinSDK.xcframework in Frameworks */,
 				65B2A8362778018100022C02 /* AdColony.xcframework in Frameworks */,
 				65B2A8272778015C00022C02 /* nanopb.xcframework in Frameworks */,
 				65B2A82A2778015C00022C02 /* GoogleDataTransport.xcframework in Frameworks */,
-				65B2A81E2778015200022C02 /* OMSDK_Mopub.xcframework in Frameworks */,
+				65AA415E27788F74002FB69C /* MoPubSDK.xcframework in Frameworks */,
 				65B2A82D2778015C00022C02 /* UserMessagingPlatform.xcframework in Frameworks */,
 				6555E99B277803970015F1D5 /* FacebookAdapter.xcframework in Frameworks */,
 				65B2A82C2778015C00022C02 /* PromisesObjC.xcframework in Frameworks */,
+				65AA416027788F76002FB69C /* OMSDK_Mopub.xcframework in Frameworks */,
 				6555E999277803900015F1D5 /* MoPubAdapter.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
