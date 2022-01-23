@@ -14,7 +14,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * This class represents a view-based ad — i.e. banner, mrec, or leader.
+ * This class represents a view-based ad — i.e. banner/leader or MREC.
  *
  * @see <a href="https://dash.applovin.com/documentation/mediation/ios/getting-started/banners">MAX Integration Guide ⇒ iOS ⇒ Banners</a>
  * @see <a href="https://dash.applovin.com/documentation/mediation/ios/getting-started/mrecs">MAX Integration Guide ⇒ iOS ⇒ MRECs</a>
@@ -69,14 +69,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, nullable) IBOutlet id<MAAdRevenueDelegate> revenueDelegate;
 
 /**
- * Sets an extra parameter key/value pair for the ad.
- *
- * @param key   Parameter key.
- * @param value Parameter value.
- */
-- (void)setExtraParameterForKey:(NSString *)key value:(nullable NSString *)value;
-
-/**
  * Loads the ad for the current ad view. Set @code [MAAdView delegate] @endcode to assign a delegate that should be notified about ad load state.
  *
  * @see <a href="https://dash.applovin.com/documentation/mediation/ios/getting-started/banners#loading-a-banner">MAX Integration Guide ⇒ iOS ⇒ Banners ⇒ Loading a Banner</a>
@@ -114,6 +106,27 @@ NS_ASSUME_NONNULL_BEGIN
  * The format of the ad view.
  */
 @property (nonatomic, weak, readonly) MAAdFormat *adFormat;
+
+/**
+ * Sets an extra parameter key/value pair for the ad.
+ *
+ * @param key   Parameter key.
+ * @param value Parameter value.
+ */
+- (void)setExtraParameterForKey:(NSString *)key value:(nullable NSString *)value;
+
+/**
+ * Set a local extra parameter to pass to the adapter instances. Will not be available in the @code -[MAAdapter initializeWithParameters:withCompletionHandler:] @endcode method.
+ *
+ * @param key   Parameter key. Must not be null.
+ * @param value Parameter value. May be null.
+ */
+- (void)setLocalExtraParameterForKey:(NSString *)key value:(nullable id)value;
+
+/**
+ * Set custom data to be set in the ILRD postbacks via the @c {CUSTOM_DATA}  macro.
+ */
+@property (nonatomic, copy, nullable) NSString *customPostbackData;
 
 @end
 

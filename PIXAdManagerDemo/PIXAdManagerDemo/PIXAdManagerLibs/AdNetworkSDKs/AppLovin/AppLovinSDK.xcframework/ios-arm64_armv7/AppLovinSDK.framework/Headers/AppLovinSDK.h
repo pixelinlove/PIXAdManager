@@ -27,9 +27,34 @@
 #import <AppLovinSDK/ALSdk.h>
 #import <AppLovinSDK/ALSdkConfiguration.h>
 #import <AppLovinSDK/ALSdkSettings.h>
-#import <AppLovinSDK/ALUserService.h>
+#import <AppLovinSDK/ALTargetingData.h>
 #import <AppLovinSDK/ALUserSegment.h>
 #import <AppLovinSDK/ALVariableService.h>
+
+#import <AppLovinSDK/ALMediationAdapter.h>
+#import <AppLovinSDK/MAAdViewAdapter.h>
+#import <AppLovinSDK/MAAdapterParameters.h>
+#import <AppLovinSDK/MAAdapterInitializationParameters.h>
+#import <AppLovinSDK/MASignalCollectionParameters.h>
+#import <AppLovinSDK/MAAdapterInitializationParameters.h>
+#import <AppLovinSDK/MAAdapterError.h>
+#import <AppLovinSDK/MAInterstitialAdapter.h>
+#import <AppLovinSDK/MANativeAdAdapter.h>
+#import <AppLovinSDK/MARewardedAdapter.h>
+#import <AppLovinSDK/MARewardedInterstitialAdapter.h>
+#import <AppLovinSDK/MASignalProvider.h>
+#import <AppLovinSDK/MAAdapterDelegate.h>
+#import <AppLovinSDK/MAAdViewAdapterDelegate.h>
+#import <AppLovinSDK/MAInterstitialAdapterDelegate.h>
+#import <AppLovinSDK/MANativeAdAdapterDelegate.h>
+#import <AppLovinSDK/MARewardedAdapterDelegate.h>
+#import <AppLovinSDK/MARewardedInterstitialAdapterDelegate.h>
+#import <AppLovinSDK/MASignalCollectionDelegate.h>
+#import <AppLovinSDK/ALMediationAdapterRouter.h>
+
+#import <AppLovinSDK/ALUtils.h>
+#import <AppLovinSDK/ALAtomicBoolean.h>
+#import <AppLovinSDK/ALMacros.h>
 
 #import <AppLovinSDK/MAAd.h>
 #import <AppLovinSDK/MAAdDelegate.h>
@@ -42,6 +67,8 @@
 #import <AppLovinSDK/MANetworkResponseInfo.h>
 #import <AppLovinSDK/MANativeAdDelegate.h>
 #import <AppLovinSDK/MANativeAdLoader.h>
+#import <AppLovinSDK/MANativeAdView.h>
+#import <AppLovinSDK/MANativeAdViewBinder.h>
 #import <AppLovinSDK/MAError.h>
 #import <AppLovinSDK/MAErrorCode.h>
 #import <AppLovinSDK/MAErrorCodes.h>

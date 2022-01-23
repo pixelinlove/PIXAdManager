@@ -49,9 +49,20 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly, nullable) NSString *creativeIdentifier;
 
 /**
- * The ad’s revenue amount, or −1 if no revenue amount exists.
+ * The ad’s revenue amount, or 0 if no revenue amount exists.
  */
 @property (nonatomic, assign, readonly) double revenue;
+
+/**
+ * The precision of the revenue value for this ad.
+ *
+ * Possible values are:
+ * - "publisher_defined" - If the revenue is the price assigned to the line item by the publisher.
+ * - "exact" - If the revenue is the resulting price of a real-time auction.
+ * - "estimated" - If the revenue is the price obtained by auto-CPM.
+ * - "undisclosed" - If we do not have permission from the ad network to share impression-level data.
+ */
+@property (nonatomic, copy, readonly) NSString *revenuePrecision;
 
 /**
  * The placement name that you assign when you integrate each ad format, for granular reporting in postbacks (e.g. "Rewarded_Store", "Rewarded_LevelEnd").

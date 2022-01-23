@@ -6,6 +6,7 @@
 //
 
 #import "MAAd.h"
+#import "MANativeAdView.h"
 #import "MAError.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -20,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param ad  The ad that was loaded.
  */
-- (void)didLoadNativeAd:(UIView *)nativeAdView forAd:(MAAd *)ad;
+- (void)didLoadNativeAd:(MANativeAdView *)nativeAdView forAd:(MAAd *)ad;
 
 /**
  * The SDK invokes this method when a native ad could not be retrieved.

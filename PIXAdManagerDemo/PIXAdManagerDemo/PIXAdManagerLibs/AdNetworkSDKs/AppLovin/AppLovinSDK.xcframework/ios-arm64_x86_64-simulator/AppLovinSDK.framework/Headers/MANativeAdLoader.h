@@ -8,6 +8,9 @@
 #import "ALSdk.h"
 #import "MAAdRevenueDelegate.h"
 #import "MANativeAdDelegate.h"
+#import <UIKit/UIKit.h>
+
+@class MANativeAdView;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -50,6 +53,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)loadAd;
 
 /**
+ * Load a new MAX native ad into the given native ad view. Set @code [MANativeAdLoader nativeAdDelegate] @endcode to assign a delegate that should be notified about ad load state.
+ *
+ * @param adView a @c MANativeAdView into which the loaded native ad will be rendered.
+ */
+- (void)loadAdIntoAdView:(nullable MANativeAdView *)adView;
+
+/**
  * The placement name that you assign when you integrate each ad format, for granular reporting in ad events (e.g. "Rewarded_Store", "Rewarded_LevelEnd").
  */
 @property (nonatomic, copy, nullable) NSString *placement;
@@ -58,6 +68,32 @@ NS_ASSUME_NONNULL_BEGIN
  * The ad unit identifier this @c MANativeAdLoader was initialized with and is loading ads for.
  */
 @property (nonatomic, copy, readonly) NSString *adUnitIdentifier;
+
+/**
+ * Destroy the native ad and fully remove it from memory.
+ */
+- (void)destroyAd:(MAAd *)nativeAd;
+
+/**
+ * Sets an extra key/value parameter for the ad.
+ *
+ * @param key   Parameter key.
+ * @param value Parameter value.
+ */
+- (void)setExtraParameterForKey:(NSString *)key value:(nullable NSString *)value;
+
+/**
+ * Set a local extra parameter to pass to the adapter instances. Will not be available in the @code -[MAAdapter initializeWithParameters:withCompletionHandler:] @endcode method.
+ *
+ * @param key   Parameter key. Must not be null.
+ * @param value Parameter value. May be null.
+ */
+- (void)setLocalExtraParameterForKey:(NSString *)key value:(nullable id)value;
+
+/**
+ * Set custom data to be set in the ILRD postbacks via the @c {CUSTOM_DATA}  macro.
+ */
+@property (nonatomic, copy, nullable) NSString *customPostbackData;
 
 @end
 

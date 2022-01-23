@@ -52,14 +52,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, nullable) id<MAAdRevenueDelegate> revenueDelegate;
 
 /**
- * Set an extra key/value parameter for the ad.
- *
- * @param key   Parameter key.
- * @param value Parameter value.
- */
-- (void)setExtraParameterForKey:(NSString *)key value:(nullable NSString *)value;
-
-/**
  * Load the current rewarded ad. Use @code [MARewardedAd delegate] @endcode to assign a delegate that should be notified about ad load state.
  *
  * @see <a href="https://dash.applovin.com/documentation/mediation/ios/getting-started/rewarded-ads#loading-a-rewarded-ad">MAX Integration Guide ⇒ iOS ⇒ Rewarded Ads ⇒ Loading a Rewarded Ad</a>
@@ -100,6 +92,27 @@ NS_ASSUME_NONNULL_BEGIN
  * Whether or not this ad is ready to be shown.
  */
 @property (nonatomic, assign, readonly, getter=isReady) BOOL ready;
+
+/**
+ * Set an extra key/value parameter for the ad.
+ *
+ * @param key   Parameter key.
+ * @param value Parameter value.
+ */
+- (void)setExtraParameterForKey:(NSString *)key value:(nullable NSString *)value;
+
+/**
+ * Set a local extra parameter to pass to the adapter instances. Will not be available in the @code -[MAAdapter initializeWithParameters:withCompletionHandler:] @endcode method.
+ *
+ * @param key   Parameter key. Must not be null.
+ * @param value Parameter value. May be null.
+ */
+- (void)setLocalExtraParameterForKey:(NSString *)key value:(nullable id)value;
+
+/**
+ * Set custom data to be set in the ILRD postbacks via the @c {CUSTOM_DATA}  macro.
+ */
+@property (nonatomic, copy, nullable) NSString *customPostbackData;
 
 @end
 

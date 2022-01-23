@@ -94,6 +94,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign, getter=isExceptionHandlerEnabled) BOOL exceptionHandlerEnabled;
 
+/**
+ * Whether or not the AppLovin SDK will collect the device location from `CLLocationManager` if available. Defaults to @c YES.
+ */
+@property (nonatomic, assign, getter=isLocationCollectionEnabled) BOOL locationCollectionEnabled;
+
 @end
 
 NS_ASSUME_NONNULL_END

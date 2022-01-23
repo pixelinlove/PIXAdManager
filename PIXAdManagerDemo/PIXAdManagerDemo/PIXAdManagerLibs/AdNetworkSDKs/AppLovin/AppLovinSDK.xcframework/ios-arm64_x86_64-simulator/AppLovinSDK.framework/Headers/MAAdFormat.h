@@ -54,6 +54,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly, class) MAAdFormat *native;
 
 /**
+ * String representing the name of this ad format. Sample values include "BANNER", "INTER", "REWARDED", etc.
+ */
+@property (nonatomic, copy, readonly) NSString *label;
+
+/**
  * The size of the AdView format ad, or @c CGSizeZero otherwise.
  */
 @property (nonatomic, assign, readonly) CGSize size;
