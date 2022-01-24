@@ -103,7 +103,9 @@
 - (void)pauseAd {
     NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     [self.adapter adapterViewStopAd];
-    [self.delegate adManagerDidPauseAd];
+    if ([self.delegate respondsToSelector:@selector(adManagerDidPauseAd)]) {
+        [self.delegate adManagerDidPauseAd];
+    }
 }
 
 #pragma mark - Application notifications handling
@@ -148,11 +150,15 @@
 #pragma mark - Adapter delegate calls
 
 - (void)adapterDidLoadAd {
-    [self.delegate adManagerDidLoadAd];
+    if ([self.delegate respondsToSelector:@selector(adManagerDidLoadAd)]) {
+        [self.delegate adManagerDidLoadAd];
+    }
 }
 
 - (void)adapterDidFailToLoadAd {
-    [self.delegate adManagerDidFailToLoadAd];
+    if ([self.delegate respondsToSelector:@selector(adManagerDidFailToLoadAd)]) {
+        [self.delegate adManagerDidFailToLoadAd];
+    }
 }
 
 - (UIViewController *)viewControllerForAdapter {
