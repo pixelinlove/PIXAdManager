@@ -122,12 +122,16 @@ static NSString * const kMediationAdapter = @"AdMob";
 
 - (void)bannerViewDidReceiveAd:(GADBannerView *)bannerView {
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), bannerView);
-    [self.delegate adapterDidLoadAd];
+    if ([self.delegate respondsToSelector:@selector(adapterDidLoadAd)]) {
+        [self.delegate adapterDidLoadAd];
+    }
 }
 
 - (void)bannerView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(NSError *)error {
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), [error localizedDescription]);
-    [self.delegate adapterDidFailToLoadAd];
+    if ([self.delegate respondsToSelector:@selector(adapterDidFailToLoadAd)]) {
+        [self.delegate adapterDidFailToLoadAd];
+    }
 }
 
 #pragma mark - Debug methods

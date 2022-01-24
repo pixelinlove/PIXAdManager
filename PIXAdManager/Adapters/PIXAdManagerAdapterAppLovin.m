@@ -115,12 +115,16 @@ static NSString * const kMediationAdapter = @"AppLovin";
 
 - (void)didLoadAd:(nonnull MAAd *)ad {
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), ad);
-    [self.delegate adapterDidLoadAd];
+    if ([self.delegate respondsToSelector:@selector(adapterDidLoadAd)]) {
+        [self.delegate adapterDidLoadAd];
+    }
 }
 
 - (void)didFailToLoadAdForAdUnitIdentifier:(nonnull NSString *)adUnitIdentifier withError:(nonnull MAError *)error {
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), [error message]);
-    [self.delegate adapterDidFailToLoadAd];
+    if ([self.delegate respondsToSelector:@selector(adapterDidFailToLoadAd)]) {
+        [self.delegate adapterDidFailToLoadAd];
+    }
 }
 
 - (void)didClickAd:(nonnull MAAd *)ad {}
