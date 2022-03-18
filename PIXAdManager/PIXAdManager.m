@@ -42,7 +42,11 @@
 }
 
 - (NSString *)adapterName {
-    return self.adapter.name;
+    NSString *adapterName = @"Not initialized";
+    if (self.adapter) {
+        adapterName = self.adapter.name;
+    }
+    return adapterName;
 }
 
 - (void)initializeWithMediationAdapter:(AdManagerAdapter)adapter andConfiguration:(NSDictionary *)configuration {
