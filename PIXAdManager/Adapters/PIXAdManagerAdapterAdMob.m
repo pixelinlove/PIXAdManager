@@ -61,7 +61,7 @@ static NSString * const kMediationAdapter = @"AdMob";
 - (void)adapterViewInit {
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
-    self.adView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    self.adView = [[GADBannerView alloc] initWithAdSize:GADAdSizeBanner];
     self.adView.delegate = self;
     self.adView.adUnitID = self.adUnitID;
     self.adView.rootViewController = [self.delegate viewControllerForAdapter];
