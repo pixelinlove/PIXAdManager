@@ -42,7 +42,7 @@
 }
 
 - (NSString *)adapterName {
-    NSString *adapterName = @"Not initialized";
+    NSString *adapterName = @"None";
     if (self.adapter) {
         adapterName = self.adapter.name;
     }
@@ -56,10 +56,14 @@
 //                    format:@"PIXAdManager can be initialised only once"];
 //        return;
 //    }
-
-    Class adapterClass = NSClassFromString([self classNameForAdapter:adapter]);
+    NSString *className = [self classNameForAdapter:adapter];
+    if (className == nil) {
+        NSLog(@"[AdManager] > *** WARNING *** > No class available for this adapter");
+        return;
+    }
+    Class adapterClass = NSClassFromString(className);
     if (adapterClass == nil) {
-        NSLog(@"[AdManager] > *** WARNING *** > Can't find required adapter class");
+        NSLog(@"[AdManager] > *** WARNING *** > Can't find required adapter file: %@.h", className);
         return;
     }
     self.adapter = (id<PIXAdManagerAdapter>)[[adapterClass alloc] init];
@@ -72,17 +76,23 @@
 
 - (NSString *)classNameForAdapter:(AdManagerAdapter)adapter {
     NSString *className = nil;
-    if (adapter == AdManagerAdapterMoPub) {
-        className = @"PIXAdManagerAdapterMoPub";
-    }
-    if (adapter == AdManagerAdapterAdMob) {
-        className = @"PIXAdManagerAdapterAdMob";
-    }
-    if (adapter == AdManagerAdapterAppLovin) {
-        className = @"PIXAdManagerAdapterAppLovin";
+    switch (adapter) {
+        case AdManagerAdapterMoPub:
+            className = @"PIXAdManagerAdapterMoPub";
+            break;
+        case AdManagerAdapterAdMob:
+            className = @"PIXAdManagerAdapterAdMob";
+            break;
+        case AdManagerAdapterAppLovin:
+            className = @"PIXAdManagerAdapterAppLovin";
+            break;
+        default:
+            NSLog(@"[AdManager] > *** WARNING *** > This adapter does not exist");
+            break;
     }
     return className;
 }
+
 
 - (UIView *)adView {
     return (UIView *)self.adapter.adView;
