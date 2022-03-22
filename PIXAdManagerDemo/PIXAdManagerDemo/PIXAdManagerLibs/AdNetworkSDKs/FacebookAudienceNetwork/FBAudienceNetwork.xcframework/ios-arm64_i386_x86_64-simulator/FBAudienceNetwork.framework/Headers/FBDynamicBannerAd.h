@@ -1,20 +1,4 @@
-// Copyright 2004-present Facebook. All Rights Reserved.
-//
-// You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
-// copy, modify, and distribute this software in source code or binary form for use
-// in connection with the web services and APIs provided by Facebook.
-//
-// As with any software that integrates with the Facebook platform, your use of
-// this software is subject to the Facebook Developer Principles and Policies
-// [http://developers.facebook.com/policy/]. This copyright notice shall be
-// included in all copies or substantial portions of the software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-// IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+// (c) Facebook, Inc. and its affiliates. Confidential and proprietary.
 
 #import <Foundation/Foundation.h>
 
@@ -110,6 +94,13 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED @interface FBDynamicBannerAd : NSObjec
  */
 - (void)removeAd;
 
+/**
+    This function handles frame issues occuring when the view is layed out. It should be called on the lifecycle event
+ 'viewDidLayoutSubviews'.
+ @param rootViewController The view controller that will be used to present the dynamic banner ad.
+ */
+- (void)viewDidLayoutSubviews:(nullable UIViewController *)rootViewController;
+
 @end
 
 /**
@@ -150,6 +141,14 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED @interface FBDynamicBannerAd : NSObjec
  @param dynamicBannerAd An FBDynamicBannerAd object sending the message.
  */
 - (void)dynamicBannerAdWillLogImpression:(FBDynamicBannerAd *)dynamicBannerAd;
+
+/**
+  Sent when an FBDynamicBannerAd failes to load a fullscreen view of an ad.
+
+ @param dynamicBannerAd An FBDynamicBannerAd object sending the message.
+ @param error An error object containing details of the error.
+ */
+- (void)dynamicBannerAd:(FBDynamicBannerAd *)dynamicBannerAd fullscreenDidFailWithError:(NSError *)error;
 
 /**
  When an ad is clicked, the modal view will be presented. And when the user finishes the
