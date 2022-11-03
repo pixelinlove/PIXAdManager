@@ -10,6 +10,8 @@ target 'PIXAdManagerDemo' do
   # Pods for PIXAdManagerDemo
   pod 'Google-Mobile-Ads-SDK', '~> 9.11.0'
   
+  pod 'AppLovinSDK', '~> 11.5.0'
+  
 end
 
 post_install do |installer|

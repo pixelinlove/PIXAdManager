@@ -25,6 +25,7 @@
 		65B1A0B2277A7C2D006CF53A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A0B1277A7C2D006CF53A /* SystemConfiguration.framework */; };
 		65B1A0B4277A7C37006CF53A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A0B3277A7C37006CF53A /* UIKit.framework */; };
 		65B1A0B6277A7C40006CF53A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A0B5277A7C40006CF53A /* WebKit.framework */; };
+		65CF67A42914415B0026D9F9 /* PIXAdManagerAdapterAppLovin.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */; };
 		65F3CAE520535349009A3C86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F3CAE420535349009A3C86 /* AppDelegate.m */; };
 		65F3CAE820535349009A3C86 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F3CAE720535349009A3C86 /* ViewController.m */; };
 		65F3CAEB20535349009A3C86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F3CAE920535349009A3C86 /* Main.storyboard */; };
@@ -228,6 +229,7 @@
 				65F3CADD20535349009A3C86 /* Frameworks */,
 				65F3CADE20535349009A3C86 /* Resources */,
 				65DF3FFE263CB0B8002D2746 /* Embed Frameworks */,
+				11CC305B3337A3D537B97990 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -285,6 +287,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		11CC305B3337A3D537B97990 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PIXAdManagerDemo/Pods-PIXAdManagerDemo-resources.sh",
+				"${PODS_ROOT}/AppLovinSDK/applovin-ios-sdk-11.5.4/AppLovinSDKResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AppLovinSDKResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PIXAdManagerDemo/Pods-PIXAdManagerDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4F77766ED430FE67E90A5831 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -320,6 +340,7 @@
 				65F3CAF320535349009A3C86 /* main.m in Sources */,
 				65F3CAFC205353E9009A3C86 /* PIXAdManager.m in Sources */,
 				65F3CAE520535349009A3C86 /* AppDelegate.m in Sources */,
+				65CF67A42914415B0026D9F9 /* PIXAdManagerAdapterAppLovin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
