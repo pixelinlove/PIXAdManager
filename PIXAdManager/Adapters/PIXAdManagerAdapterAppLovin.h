@@ -10,7 +10,8 @@
 #import <AppLovinSDK/AppLovinSDK.h>
 
 #if __has_include(<FBAudienceNetwork/FBAdSettings.h>)
-  #import <FBAudienceNetwork/FBAdSettings.h>
+    #import <FBAudienceNetwork/FBAdSettings.h>
+    #define HAS_INCLUDE_FBADSETTINGS
 #endif
 
 NS_ASSUME_NONNULL_BEGIN

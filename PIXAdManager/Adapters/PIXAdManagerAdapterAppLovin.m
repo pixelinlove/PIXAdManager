@@ -40,9 +40,9 @@ static NSString * const kMediationAdapter = @"AppLovin";
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), NSStringFromCGSize(self.adSize));
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.FBTrackingEnabled ? @"Y" : @"N");
     
-    if (NSClassFromString(@"FBAdSettings") != nil) {
+    #ifdef HAS_INCLUDE_FBADSETTINGS
         [FBAdSettings setAdvertiserTrackingEnabled:self.FBTrackingEnabled];
-    }
+    #endif
     
     // AppLovin initialisation
     // Please make sure to set the mediation provider value to @"max" to ensure proper functionality

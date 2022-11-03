@@ -40,9 +40,9 @@ static NSString * const kMediationAdapter = @"AdMob";
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), NSStringFromCGSize(self.adSize));
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.FBTrackingEnabled ? @"Y" : @"N");
     
-    if (NSClassFromString(@"FBAdSettings") != nil) {
+    #ifdef HAS_INCLUDE_FBADSETTINGS
         [FBAdSettings setAdvertiserTrackingEnabled:self.FBTrackingEnabled];
-    }
+    #endif
     
     // AdMob initialisation
     GADMobileAds *ads = [GADMobileAds sharedInstance];
