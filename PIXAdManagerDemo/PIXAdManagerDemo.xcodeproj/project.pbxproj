@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		651ADA91255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */; };
 		65376AFB268888E50020F73C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65376AFA268888E50020F73C /* FirstViewController.m */; };
-		6552D33C2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */; };
-		65AA415D27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */; };
+		65A2A23B2914225700E46E9F /* PIXAdManagerAdapterAppLovin.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */; };
+		65A2A23C2914225700E46E9F /* PIXAdManagerAdapterMoPub.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */; };
+		65A2A23D2914225700E46E9F /* PIXAdManagerAdapterAdMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */; };
 		65B1A098277A734A006CF53A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A097277A734A006CF53A /* AdSupport.framework */; };
 		65B1A09A277A7357006CF53A /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A099277A7357006CF53A /* AppTrackingTransparency.framework */; };
 		65B1A09C277A7365006CF53A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A09B277A7365006CF53A /* AudioToolbox.framework */; };
 		65B1A09E277A7374006CF53A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A09D277A7374006CF53A /* AVFoundation.framework */; };
 		65B1A0A0277A7385006CF53A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A09F277A7385006CF53A /* CoreGraphics.framework */; };
-		65B1A0A2277A73C8006CF53A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A0A1277A73C8006CF53A /* CoreMedia.framework */; };
 		65B1A0A3277A743A006CF53A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A0A1277A73C8006CF53A /* CoreMedia.framework */; };
 		65B1A0A5277A7448006CF53A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A0A4277A7448006CF53A /* CoreMotion.framework */; };
 		65B1A0A7277A7BEC006CF53A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A0A6277A7BEC006CF53A /* CoreTelephony.framework */; };
@@ -105,7 +104,6 @@
 				65B1A09A277A7357006CF53A /* AppTrackingTransparency.framework in Frameworks */,
 				65B1A0B0277A7C25006CF53A /* StoreKit.framework in Frameworks */,
 				65B1A0A7277A7BEC006CF53A /* CoreTelephony.framework in Frameworks */,
-				65B1A0A2277A73C8006CF53A /* CoreMedia.framework in Frameworks */,
 				65B1A0A9277A7BFD006CF53A /* Foundation.framework in Frameworks */,
 				65B1A0A0277A7385006CF53A /* CoreGraphics.framework in Frameworks */,
 				65B1A098277A734A006CF53A /* AdSupport.framework in Frameworks */,
@@ -235,7 +233,7 @@
 		65F3CAD820535349009A3C86 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1410;
 				ORGANIZATIONNAME = "Andrea Ottolina";
 				TargetAttributes = {
 					65F3CADF20535349009A3C86 = {
@@ -280,14 +278,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6552D33C2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m in Sources */,
 				65376AFB268888E50020F73C /* FirstViewController.m in Sources */,
 				65F3CAE820535349009A3C86 /* ViewController.m in Sources */,
+				65A2A23D2914225700E46E9F /* PIXAdManagerAdapterAdMob.m in Sources */,
 				65F3CAF320535349009A3C86 /* main.m in Sources */,
-				651ADA91255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m in Sources */,
 				65F3CAFC205353E9009A3C86 /* PIXAdManager.m in Sources */,
 				65F3CAE520535349009A3C86 /* AppDelegate.m in Sources */,
-				65AA415D27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m in Sources */,
+				65A2A23B2914225700E46E9F /* PIXAdManagerAdapterAppLovin.m in Sources */,
+				65A2A23C2914225700E46E9F /* PIXAdManagerAdapterMoPub.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +336,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -363,7 +362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -395,6 +394,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -414,7 +414,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -427,17 +427,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ELKHK2CJM9;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/AdColony",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/FacebookAudienceNetwork",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/AdColony",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/FacebookAudienceNetwork",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAppLovin/FacebookAudienceNetwork",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAppLovin/AdMob",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAppLovin/AdColony",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = PIXAdManagerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -454,17 +444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ELKHK2CJM9;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/AdColony",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/FacebookAudienceNetwork",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/AdColony",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/FacebookAudienceNetwork",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAppLovin/FacebookAudienceNetwork",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAppLovin/AdMob",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAppLovin/AdColony",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = PIXAdManagerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
