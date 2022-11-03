@@ -1,6 +1,37 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## AdColony
+
+You must accept the terms and conditions on the AdColony website by registering in order to legally use the AdColony SDK. U.S. based companies will need to complete the W-9 form and send it to us, as well as complete the section on payment information on clients.adcolony.com, before publisher payments can be issued.
+
+## AppLovinMediationAdColonyAdapter
+
+
+Copyright 2022 AppLovin Corp. All rights reserved.
+
+The AppLovin MAX SDK is available under a commercial license (https://www.applovin.com/eula).
+
+
+
+## AppLovinMediationFacebookAdapter
+
+
+Copyright 2022 AppLovin Corp. All rights reserved.
+
+The AppLovin MAX SDK is available under a commercial license (https://www.applovin.com/eula).
+
+
+
+## AppLovinMediationGoogleAdapter
+
+
+Copyright 2022 AppLovin Corp. All rights reserved.
+
+The AppLovin MAX SDK is available under a commercial license (https://www.applovin.com/eula).
+
+
+
 ## AppLovinSDK
 
 
@@ -38,6 +69,18 @@ Copyright 2022 Google
 ## GoogleAppMeasurement
 
 Copyright 2022 Google
+
+## GoogleMobileAdsMediationAdColony
+
+Copyright 2016 Google Inc.
+
+## GoogleMobileAdsMediationAppLovin
+
+Copyright 2017 Google Inc.
+
+## GoogleMobileAdsMediationFacebook
+
+Copyright 2016 Google Inc.
 
 ## GoogleUserMessagingPlatform
 
