@@ -32,7 +32,7 @@
     
     PIXAdManager *adManager = [PIXAdManager sharedManager];
     adManager.delegate = self;
-    [adManager initializeWithMediationAdapter:AdManagerAdapterAppLovin andConfiguration:applovinTestConfiguration];
+    [adManager initializeWithMediationAdapter:AdManagerAdapterAdMob andConfiguration:admobTestConfiguration];
     
     #if DEBUG
         NSDictionary *debugConfiguration = @{

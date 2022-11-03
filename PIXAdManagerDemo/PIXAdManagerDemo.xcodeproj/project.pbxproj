@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		498BE47CC7816EF44731D54F /* Pods_PIXAdManagerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2B7F772087787D1BBB90A3 /* Pods_PIXAdManagerDemo.framework */; };
 		65376AFB268888E50020F73C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65376AFA268888E50020F73C /* FirstViewController.m */; };
-		65A2A23B2914225700E46E9F /* PIXAdManagerAdapterAppLovin.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */; };
 		65A2A23D2914225700E46E9F /* PIXAdManagerAdapterAdMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */; };
 		65B1A098277A734A006CF53A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A097277A734A006CF53A /* AdSupport.framework */; };
 		65B1A09A277A7357006CF53A /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A099277A7357006CF53A /* AppTrackingTransparency.framework */; };
@@ -48,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3E2B7F772087787D1BBB90A3 /* Pods_PIXAdManagerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PIXAdManagerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		651ADA8F255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapterAdMob.h; sourceTree = "<group>"; };
 		651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterAdMob.m; sourceTree = "<group>"; };
 		65376AF9268888E50020F73C /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
@@ -83,6 +84,8 @@
 		65F3CAF220535349009A3C86 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		65F3CAFA205353E9009A3C86 /* PIXAdManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManager.h; sourceTree = "<group>"; };
 		65F3CAFB205353E9009A3C86 /* PIXAdManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManager.m; sourceTree = "<group>"; };
+		9513E8764AAE4378DE7DA790 /* Pods-PIXAdManagerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PIXAdManagerDemo.debug.xcconfig"; path = "Target Support Files/Pods-PIXAdManagerDemo/Pods-PIXAdManagerDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		A4B0343AB5D34287C6F021D6 /* Pods-PIXAdManagerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PIXAdManagerDemo.release.xcconfig"; path = "Target Support Files/Pods-PIXAdManagerDemo/Pods-PIXAdManagerDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,7 @@
 				65B1A0A0277A7385006CF53A /* CoreGraphics.framework in Frameworks */,
 				65B1A098277A734A006CF53A /* AdSupport.framework in Frameworks */,
 				65B1A0A5277A7448006CF53A /* CoreMotion.framework in Frameworks */,
+				498BE47CC7816EF44731D54F /* Pods_PIXAdManagerDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +153,7 @@
 				65B1A0B3277A7C37006CF53A /* UIKit.framework */,
 				65B1A0B5277A7C40006CF53A /* WebKit.framework */,
 				65B1A0AC277A7C12006CF53A /* libz.tbd */,
+				3E2B7F772087787D1BBB90A3 /* Pods_PIXAdManagerDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 				65F3CAE220535349009A3C86 /* PIXAdManagerDemo */,
 				65F3CAE120535349009A3C86 /* Products */,
 				65DF3FE7263CB086002D2746 /* Frameworks */,
+				BAB616D2A4F2372D43F990A3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -201,6 +207,15 @@
 			path = ../PIXAdManager;
 			sourceTree = "<group>";
 		};
+		BAB616D2A4F2372D43F990A3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9513E8764AAE4378DE7DA790 /* Pods-PIXAdManagerDemo.debug.xcconfig */,
+				A4B0343AB5D34287C6F021D6 /* Pods-PIXAdManagerDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -208,6 +223,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65F3CAF620535349009A3C86 /* Build configuration list for PBXNativeTarget "PIXAdManagerDemo" */;
 			buildPhases = (
+				4F77766ED430FE67E90A5831 /* [CP] Check Pods Manifest.lock */,
 				65F3CADC20535349009A3C86 /* Sources */,
 				65F3CADD20535349009A3C86 /* Frameworks */,
 				65F3CADE20535349009A3C86 /* Resources */,
@@ -268,6 +284,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4F77766ED430FE67E90A5831 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PIXAdManagerDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		65F3CADC20535349009A3C86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -279,7 +320,6 @@
 				65F3CAF320535349009A3C86 /* main.m in Sources */,
 				65F3CAFC205353E9009A3C86 /* PIXAdManager.m in Sources */,
 				65F3CAE520535349009A3C86 /* AppDelegate.m in Sources */,
-				65A2A23B2914225700E46E9F /* PIXAdManagerAdapterAppLovin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +457,7 @@
 		};
 		65F3CAF720535349009A3C86 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9513E8764AAE4378DE7DA790 /* Pods-PIXAdManagerDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -434,6 +475,7 @@
 		};
 		65F3CAF820535349009A3C86 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4B0343AB5D34287C6F021D6 /* Pods-PIXAdManagerDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
