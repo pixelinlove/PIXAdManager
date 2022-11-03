@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		498BE47CC7816EF44731D54F /* Pods_PIXAdManagerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2B7F772087787D1BBB90A3 /* Pods_PIXAdManagerDemo.framework */; };
 		65376AFB268888E50020F73C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65376AFA268888E50020F73C /* FirstViewController.m */; };
+		654E4C1C29144CF500D0238C /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E4C1B29144CF500D0238C /* Empty.swift */; };
 		65A2A23D2914225700E46E9F /* PIXAdManagerAdapterAdMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */; };
 		65B1A098277A734A006CF53A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A097277A734A006CF53A /* AdSupport.framework */; };
 		65B1A09A277A7357006CF53A /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A099277A7357006CF53A /* AppTrackingTransparency.framework */; };
@@ -54,6 +55,8 @@
 		651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterAdMob.m; sourceTree = "<group>"; };
 		65376AF9268888E50020F73C /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		65376AFA268888E50020F73C /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		654E4C1A29144CF500D0238C /* PIXAdManagerDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PIXAdManagerDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		654E4C1B29144CF500D0238C /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		6552D3322556B19C00C71EA2 /* PIXAdManagerAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapter.h; sourceTree = "<group>"; };
 		65AA415B27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapterAppLovin.h; sourceTree = "<group>"; };
 		65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterAppLovin.m; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 				65F3CAF220535349009A3C86 /* main.m */,
 				65F3CAF120535349009A3C86 /* Info.plist */,
 				65F3CAEC20535349009A3C86 /* Assets.xcassets */,
+				654E4C1B29144CF500D0238C /* Empty.swift */,
+				654E4C1A29144CF500D0238C /* PIXAdManagerDemo-Bridging-Header.h */,
 			);
 			path = PIXAdManagerDemo;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				TargetAttributes = {
 					65F3CADF20535349009A3C86 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1410;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -339,6 +345,7 @@
 				65A2A23D2914225700E46E9F /* PIXAdManagerAdapterAdMob.m in Sources */,
 				65F3CAF320535349009A3C86 /* main.m in Sources */,
 				65F3CAFC205353E9009A3C86 /* PIXAdManager.m in Sources */,
+				654E4C1C29144CF500D0238C /* Empty.swift in Sources */,
 				65F3CAE520535349009A3C86 /* AppDelegate.m in Sources */,
 				65CF67A42914415B0026D9F9 /* PIXAdManagerAdapterAppLovin.m in Sources */,
 			);
@@ -481,6 +488,7 @@
 			baseConfigurationReference = 9513E8764AAE4378DE7DA790 /* Pods-PIXAdManagerDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ELKHK2CJM9;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -490,6 +498,9 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pixelinlove.PIXAdManagerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PIXAdManagerDemo/PIXAdManagerDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -499,6 +510,7 @@
 			baseConfigurationReference = A4B0343AB5D34287C6F021D6 /* Pods-PIXAdManagerDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ELKHK2CJM9;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -508,6 +520,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pixelinlove.PIXAdManagerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PIXAdManagerDemo/PIXAdManagerDemo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
