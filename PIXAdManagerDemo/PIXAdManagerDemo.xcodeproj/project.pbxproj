@@ -3,13 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		651ADA91255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */; };
 		65376AFB268888E50020F73C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65376AFA268888E50020F73C /* FirstViewController.m */; };
-		65AA414F27780774002FB69C /* AppLovinSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65AA413D27780773002FB69C /* AppLovinSDKResources.bundle */; };
 		65AA415D27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */; };
 		65B1A098277A734A006CF53A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A097277A734A006CF53A /* AdSupport.framework */; };
 		65B1A09A277A7357006CF53A /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A099277A7357006CF53A /* AppTrackingTransparency.framework */; };
@@ -27,9 +26,6 @@
 		65B1A0B2277A7C2D006CF53A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A0B1277A7C2D006CF53A /* SystemConfiguration.framework */; };
 		65B1A0B4277A7C37006CF53A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A0B3277A7C37006CF53A /* UIKit.framework */; };
 		65B1A0B6277A7C40006CF53A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A0B5277A7C40006CF53A /* WebKit.framework */; };
-		65B2A8342778016E00022C02 /* AppLovinSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A8332778016E00022C02 /* AppLovinSDK.xcframework */; };
-		65B2A8362778018100022C02 /* AdColony.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A8352778018100022C02 /* AdColony.xcframework */; };
-		65E07ADC27EA2D270092AB13 /* FBAudienceNetwork.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E07ADB27EA2D270092AB13 /* FBAudienceNetwork.xcframework */; };
 		65F3CAE520535349009A3C86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F3CAE420535349009A3C86 /* AppDelegate.m */; };
 		65F3CAE820535349009A3C86 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F3CAE720535349009A3C86 /* ViewController.m */; };
 		65F3CAEB20535349009A3C86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F3CAE920535349009A3C86 /* Main.storyboard */; };
@@ -59,7 +55,6 @@
 		65376AF9268888E50020F73C /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		65376AFA268888E50020F73C /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		6552D3322556B19C00C71EA2 /* PIXAdManagerAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapter.h; sourceTree = "<group>"; };
-		65AA413D27780773002FB69C /* AppLovinSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AppLovinSDKResources.bundle; sourceTree = "<group>"; };
 		65AA415B27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapterAppLovin.h; sourceTree = "<group>"; };
 		65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterAppLovin.m; sourceTree = "<group>"; };
 		65B1A097277A734A006CF53A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -78,9 +73,6 @@
 		65B1A0B1277A7C2D006CF53A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		65B1A0B3277A7C37006CF53A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		65B1A0B5277A7C40006CF53A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		65B2A8332778016E00022C02 /* AppLovinSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppLovinSDK.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/AppLovin/AppLovinSDK.xcframework; sourceTree = "<group>"; };
-		65B2A8352778018100022C02 /* AdColony.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AdColony.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/AdColony/AdColony.xcframework; sourceTree = "<group>"; };
-		65E07ADB27EA2D270092AB13 /* FBAudienceNetwork.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FBAudienceNetwork.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/FacebookAudienceNetwork/FBAudienceNetwork.xcframework; sourceTree = "<group>"; };
 		65F3CAE020535349009A3C86 /* PIXAdManagerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PIXAdManagerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F3CAE320535349009A3C86 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65F3CAE420535349009A3C86 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -105,11 +97,8 @@
 			files = (
 				65B1A0A3277A743A006CF53A /* CoreMedia.framework in Frameworks */,
 				65B1A0AB277A7C06006CF53A /* MessageUI.framework in Frameworks */,
-				65B2A8342778016E00022C02 /* AppLovinSDK.xcframework in Frameworks */,
 				65B1A0B2277A7C2D006CF53A /* SystemConfiguration.framework in Frameworks */,
-				65E07ADC27EA2D270092AB13 /* FBAudienceNetwork.xcframework in Frameworks */,
 				65B1A09E277A7374006CF53A /* AVFoundation.framework in Frameworks */,
-				65B2A8362778018100022C02 /* AdColony.xcframework in Frameworks */,
 				65B1A0B6277A7C40006CF53A /* WebKit.framework in Frameworks */,
 				65B1A0AE277A7C1C006CF53A /* SafariServices.framework in Frameworks */,
 				65B1A09C277A7365006CF53A /* AudioToolbox.framework in Frameworks */,
@@ -157,30 +146,6 @@
 			path = Adapters;
 			sourceTree = "<group>";
 		};
-		65AA413727780773002FB69C /* AdNetworkSDKs */ = {
-			isa = PBXGroup;
-			children = (
-				65AA413B27780773002FB69C /* AppLovin */,
-			);
-			path = AdNetworkSDKs;
-			sourceTree = "<group>";
-		};
-		65AA413B27780773002FB69C /* AppLovin */ = {
-			isa = PBXGroup;
-			children = (
-				65AA413D27780773002FB69C /* AppLovinSDKResources.bundle */,
-			);
-			path = AppLovin;
-			sourceTree = "<group>";
-		};
-		65DF3F84263CAEEA002D2746 /* PIXAdManagerLibs */ = {
-			isa = PBXGroup;
-			children = (
-				65AA413727780773002FB69C /* AdNetworkSDKs */,
-			);
-			path = PIXAdManagerLibs;
-			sourceTree = "<group>";
-		};
 		65DF3FE7263CB086002D2746 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,9 +165,6 @@
 				65B1A0B3277A7C37006CF53A /* UIKit.framework */,
 				65B1A0B5277A7C40006CF53A /* WebKit.framework */,
 				65B1A0AC277A7C12006CF53A /* libz.tbd */,
-				65B2A8352778018100022C02 /* AdColony.xcframework */,
-				65B2A8332778016E00022C02 /* AppLovinSDK.xcframework */,
-				65E07ADB27EA2D270092AB13 /* FBAudienceNetwork.xcframework */,
 				C8F86DDBADACDD9FA16F2FF9 /* Pods_PIXAdManagerDemo.framework */,
 			);
 			name = Frameworks;
@@ -230,7 +192,6 @@
 		65F3CAE220535349009A3C86 /* PIXAdManagerDemo */ = {
 			isa = PBXGroup;
 			children = (
-				65DF3F84263CAEEA002D2746 /* PIXAdManagerLibs */,
 				65F3CAE320535349009A3C86 /* AppDelegate.h */,
 				65F3CAE420535349009A3C86 /* AppDelegate.m */,
 				65F3CAE620535349009A3C86 /* ViewController.h */,
@@ -270,6 +231,7 @@
 				65F3CADD20535349009A3C86 /* Frameworks */,
 				65F3CADE20535349009A3C86 /* Resources */,
 				65DF3FFE263CB0B8002D2746 /* Embed Frameworks */,
+				8DFE3F7D2066683E3075723D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -319,7 +281,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				65F3CAF020535349009A3C86 /* LaunchScreen.storyboard in Resources */,
-				65AA414F27780774002FB69C /* AppLovinSDKResources.bundle in Resources */,
 				65F3CAED20535349009A3C86 /* Assets.xcassets in Resources */,
 				65F3CAEB20535349009A3C86 /* Main.storyboard in Resources */,
 			);
@@ -348,6 +309,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8DFE3F7D2066683E3075723D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PIXAdManagerDemo/Pods-PIXAdManagerDemo-resources.sh",
+				"${PODS_ROOT}/AppLovinSDK/applovin-ios-sdk-11.5.3/AppLovinSDKResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AppLovinSDKResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PIXAdManagerDemo/Pods-PIXAdManagerDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -506,10 +485,8 @@
 				DEVELOPMENT_TEAM = ELKHK2CJM9;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = PIXAdManagerDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pixelinlove.PIXAdManagerDemo;
@@ -527,10 +504,8 @@
 				DEVELOPMENT_TEAM = ELKHK2CJM9;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = PIXAdManagerDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pixelinlove.PIXAdManagerDemo;

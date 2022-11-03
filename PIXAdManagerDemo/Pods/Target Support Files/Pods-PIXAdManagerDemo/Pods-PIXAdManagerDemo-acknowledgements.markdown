@@ -1,6 +1,67 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## AdColony
+
+You must accept the terms and conditions on the AdColony website by registering in order to legally use the AdColony SDK. U.S. based companies will need to complete the W-9 form and send it to us, as well as complete the section on payment information on clients.adcolony.com, before publisher payments can be issued.
+
+## AppLovinMediationAdColonyAdapter
+
+
+Copyright 2022 AppLovin Corp. All rights reserved.
+
+The AppLovin MAX SDK is available under a commercial license (https://www.applovin.com/eula).
+
+
+
+## AppLovinMediationFacebookAdapter
+
+
+Copyright 2022 AppLovin Corp. All rights reserved.
+
+The AppLovin MAX SDK is available under a commercial license (https://www.applovin.com/eula).
+
+
+
+## AppLovinMediationGoogleAdapter
+
+
+Copyright 2022 AppLovin Corp. All rights reserved.
+
+The AppLovin MAX SDK is available under a commercial license (https://www.applovin.com/eula).
+
+
+
+## AppLovinSDK
+
+
+Copyright 2022 AppLovin Corp. All rights reserved.
+
+The AppLovin SDK is available under a commercial license (https://www.applovin.com/eula).
+
+
+
+## FBAudienceNetwork
+
+Copyright (c) Meta Platforms, Inc. and affiliates. All rights reserved.
+
+You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
+copy, modify, and distribute this software in source code or binary form for use
+in connection with the web services and APIs provided by Facebook.
+
+As with any software that integrates with the Facebook platform, your use of
+this software is subject to the Facebook Platform Policy
+[http://developers.facebook.com/policy/]. This copyright notice shall be
+included in all copies or substantial portions of the software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
 ## Google-Mobile-Ads-SDK
 
 Copyright 2022 Google
@@ -8,6 +69,18 @@ Copyright 2022 Google
 ## GoogleAppMeasurement
 
 Copyright 2022 Google
+
+## GoogleMobileAdsMediationAdColony
+
+Copyright 2016 Google Inc.
+
+## GoogleMobileAdsMediationAppLovin
+
+Copyright 2017 Google Inc.
+
+## GoogleMobileAdsMediationFacebook
+
+Copyright 2016 Google Inc.
 
 ## GoogleUserMessagingPlatform
 
