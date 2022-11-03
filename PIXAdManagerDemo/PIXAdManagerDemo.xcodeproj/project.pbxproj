@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		651ADA91255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */; };
 		65376AFB268888E50020F73C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65376AFA268888E50020F73C /* FirstViewController.m */; };
-		6555E99B277803970015F1D5 /* FacebookAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555E99A277803970015F1D5 /* FacebookAdapter.xcframework */; };
-		6555E99D2778039F0015F1D5 /* AdColonyAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555E99C2778039F0015F1D5 /* AdColonyAdapter.xcframework */; };
 		65AA414F27780774002FB69C /* AppLovinSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65AA413D27780773002FB69C /* AppLovinSDKResources.bundle */; };
 		65AA415D27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */; };
 		65B1A098277A734A006CF53A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A097277A734A006CF53A /* AdSupport.framework */; };
@@ -39,6 +37,7 @@
 		65F3CAF020535349009A3C86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F3CAEE20535349009A3C86 /* LaunchScreen.storyboard */; };
 		65F3CAF320535349009A3C86 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F3CAF220535349009A3C86 /* main.m */; };
 		65F3CAFC205353E9009A3C86 /* PIXAdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F3CAFB205353E9009A3C86 /* PIXAdManager.m */; };
+		DE05BC3C894D03227008ED04 /* Pods_PIXAdManagerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F86DDBADACDD9FA16F2FF9 /* Pods_PIXAdManagerDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,8 +59,6 @@
 		65376AF9268888E50020F73C /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		65376AFA268888E50020F73C /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		6552D3322556B19C00C71EA2 /* PIXAdManagerAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapter.h; sourceTree = "<group>"; };
-		6555E99A277803970015F1D5 /* FacebookAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FacebookAdapter.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/FacebookAudienceNetwork/FacebookAdapter.xcframework; sourceTree = "<group>"; };
-		6555E99C2778039F0015F1D5 /* AdColonyAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AdColonyAdapter.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/AdColony/AdColonyAdapter.xcframework; sourceTree = "<group>"; };
 		65AA413D27780773002FB69C /* AppLovinSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AppLovinSDKResources.bundle; sourceTree = "<group>"; };
 		65AA415B27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapterAppLovin.h; sourceTree = "<group>"; };
 		65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterAppLovin.m; sourceTree = "<group>"; };
@@ -96,6 +93,9 @@
 		65F3CAF220535349009A3C86 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		65F3CAFA205353E9009A3C86 /* PIXAdManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManager.h; sourceTree = "<group>"; };
 		65F3CAFB205353E9009A3C86 /* PIXAdManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManager.m; sourceTree = "<group>"; };
+		7CE867E7632400707B4C4DA9 /* Pods-PIXAdManagerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PIXAdManagerDemo.release.xcconfig"; path = "Target Support Files/Pods-PIXAdManagerDemo/Pods-PIXAdManagerDemo.release.xcconfig"; sourceTree = "<group>"; };
+		AE797238EB4D75C7BEAD7958 /* Pods-PIXAdManagerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PIXAdManagerDemo.debug.xcconfig"; path = "Target Support Files/Pods-PIXAdManagerDemo/Pods-PIXAdManagerDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		C8F86DDBADACDD9FA16F2FF9 /* Pods_PIXAdManagerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PIXAdManagerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +103,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6555E99D2778039F0015F1D5 /* AdColonyAdapter.xcframework in Frameworks */,
 				65B1A0A3277A743A006CF53A /* CoreMedia.framework in Frameworks */,
 				65B1A0AB277A7C06006CF53A /* MessageUI.framework in Frameworks */,
 				65B2A8342778016E00022C02 /* AppLovinSDK.xcframework in Frameworks */,
@@ -117,19 +116,28 @@
 				65B1A0B4277A7C37006CF53A /* UIKit.framework in Frameworks */,
 				65B1A09A277A7357006CF53A /* AppTrackingTransparency.framework in Frameworks */,
 				65B1A0B0277A7C25006CF53A /* StoreKit.framework in Frameworks */,
-				6555E99B277803970015F1D5 /* FacebookAdapter.xcframework in Frameworks */,
 				65B1A0A7277A7BEC006CF53A /* CoreTelephony.framework in Frameworks */,
 				65B1A0A2277A73C8006CF53A /* CoreMedia.framework in Frameworks */,
 				65B1A0A9277A7BFD006CF53A /* Foundation.framework in Frameworks */,
 				65B1A0A0277A7385006CF53A /* CoreGraphics.framework in Frameworks */,
 				65B1A098277A734A006CF53A /* AdSupport.framework in Frameworks */,
 				65B1A0A5277A7448006CF53A /* CoreMotion.framework in Frameworks */,
+				DE05BC3C894D03227008ED04 /* Pods_PIXAdManagerDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A7B0E5B3DD1A4E89255E94C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AE797238EB4D75C7BEAD7958 /* Pods-PIXAdManagerDemo.debug.xcconfig */,
+				7CE867E7632400707B4C4DA9 /* Pods-PIXAdManagerDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6552D33E2557189F00C71EA2 /* Internals */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,10 +201,9 @@
 				65B1A0B5277A7C40006CF53A /* WebKit.framework */,
 				65B1A0AC277A7C12006CF53A /* libz.tbd */,
 				65B2A8352778018100022C02 /* AdColony.xcframework */,
-				6555E99C2778039F0015F1D5 /* AdColonyAdapter.xcframework */,
 				65B2A8332778016E00022C02 /* AppLovinSDK.xcframework */,
-				6555E99A277803970015F1D5 /* FacebookAdapter.xcframework */,
 				65E07ADB27EA2D270092AB13 /* FBAudienceNetwork.xcframework */,
+				C8F86DDBADACDD9FA16F2FF9 /* Pods_PIXAdManagerDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -208,6 +215,7 @@
 				65F3CAE220535349009A3C86 /* PIXAdManagerDemo */,
 				65F3CAE120535349009A3C86 /* Products */,
 				65DF3FE7263CB086002D2746 /* Frameworks */,
+				1A7B0E5B3DD1A4E89255E94C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -257,6 +265,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65F3CAF620535349009A3C86 /* Build configuration list for PBXNativeTarget "PIXAdManagerDemo" */;
 			buildPhases = (
+				49F4228F578BF65347DB59B5 /* [CP] Check Pods Manifest.lock */,
 				65F3CADC20535349009A3C86 /* Sources */,
 				65F3CADD20535349009A3C86 /* Frameworks */,
 				65F3CADE20535349009A3C86 /* Resources */,
@@ -317,6 +326,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		49F4228F578BF65347DB59B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PIXAdManagerDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		65F3CADC20535349009A3C86 /* Sources */ = {
@@ -465,21 +499,12 @@
 		};
 		65F3CAF720535349009A3C86 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE797238EB4D75C7BEAD7958 /* Pods-PIXAdManagerDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ELKHK2CJM9;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/AdColony",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/FacebookAudienceNetwork",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/AdColony",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/FacebookAudienceNetwork",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAppLovin/FacebookAudienceNetwork",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAppLovin/AdMob",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAppLovin/AdColony",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = PIXAdManagerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -495,21 +520,12 @@
 		};
 		65F3CAF820535349009A3C86 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CE867E7632400707B4C4DA9 /* Pods-PIXAdManagerDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ELKHK2CJM9;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/AdColony",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/FacebookAudienceNetwork",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/AdColony",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/FacebookAudienceNetwork",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAppLovin/FacebookAudienceNetwork",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAppLovin/AdMob",
-					"$(PROJECT_DIR)/PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAppLovin/AdColony",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = PIXAdManagerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -1,0 +1,6 @@
+framework module Pods_PIXAdManagerDemo {
+  umbrella header "Pods-PIXAdManagerDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

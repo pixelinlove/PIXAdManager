@@ -9,5 +9,7 @@ target 'PIXAdManagerDemo' do
 
   # Pods for PIXAdManagerDemo
   pod 'Google-Mobile-Ads-SDK', '9.12.0'
+  # pod 'GoogleMobileAdsMediationAdColony', '4.9.0.0'
+  # pod 'GoogleMobileAdsMediationFacebook', '6.12.0.0'
 
 end
