@@ -31,9 +31,6 @@
 		65B1A0B6277A7C40006CF53A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A0B5277A7C40006CF53A /* WebKit.framework */; };
 		65B2A8342778016E00022C02 /* AppLovinSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A8332778016E00022C02 /* AppLovinSDK.xcframework */; };
 		65B2A8362778018100022C02 /* AdColony.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A8352778018100022C02 /* AdColony.xcframework */; };
-		65D09DE2279D593300B818C7 /* ALAdColonyMediationAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D09DDB279D593300B818C7 /* ALAdColonyMediationAdapter.m */; };
-		65D09DE3279D593300B818C7 /* ALGoogleMediationAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D09DDD279D593300B818C7 /* ALGoogleMediationAdapter.m */; };
-		65D09DE4279D593300B818C7 /* ALFacebookMediationAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D09DE1279D593300B818C7 /* ALFacebookMediationAdapter.m */; };
 		65E07ADC27EA2D270092AB13 /* FBAudienceNetwork.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E07ADB27EA2D270092AB13 /* FBAudienceNetwork.xcframework */; };
 		65F3CAE520535349009A3C86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F3CAE420535349009A3C86 /* AppDelegate.m */; };
 		65F3CAE820535349009A3C86 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F3CAE720535349009A3C86 /* ViewController.m */; };
@@ -86,12 +83,6 @@
 		65B1A0B5277A7C40006CF53A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		65B2A8332778016E00022C02 /* AppLovinSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppLovinSDK.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/AppLovin/AppLovinSDK.xcframework; sourceTree = "<group>"; };
 		65B2A8352778018100022C02 /* AdColony.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AdColony.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/AdColony/AdColony.xcframework; sourceTree = "<group>"; };
-		65D09DDA279D593300B818C7 /* ALAdColonyMediationAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAdColonyMediationAdapter.h; sourceTree = "<group>"; };
-		65D09DDB279D593300B818C7 /* ALAdColonyMediationAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAdColonyMediationAdapter.m; sourceTree = "<group>"; };
-		65D09DDD279D593300B818C7 /* ALGoogleMediationAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALGoogleMediationAdapter.m; sourceTree = "<group>"; };
-		65D09DDE279D593300B818C7 /* ALGoogleMediationAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALGoogleMediationAdapter.h; sourceTree = "<group>"; };
-		65D09DE0279D593300B818C7 /* ALFacebookMediationAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALFacebookMediationAdapter.h; sourceTree = "<group>"; };
-		65D09DE1279D593300B818C7 /* ALFacebookMediationAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALFacebookMediationAdapter.m; sourceTree = "<group>"; };
 		65E07ADB27EA2D270092AB13 /* FBAudienceNetwork.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FBAudienceNetwork.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/FacebookAudienceNetwork/FBAudienceNetwork.xcframework; sourceTree = "<group>"; };
 		65F3CAE020535349009A3C86 /* PIXAdManagerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PIXAdManagerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F3CAE320535349009A3C86 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -174,48 +165,10 @@
 			path = AppLovin;
 			sourceTree = "<group>";
 		};
-		65D09DD8279D593300B818C7 /* MediationAdaptersAppLovin */ = {
-			isa = PBXGroup;
-			children = (
-				65D09DD9279D593300B818C7 /* AdColony */,
-				65D09DDC279D593300B818C7 /* AdMob */,
-				65D09DDF279D593300B818C7 /* FacebookAudienceNetwork */,
-			);
-			path = MediationAdaptersAppLovin;
-			sourceTree = "<group>";
-		};
-		65D09DD9279D593300B818C7 /* AdColony */ = {
-			isa = PBXGroup;
-			children = (
-				65D09DDA279D593300B818C7 /* ALAdColonyMediationAdapter.h */,
-				65D09DDB279D593300B818C7 /* ALAdColonyMediationAdapter.m */,
-			);
-			path = AdColony;
-			sourceTree = "<group>";
-		};
-		65D09DDC279D593300B818C7 /* AdMob */ = {
-			isa = PBXGroup;
-			children = (
-				65D09DDD279D593300B818C7 /* ALGoogleMediationAdapter.m */,
-				65D09DDE279D593300B818C7 /* ALGoogleMediationAdapter.h */,
-			);
-			path = AdMob;
-			sourceTree = "<group>";
-		};
-		65D09DDF279D593300B818C7 /* FacebookAudienceNetwork */ = {
-			isa = PBXGroup;
-			children = (
-				65D09DE0279D593300B818C7 /* ALFacebookMediationAdapter.h */,
-				65D09DE1279D593300B818C7 /* ALFacebookMediationAdapter.m */,
-			);
-			path = FacebookAudienceNetwork;
-			sourceTree = "<group>";
-		};
 		65DF3F84263CAEEA002D2746 /* PIXAdManagerLibs */ = {
 			isa = PBXGroup;
 			children = (
 				65AA413727780773002FB69C /* AdNetworkSDKs */,
-				65D09DD8279D593300B818C7 /* MediationAdaptersAppLovin */,
 			);
 			path = PIXAdManagerLibs;
 			sourceTree = "<group>";
@@ -371,13 +324,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				65376AFB268888E50020F73C /* FirstViewController.m in Sources */,
-				65D09DE3279D593300B818C7 /* ALGoogleMediationAdapter.m in Sources */,
 				65F3CAE820535349009A3C86 /* ViewController.m in Sources */,
-				65D09DE4279D593300B818C7 /* ALFacebookMediationAdapter.m in Sources */,
 				65F3CAF320535349009A3C86 /* main.m in Sources */,
 				651ADA91255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m in Sources */,
 				65F3CAFC205353E9009A3C86 /* PIXAdManager.m in Sources */,
-				65D09DE2279D593300B818C7 /* ALAdColonyMediationAdapter.m in Sources */,
 				65F3CAE520535349009A3C86 /* AppDelegate.m in Sources */,
 				65AA415D27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m in Sources */,
 			);
