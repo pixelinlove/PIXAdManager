@@ -12,9 +12,6 @@
 #if DEBUG
     // Import Libraries and SDK necessary to setup DEBUG Mode
     #import <AdSupport/ASIdentifierManager.h>
-    #if __has_include(<MoPubSDK/MoPub.h>)
-        #import <MoPubSDK/MoPub.h>
-    #endif
     #if __has_include(<GoogleMobileAds/GoogleMobileAds.h>)
         @import GoogleMobileAds;
     #endif
@@ -189,8 +186,6 @@
     NSLog(@"[AdManager] > IDFA: %@", [ASIdentifierManager sharedManager].advertisingIdentifier);
     
     NSDictionary *testDevices = [configuration objectForKey:@"testDevices"];
-    
-    // MoPub debug options
     
     // AdMob debug options
     if ([GADMobileAds class] && [testDevices objectForKey:@"admob"]) {

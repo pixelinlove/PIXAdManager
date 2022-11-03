@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		651ADA91255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */; };
 		65376AFB268888E50020F73C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65376AFA268888E50020F73C /* FirstViewController.m */; };
-		6552D33C2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */; };
-		6555E999277803900015F1D5 /* MoPubAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555E998277803900015F1D5 /* MoPubAdapter.xcframework */; };
 		6555E99B277803970015F1D5 /* FacebookAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555E99A277803970015F1D5 /* FacebookAdapter.xcframework */; };
 		6555E99D2778039F0015F1D5 /* AdColonyAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555E99C2778039F0015F1D5 /* AdColonyAdapter.xcframework */; };
 		65A91AFF279E22F900F775A8 /* FirebaseCoreDiagnostics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A91AF3279E22F900F775A8 /* FirebaseCoreDiagnostics.xcframework */; };
@@ -27,10 +25,6 @@
 		65A91B0A279E22F900F775A8 /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A91AFE279E22F900F775A8 /* GoogleAppMeasurementIdentitySupport.xcframework */; };
 		65AA414F27780774002FB69C /* AppLovinSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65AA413D27780773002FB69C /* AppLovinSDKResources.bundle */; };
 		65AA415D27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */; };
-		65AA415E27788F74002FB69C /* MoPubSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81B2778015200022C02 /* MoPubSDK.xcframework */; };
-		65AA415F27788F74002FB69C /* MoPubSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81B2778015200022C02 /* MoPubSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		65AA416027788F76002FB69C /* OMSDK_Mopub.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81C2778015200022C02 /* OMSDK_Mopub.xcframework */; };
-		65AA416127788F76002FB69C /* OMSDK_Mopub.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65B2A81C2778015200022C02 /* OMSDK_Mopub.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65B1A098277A734A006CF53A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A097277A734A006CF53A /* AdSupport.framework */; };
 		65B1A09A277A7357006CF53A /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A099277A7357006CF53A /* AppTrackingTransparency.framework */; };
 		65B1A09C277A7365006CF53A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A09B277A7365006CF53A /* AudioToolbox.framework */; };
@@ -52,29 +46,6 @@
 		65D09DE2279D593300B818C7 /* ALAdColonyMediationAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D09DDB279D593300B818C7 /* ALAdColonyMediationAdapter.m */; };
 		65D09DE3279D593300B818C7 /* ALGoogleMediationAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D09DDD279D593300B818C7 /* ALGoogleMediationAdapter.m */; };
 		65D09DE4279D593300B818C7 /* ALFacebookMediationAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D09DE1279D593300B818C7 /* ALFacebookMediationAdapter.m */; };
-		65DF3FC8263CAEEA002D2746 /* AdColonyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F87263CAEEA002D2746 /* AdColonyController.m */; };
-		65DF3FC9263CAEEA002D2746 /* AdColonyRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F89263CAEEA002D2746 /* AdColonyRewardedVideoCustomEvent.m */; };
-		65DF3FCA263CAEEA002D2746 /* AdColonyAdapterConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F8B263CAEEA002D2746 /* AdColonyAdapterConfiguration.m */; };
-		65DF3FCB263CAEEA002D2746 /* AdColonyInstanceMediationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F8F263CAEEA002D2746 /* AdColonyInstanceMediationSettings.m */; };
-		65DF3FCC263CAEEA002D2746 /* AdColonyInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F91263CAEEA002D2746 /* AdColonyInterstitialCustomEvent.m */; };
-		65DF3FCD263CAEEA002D2746 /* AdColonyBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F92263CAEEA002D2746 /* AdColonyBannerCustomEvent.m */; };
-		65DF3FCE263CAEEA002D2746 /* AdColonyGlobalMediationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F93263CAEEA002D2746 /* AdColonyGlobalMediationSettings.m */; };
-		65DF3FCF263CAEEA002D2746 /* MPGoogleAdMobNativeAdAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F97263CAEEA002D2746 /* MPGoogleAdMobNativeAdAdapter.m */; };
-		65DF3FD0263CAEEA002D2746 /* MPGoogleAdMobNativeCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F98263CAEEA002D2746 /* MPGoogleAdMobNativeCustomEvent.m */; };
-		65DF3FD1263CAEEA002D2746 /* MPGoogleAdMobRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F9C263CAEEA002D2746 /* MPGoogleAdMobRewardedVideoCustomEvent.m */; };
-		65DF3FD2263CAEEA002D2746 /* MPGoogleGlobalMediationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F9D263CAEEA002D2746 /* MPGoogleGlobalMediationSettings.m */; };
-		65DF3FD3263CAEEA002D2746 /* MPGoogleAdMobBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3F9F263CAEEA002D2746 /* MPGoogleAdMobBannerCustomEvent.m */; };
-		65DF3FD4263CAEEA002D2746 /* GoogleAdMobAdapterConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3FA2263CAEEA002D2746 /* GoogleAdMobAdapterConfiguration.m */; };
-		65DF3FD5263CAEEA002D2746 /* MPGoogleAdMobNativeRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3FA3263CAEEA002D2746 /* MPGoogleAdMobNativeRenderer.m */; };
-		65DF3FD6263CAEEA002D2746 /* UIView+MPGoogleAdMobAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3FA4263CAEEA002D2746 /* UIView+MPGoogleAdMobAdditions.m */; };
-		65DF3FD7263CAEEA002D2746 /* MPGoogleAdMobInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3FA5263CAEEA002D2746 /* MPGoogleAdMobInterstitialCustomEvent.m */; };
-		65DF3FD8263CAEEA002D2746 /* FacebookNativeCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3FAA263CAEEA002D2746 /* FacebookNativeCustomEvent.m */; };
-		65DF3FD9263CAEEA002D2746 /* FacebookInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3FAB263CAEEA002D2746 /* FacebookInterstitialCustomEvent.m */; };
-		65DF3FDA263CAEEA002D2746 /* FacebookRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3FAD263CAEEA002D2746 /* FacebookRewardedVideoCustomEvent.m */; };
-		65DF3FDB263CAEEA002D2746 /* FacebookNativeAdAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3FAE263CAEEA002D2746 /* FacebookNativeAdAdapter.m */; };
-		65DF3FDC263CAEEA002D2746 /* FacebookAdapterConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3FB2263CAEEA002D2746 /* FacebookAdapterConfiguration.m */; };
-		65DF3FDD263CAEEA002D2746 /* FacebookBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3FB3263CAEEA002D2746 /* FacebookBannerCustomEvent.m */; };
-		65DF3FDE263CAEEA002D2746 /* FacebookNativeAdRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DF3FB6263CAEEA002D2746 /* FacebookNativeAdRenderer.m */; };
 		65E07ADC27EA2D270092AB13 /* FBAudienceNetwork.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E07ADB27EA2D270092AB13 /* FBAudienceNetwork.xcframework */; };
 		65F3CAE520535349009A3C86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F3CAE420535349009A3C86 /* AppDelegate.m */; };
 		65F3CAE820535349009A3C86 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F3CAE720535349009A3C86 /* ViewController.m */; };
@@ -92,8 +63,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				65AA416127788F76002FB69C /* OMSDK_Mopub.xcframework in Embed Frameworks */,
-				65AA415F27788F74002FB69C /* MoPubSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,9 +75,6 @@
 		65376AF9268888E50020F73C /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		65376AFA268888E50020F73C /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		6552D3322556B19C00C71EA2 /* PIXAdManagerAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapter.h; sourceTree = "<group>"; };
-		6552D33A2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapterMoPub.h; sourceTree = "<group>"; };
-		6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterMoPub.m; sourceTree = "<group>"; };
-		6555E998277803900015F1D5 /* MoPubAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MoPubAdapter.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/MoPub/MoPubAdapter.xcframework; sourceTree = "<group>"; };
 		6555E99A277803970015F1D5 /* FacebookAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FacebookAdapter.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/FacebookAudienceNetwork/FacebookAdapter.xcframework; sourceTree = "<group>"; };
 		6555E99C2778039F0015F1D5 /* AdColonyAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AdColonyAdapter.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/AdColony/AdColonyAdapter.xcframework; sourceTree = "<group>"; };
 		65A91AF3279E22F900F775A8 /* FirebaseCoreDiagnostics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseCoreDiagnostics.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/GoogleAdMob/FirebaseCoreDiagnostics.xcframework; sourceTree = "<group>"; };
@@ -142,8 +108,6 @@
 		65B1A0B1277A7C2D006CF53A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		65B1A0B3277A7C37006CF53A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		65B1A0B5277A7C40006CF53A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		65B2A81B2778015200022C02 /* MoPubSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MoPubSDK.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/MoPubSDK/MoPubSDK.xcframework; sourceTree = "<group>"; };
-		65B2A81C2778015200022C02 /* OMSDK_Mopub.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OMSDK_Mopub.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/MoPubSDK/OMSDK_Mopub.xcframework; sourceTree = "<group>"; };
 		65B2A8332778016E00022C02 /* AppLovinSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppLovinSDK.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/AppLovin/AppLovinSDK.xcframework; sourceTree = "<group>"; };
 		65B2A8352778018100022C02 /* AdColony.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AdColony.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/AdColony/AdColony.xcframework; sourceTree = "<group>"; };
 		65D09DDA279D593300B818C7 /* ALAdColonyMediationAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAdColonyMediationAdapter.h; sourceTree = "<group>"; };
@@ -152,52 +116,6 @@
 		65D09DDE279D593300B818C7 /* ALGoogleMediationAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALGoogleMediationAdapter.h; sourceTree = "<group>"; };
 		65D09DE0279D593300B818C7 /* ALFacebookMediationAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALFacebookMediationAdapter.h; sourceTree = "<group>"; };
 		65D09DE1279D593300B818C7 /* ALFacebookMediationAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALFacebookMediationAdapter.m; sourceTree = "<group>"; };
-		65DF3F87263CAEEA002D2746 /* AdColonyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdColonyController.m; sourceTree = "<group>"; };
-		65DF3F88263CAEEA002D2746 /* AdColonyInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdColonyInterstitialCustomEvent.h; sourceTree = "<group>"; };
-		65DF3F89263CAEEA002D2746 /* AdColonyRewardedVideoCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdColonyRewardedVideoCustomEvent.m; sourceTree = "<group>"; };
-		65DF3F8A263CAEEA002D2746 /* AdColonyInstanceMediationSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdColonyInstanceMediationSettings.h; sourceTree = "<group>"; };
-		65DF3F8B263CAEEA002D2746 /* AdColonyAdapterConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdColonyAdapterConfiguration.m; sourceTree = "<group>"; };
-		65DF3F8C263CAEEA002D2746 /* AdColonyGlobalMediationSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdColonyGlobalMediationSettings.h; sourceTree = "<group>"; };
-		65DF3F8D263CAEEA002D2746 /* AdColonyBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdColonyBannerCustomEvent.h; sourceTree = "<group>"; };
-		65DF3F8E263CAEEA002D2746 /* AdColonyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdColonyController.h; sourceTree = "<group>"; };
-		65DF3F8F263CAEEA002D2746 /* AdColonyInstanceMediationSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdColonyInstanceMediationSettings.m; sourceTree = "<group>"; };
-		65DF3F90263CAEEA002D2746 /* AdColonyRewardedVideoCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdColonyRewardedVideoCustomEvent.h; sourceTree = "<group>"; };
-		65DF3F91263CAEEA002D2746 /* AdColonyInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdColonyInterstitialCustomEvent.m; sourceTree = "<group>"; };
-		65DF3F92263CAEEA002D2746 /* AdColonyBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdColonyBannerCustomEvent.m; sourceTree = "<group>"; };
-		65DF3F93263CAEEA002D2746 /* AdColonyGlobalMediationSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdColonyGlobalMediationSettings.m; sourceTree = "<group>"; };
-		65DF3F94263CAEEA002D2746 /* AdColonyAdapterConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdColonyAdapterConfiguration.h; sourceTree = "<group>"; };
-		65DF3F96263CAEEA002D2746 /* MPGoogleAdMobBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGoogleAdMobBannerCustomEvent.h; sourceTree = "<group>"; };
-		65DF3F97263CAEEA002D2746 /* MPGoogleAdMobNativeAdAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGoogleAdMobNativeAdAdapter.m; sourceTree = "<group>"; };
-		65DF3F98263CAEEA002D2746 /* MPGoogleAdMobNativeCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGoogleAdMobNativeCustomEvent.m; sourceTree = "<group>"; };
-		65DF3F99263CAEEA002D2746 /* UIView+MPGoogleAdMobAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MPGoogleAdMobAdditions.h"; sourceTree = "<group>"; };
-		65DF3F9A263CAEEA002D2746 /* MPGoogleAdMobNativeRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGoogleAdMobNativeRenderer.h; sourceTree = "<group>"; };
-		65DF3F9B263CAEEA002D2746 /* GoogleAdMobAdapterConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAdMobAdapterConfiguration.h; sourceTree = "<group>"; };
-		65DF3F9C263CAEEA002D2746 /* MPGoogleAdMobRewardedVideoCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGoogleAdMobRewardedVideoCustomEvent.m; sourceTree = "<group>"; };
-		65DF3F9D263CAEEA002D2746 /* MPGoogleGlobalMediationSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGoogleGlobalMediationSettings.m; sourceTree = "<group>"; };
-		65DF3F9E263CAEEA002D2746 /* MPGoogleAdMobInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGoogleAdMobInterstitialCustomEvent.h; sourceTree = "<group>"; };
-		65DF3F9F263CAEEA002D2746 /* MPGoogleAdMobBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGoogleAdMobBannerCustomEvent.m; sourceTree = "<group>"; };
-		65DF3FA0263CAEEA002D2746 /* MPGoogleAdMobNativeCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGoogleAdMobNativeCustomEvent.h; sourceTree = "<group>"; };
-		65DF3FA1263CAEEA002D2746 /* MPGoogleAdMobNativeAdAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGoogleAdMobNativeAdAdapter.h; sourceTree = "<group>"; };
-		65DF3FA2263CAEEA002D2746 /* GoogleAdMobAdapterConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAdMobAdapterConfiguration.m; sourceTree = "<group>"; };
-		65DF3FA3263CAEEA002D2746 /* MPGoogleAdMobNativeRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGoogleAdMobNativeRenderer.m; sourceTree = "<group>"; };
-		65DF3FA4263CAEEA002D2746 /* UIView+MPGoogleAdMobAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MPGoogleAdMobAdditions.m"; sourceTree = "<group>"; };
-		65DF3FA5263CAEEA002D2746 /* MPGoogleAdMobInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGoogleAdMobInterstitialCustomEvent.m; sourceTree = "<group>"; };
-		65DF3FA6263CAEEA002D2746 /* MPGoogleGlobalMediationSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGoogleGlobalMediationSettings.h; sourceTree = "<group>"; };
-		65DF3FA7263CAEEA002D2746 /* MPGoogleAdMobRewardedVideoCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGoogleAdMobRewardedVideoCustomEvent.h; sourceTree = "<group>"; };
-		65DF3FA9263CAEEA002D2746 /* FacebookAdapterConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAdapterConfiguration.h; sourceTree = "<group>"; };
-		65DF3FAA263CAEEA002D2746 /* FacebookNativeCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookNativeCustomEvent.m; sourceTree = "<group>"; };
-		65DF3FAB263CAEEA002D2746 /* FacebookInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookInterstitialCustomEvent.m; sourceTree = "<group>"; };
-		65DF3FAC263CAEEA002D2746 /* FacebookBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookBannerCustomEvent.h; sourceTree = "<group>"; };
-		65DF3FAD263CAEEA002D2746 /* FacebookRewardedVideoCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookRewardedVideoCustomEvent.m; sourceTree = "<group>"; };
-		65DF3FAE263CAEEA002D2746 /* FacebookNativeAdAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookNativeAdAdapter.m; sourceTree = "<group>"; };
-		65DF3FAF263CAEEA002D2746 /* FacebookNativeAdRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookNativeAdRenderer.h; sourceTree = "<group>"; };
-		65DF3FB0263CAEEA002D2746 /* FacebookInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookInterstitialCustomEvent.h; sourceTree = "<group>"; };
-		65DF3FB1263CAEEA002D2746 /* FacebookNativeCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookNativeCustomEvent.h; sourceTree = "<group>"; };
-		65DF3FB2263CAEEA002D2746 /* FacebookAdapterConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAdapterConfiguration.m; sourceTree = "<group>"; };
-		65DF3FB3263CAEEA002D2746 /* FacebookBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookBannerCustomEvent.m; sourceTree = "<group>"; };
-		65DF3FB4263CAEEA002D2746 /* FacebookNativeAdAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookNativeAdAdapter.h; sourceTree = "<group>"; };
-		65DF3FB5263CAEEA002D2746 /* FacebookRewardedVideoCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookRewardedVideoCustomEvent.h; sourceTree = "<group>"; };
-		65DF3FB6263CAEEA002D2746 /* FacebookNativeAdRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookNativeAdRenderer.m; sourceTree = "<group>"; };
 		65E07ADB27EA2D270092AB13 /* FBAudienceNetwork.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FBAudienceNetwork.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/FacebookAudienceNetwork/FBAudienceNetwork.xcframework; sourceTree = "<group>"; };
 		65F3CAE020535349009A3C86 /* PIXAdManagerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PIXAdManagerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F3CAE320535349009A3C86 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -236,17 +154,14 @@
 				65B1A09C277A7365006CF53A /* AudioToolbox.framework in Frameworks */,
 				65B1A0B4277A7C37006CF53A /* UIKit.framework in Frameworks */,
 				65B1A09A277A7357006CF53A /* AppTrackingTransparency.framework in Frameworks */,
-				65AA415E27788F74002FB69C /* MoPubSDK.xcframework in Frameworks */,
 				65A91B02279E22F900F775A8 /* nanopb.xcframework in Frameworks */,
 				65A91B06279E22F900F775A8 /* GoogleAppMeasurement.xcframework in Frameworks */,
 				65B1A0B0277A7C25006CF53A /* StoreKit.framework in Frameworks */,
 				6555E99B277803970015F1D5 /* FacebookAdapter.xcframework in Frameworks */,
 				65B1A0A7277A7BEC006CF53A /* CoreTelephony.framework in Frameworks */,
 				65A91B07279E22F900F775A8 /* GoogleUtilities.xcframework in Frameworks */,
-				65AA416027788F76002FB69C /* OMSDK_Mopub.xcframework in Frameworks */,
 				65B1A0A2277A73C8006CF53A /* CoreMedia.framework in Frameworks */,
 				65B1A0A9277A7BFD006CF53A /* Foundation.framework in Frameworks */,
-				6555E999277803900015F1D5 /* MoPubAdapter.xcframework in Frameworks */,
 				65A91B05279E22F900F775A8 /* GoogleDataTransport.xcframework in Frameworks */,
 				65A91B04279E22F900F775A8 /* UserMessagingPlatform.xcframework in Frameworks */,
 				65B1A0A0277A7385006CF53A /* CoreGraphics.framework in Frameworks */,
@@ -271,8 +186,6 @@
 		6552D33F255718A600C71EA2 /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
-				6552D33A2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.h */,
-				6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */,
 				651ADA8F255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.h */,
 				651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */,
 				65AA415B27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.h */,
@@ -339,86 +252,8 @@
 			children = (
 				65AA413727780773002FB69C /* AdNetworkSDKs */,
 				65D09DD8279D593300B818C7 /* MediationAdaptersAppLovin */,
-				65DF3F85263CAEEA002D2746 /* MediationAdaptersMoPub */,
 			);
 			path = PIXAdManagerLibs;
-			sourceTree = "<group>";
-		};
-		65DF3F85263CAEEA002D2746 /* MediationAdaptersMoPub */ = {
-			isa = PBXGroup;
-			children = (
-				65DF3F86263CAEEA002D2746 /* AdColony */,
-				65DF3F95263CAEEA002D2746 /* AdMob */,
-				65DF3FA8263CAEEA002D2746 /* FacebookAudienceNetwork */,
-			);
-			path = MediationAdaptersMoPub;
-			sourceTree = "<group>";
-		};
-		65DF3F86263CAEEA002D2746 /* AdColony */ = {
-			isa = PBXGroup;
-			children = (
-				65DF3F87263CAEEA002D2746 /* AdColonyController.m */,
-				65DF3F88263CAEEA002D2746 /* AdColonyInterstitialCustomEvent.h */,
-				65DF3F89263CAEEA002D2746 /* AdColonyRewardedVideoCustomEvent.m */,
-				65DF3F8A263CAEEA002D2746 /* AdColonyInstanceMediationSettings.h */,
-				65DF3F8B263CAEEA002D2746 /* AdColonyAdapterConfiguration.m */,
-				65DF3F8C263CAEEA002D2746 /* AdColonyGlobalMediationSettings.h */,
-				65DF3F8D263CAEEA002D2746 /* AdColonyBannerCustomEvent.h */,
-				65DF3F8E263CAEEA002D2746 /* AdColonyController.h */,
-				65DF3F8F263CAEEA002D2746 /* AdColonyInstanceMediationSettings.m */,
-				65DF3F90263CAEEA002D2746 /* AdColonyRewardedVideoCustomEvent.h */,
-				65DF3F91263CAEEA002D2746 /* AdColonyInterstitialCustomEvent.m */,
-				65DF3F92263CAEEA002D2746 /* AdColonyBannerCustomEvent.m */,
-				65DF3F93263CAEEA002D2746 /* AdColonyGlobalMediationSettings.m */,
-				65DF3F94263CAEEA002D2746 /* AdColonyAdapterConfiguration.h */,
-			);
-			path = AdColony;
-			sourceTree = "<group>";
-		};
-		65DF3F95263CAEEA002D2746 /* AdMob */ = {
-			isa = PBXGroup;
-			children = (
-				65DF3F96263CAEEA002D2746 /* MPGoogleAdMobBannerCustomEvent.h */,
-				65DF3F97263CAEEA002D2746 /* MPGoogleAdMobNativeAdAdapter.m */,
-				65DF3F98263CAEEA002D2746 /* MPGoogleAdMobNativeCustomEvent.m */,
-				65DF3F99263CAEEA002D2746 /* UIView+MPGoogleAdMobAdditions.h */,
-				65DF3F9A263CAEEA002D2746 /* MPGoogleAdMobNativeRenderer.h */,
-				65DF3F9B263CAEEA002D2746 /* GoogleAdMobAdapterConfiguration.h */,
-				65DF3F9C263CAEEA002D2746 /* MPGoogleAdMobRewardedVideoCustomEvent.m */,
-				65DF3F9D263CAEEA002D2746 /* MPGoogleGlobalMediationSettings.m */,
-				65DF3F9E263CAEEA002D2746 /* MPGoogleAdMobInterstitialCustomEvent.h */,
-				65DF3F9F263CAEEA002D2746 /* MPGoogleAdMobBannerCustomEvent.m */,
-				65DF3FA0263CAEEA002D2746 /* MPGoogleAdMobNativeCustomEvent.h */,
-				65DF3FA1263CAEEA002D2746 /* MPGoogleAdMobNativeAdAdapter.h */,
-				65DF3FA2263CAEEA002D2746 /* GoogleAdMobAdapterConfiguration.m */,
-				65DF3FA3263CAEEA002D2746 /* MPGoogleAdMobNativeRenderer.m */,
-				65DF3FA4263CAEEA002D2746 /* UIView+MPGoogleAdMobAdditions.m */,
-				65DF3FA5263CAEEA002D2746 /* MPGoogleAdMobInterstitialCustomEvent.m */,
-				65DF3FA6263CAEEA002D2746 /* MPGoogleGlobalMediationSettings.h */,
-				65DF3FA7263CAEEA002D2746 /* MPGoogleAdMobRewardedVideoCustomEvent.h */,
-			);
-			path = AdMob;
-			sourceTree = "<group>";
-		};
-		65DF3FA8263CAEEA002D2746 /* FacebookAudienceNetwork */ = {
-			isa = PBXGroup;
-			children = (
-				65DF3FA9263CAEEA002D2746 /* FacebookAdapterConfiguration.h */,
-				65DF3FAA263CAEEA002D2746 /* FacebookNativeCustomEvent.m */,
-				65DF3FAB263CAEEA002D2746 /* FacebookInterstitialCustomEvent.m */,
-				65DF3FAC263CAEEA002D2746 /* FacebookBannerCustomEvent.h */,
-				65DF3FAD263CAEEA002D2746 /* FacebookRewardedVideoCustomEvent.m */,
-				65DF3FAE263CAEEA002D2746 /* FacebookNativeAdAdapter.m */,
-				65DF3FAF263CAEEA002D2746 /* FacebookNativeAdRenderer.h */,
-				65DF3FB0263CAEEA002D2746 /* FacebookInterstitialCustomEvent.h */,
-				65DF3FB1263CAEEA002D2746 /* FacebookNativeCustomEvent.h */,
-				65DF3FB2263CAEEA002D2746 /* FacebookAdapterConfiguration.m */,
-				65DF3FB3263CAEEA002D2746 /* FacebookBannerCustomEvent.m */,
-				65DF3FB4263CAEEA002D2746 /* FacebookNativeAdAdapter.h */,
-				65DF3FB5263CAEEA002D2746 /* FacebookRewardedVideoCustomEvent.h */,
-				65DF3FB6263CAEEA002D2746 /* FacebookNativeAdRenderer.m */,
-			);
-			path = FacebookAudienceNetwork;
 			sourceTree = "<group>";
 		};
 		65DF3FE7263CB086002D2746 /* Frameworks */ = {
@@ -454,10 +289,7 @@
 				65A91AF9279E22F900F775A8 /* GoogleDataTransport.xcframework */,
 				65A91AF5279E22F900F775A8 /* GoogleMobileAds.xcframework */,
 				65A91AFB279E22F900F775A8 /* GoogleUtilities.xcframework */,
-				6555E998277803900015F1D5 /* MoPubAdapter.xcframework */,
-				65B2A81B2778015200022C02 /* MoPubSDK.xcframework */,
 				65A91AF6279E22F900F775A8 /* nanopb.xcframework */,
-				65B2A81C2778015200022C02 /* OMSDK_Mopub.xcframework */,
 				65A91AF7279E22F900F775A8 /* PromisesObjC.xcframework */,
 				65A91AF8279E22F900F775A8 /* UserMessagingPlatform.xcframework */,
 			);
@@ -586,40 +418,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65DF3FC9263CAEEA002D2746 /* AdColonyRewardedVideoCustomEvent.m in Sources */,
-				65DF3FDA263CAEEA002D2746 /* FacebookRewardedVideoCustomEvent.m in Sources */,
-				65DF3FD1263CAEEA002D2746 /* MPGoogleAdMobRewardedVideoCustomEvent.m in Sources */,
-				65DF3FDD263CAEEA002D2746 /* FacebookBannerCustomEvent.m in Sources */,
-				65DF3FDB263CAEEA002D2746 /* FacebookNativeAdAdapter.m in Sources */,
-				65DF3FDC263CAEEA002D2746 /* FacebookAdapterConfiguration.m in Sources */,
-				6552D33C2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m in Sources */,
 				65376AFB268888E50020F73C /* FirstViewController.m in Sources */,
-				65DF3FD4263CAEEA002D2746 /* GoogleAdMobAdapterConfiguration.m in Sources */,
-				65DF3FD8263CAEEA002D2746 /* FacebookNativeCustomEvent.m in Sources */,
-				65DF3FCD263CAEEA002D2746 /* AdColonyBannerCustomEvent.m in Sources */,
 				65D09DE3279D593300B818C7 /* ALGoogleMediationAdapter.m in Sources */,
 				65F3CAE820535349009A3C86 /* ViewController.m in Sources */,
-				65DF3FCA263CAEEA002D2746 /* AdColonyAdapterConfiguration.m in Sources */,
-				65DF3FD5263CAEEA002D2746 /* MPGoogleAdMobNativeRenderer.m in Sources */,
 				65D09DE4279D593300B818C7 /* ALFacebookMediationAdapter.m in Sources */,
-				65DF3FCC263CAEEA002D2746 /* AdColonyInterstitialCustomEvent.m in Sources */,
-				65DF3FD2263CAEEA002D2746 /* MPGoogleGlobalMediationSettings.m in Sources */,
-				65DF3FD3263CAEEA002D2746 /* MPGoogleAdMobBannerCustomEvent.m in Sources */,
-				65DF3FD7263CAEEA002D2746 /* MPGoogleAdMobInterstitialCustomEvent.m in Sources */,
-				65DF3FD9263CAEEA002D2746 /* FacebookInterstitialCustomEvent.m in Sources */,
 				65F3CAF320535349009A3C86 /* main.m in Sources */,
-				65DF3FDE263CAEEA002D2746 /* FacebookNativeAdRenderer.m in Sources */,
-				65DF3FD0263CAEEA002D2746 /* MPGoogleAdMobNativeCustomEvent.m in Sources */,
 				651ADA91255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m in Sources */,
 				65F3CAFC205353E9009A3C86 /* PIXAdManager.m in Sources */,
 				65D09DE2279D593300B818C7 /* ALAdColonyMediationAdapter.m in Sources */,
 				65F3CAE520535349009A3C86 /* AppDelegate.m in Sources */,
-				65DF3FC8263CAEEA002D2746 /* AdColonyController.m in Sources */,
 				65AA415D27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m in Sources */,
-				65DF3FCF263CAEEA002D2746 /* MPGoogleAdMobNativeAdAdapter.m in Sources */,
-				65DF3FCB263CAEEA002D2746 /* AdColonyInstanceMediationSettings.m in Sources */,
-				65DF3FCE263CAEEA002D2746 /* AdColonyGlobalMediationSettings.m in Sources */,
-				65DF3FD6263CAEEA002D2746 /* UIView+MPGoogleAdMobAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

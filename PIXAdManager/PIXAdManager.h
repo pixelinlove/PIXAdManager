@@ -11,7 +11,7 @@
 
 typedef enum {
     AdManagerAdapterNone = 0,
-    AdManagerAdapterMoPub,
+    AdManagerAdapterMoPub, // Deprecated as no longer available
     AdManagerAdapterAdMob,
     AdManagerAdapterAppLovin
 } AdManagerAdapter;
