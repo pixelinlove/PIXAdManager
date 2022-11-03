@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		65376AFB268888E50020F73C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65376AFA268888E50020F73C /* FirstViewController.m */; };
 		65A2A23B2914225700E46E9F /* PIXAdManagerAdapterAppLovin.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */; };
-		65A2A23C2914225700E46E9F /* PIXAdManagerAdapterMoPub.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */; };
 		65A2A23D2914225700E46E9F /* PIXAdManagerAdapterAdMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */; };
 		65B1A098277A734A006CF53A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A097277A734A006CF53A /* AdSupport.framework */; };
 		65B1A09A277A7357006CF53A /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A099277A7357006CF53A /* AppTrackingTransparency.framework */; };
@@ -54,8 +53,6 @@
 		65376AF9268888E50020F73C /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		65376AFA268888E50020F73C /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		6552D3322556B19C00C71EA2 /* PIXAdManagerAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapter.h; sourceTree = "<group>"; };
-		6552D33A2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapterMoPub.h; sourceTree = "<group>"; };
-		6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterMoPub.m; sourceTree = "<group>"; };
 		65AA415B27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapterAppLovin.h; sourceTree = "<group>"; };
 		65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterAppLovin.m; sourceTree = "<group>"; };
 		65B1A097277A734A006CF53A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -125,8 +122,6 @@
 		6552D33F255718A600C71EA2 /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
-				6552D33A2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.h */,
-				6552D33B2556DA9F00C71EA2 /* PIXAdManagerAdapterMoPub.m */,
 				651ADA8F255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.h */,
 				651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */,
 				65AA415B27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.h */,
@@ -285,7 +280,6 @@
 				65F3CAFC205353E9009A3C86 /* PIXAdManager.m in Sources */,
 				65F3CAE520535349009A3C86 /* AppDelegate.m in Sources */,
 				65A2A23B2914225700E46E9F /* PIXAdManagerAdapterAppLovin.m in Sources */,
-				65A2A23C2914225700E46E9F /* PIXAdManagerAdapterMoPub.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

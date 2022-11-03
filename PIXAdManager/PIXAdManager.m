@@ -12,10 +12,6 @@
 #if DEBUG
     // Import Libraries and SDK necessary to setup DEBUG Mode
     #import <AdSupport/ASIdentifierManager.h>
-    #if __has_include(<MoPubSDK/MoPub.h>)
-        #import <MoPubSDK/MoPub.h>
-        #define HAS_INCLUDE_MOPUB
-    #endif
     #if __has_include(<GoogleMobileAds/GoogleMobileAds.h>)
         @import GoogleMobileAds;
         #define HAS_INCLUDE_ADMOB
@@ -80,9 +76,6 @@
 - (NSString *)classNameForAdapter:(AdManagerAdapter)adapter {
     NSString *className = nil;
     switch (adapter) {
-        case AdManagerAdapterMoPub:
-            className = @"PIXAdManagerAdapterMoPub";
-            break;
         case AdManagerAdapterAdMob:
             className = @"PIXAdManagerAdapterAdMob";
             break;
@@ -192,10 +185,6 @@
     NSLog(@"[AdManager] > IDFA: %@", [ASIdentifierManager sharedManager].advertisingIdentifier);
     
     NSDictionary *testDevices = [configuration objectForKey:@"testDevices"];
-    
-    // MoPub debug options
-    #if HAS_INCLUDE_MOPUB
-    #endif
     
     // AdMob debug options
     #if HAS_INCLUDE_ADMOB

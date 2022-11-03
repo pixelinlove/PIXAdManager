@@ -27,7 +27,6 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.title = @"Root ViewController";
     
-    NSDictionary *mopubTestConfiguration = @{@"adUnitID": @"b195f8dd8ded45fe847ad89ed1d016da"};
     NSDictionary *admobTestConfiguration = @{@"adUnitID": @"ca-app-pub-3940256099942544/2934735716"};
     NSDictionary *applovinTestConfiguration = @{@"adUnitID": @"03291466ee732cfa"};
     

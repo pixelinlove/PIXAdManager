@@ -11,7 +11,7 @@
 
 typedef enum {
     AdManagerAdapterNone = 0,
-    AdManagerAdapterMoPub,
+    AdManagerAdapterMoPub, // MoPub is no longer available. Adapters are no longer available.
     AdManagerAdapterAdMob,
     AdManagerAdapterAppLovin
 } AdManagerAdapter;
