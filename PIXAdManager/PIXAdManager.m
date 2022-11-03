@@ -187,7 +187,7 @@
     NSDictionary *testDevices = [configuration objectForKey:@"testDevices"];
     
     // AdMob debug options
-    #if HAS_INCLUDE_ADMOB
+    #ifdef HAS_INCLUDE_ADMOB
     if ([GADMobileAds class] && [testDevices objectForKey:@"admob"]) {
         GADMobileAds *ads = [GADMobileAds sharedInstance];
         [ads requestConfiguration].testDeviceIdentifiers = [testDevices objectForKey:@"admob"];
@@ -195,7 +195,7 @@
     #endif
     
     // Facebook Audience Network debug options
-    #if HAS_INCLUDE_FACEBOOK
+    #ifdef HAS_INCLUDE_FACEBOOK
     if ([FBAdSettings class] && [testDevices objectForKey:@"facebook"]) {
         // [FBAdSettings clearTestDevices];
         [FBAdSettings addTestDevices:[testDevices objectForKey:@"facebook"]];
