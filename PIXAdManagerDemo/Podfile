@@ -2,6 +2,10 @@
 platform :ios, '12.0'
 
 use_frameworks! :linkage => :static
+# WARNING #
+# Facebook Audience Network require dynamic linkage by defaul
+# If want to use static linkage it is required to add an empty swift file to the project
+# Refer to: https://developers.facebook.com/docs/audience-network/setting-up/platform-setup/ios/add-sdk/#notes
 
 target 'PIXAdManagerDemo' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -11,6 +15,8 @@ target 'PIXAdManagerDemo' do
   pod 'Google-Mobile-Ads-SDK', '~> 9.11.0'
   
   pod 'AppLovinSDK', '~> 11.5.0'
+  
+  pod 'FBAudienceNetwork', '~> 6.12.0'
   
 end
 
