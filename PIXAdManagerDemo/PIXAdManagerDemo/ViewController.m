@@ -98,7 +98,7 @@
     if (self.adViewBottomLayoutContraint.firstItem != adView) {
         NSLog(@"[AdManager][%@] > %@ > New adViewBottomLayoutContraint is needed", NSStringFromClass(self.class), NSStringFromSelector(_cmd));
         self.adViewBottomLayoutContraint.active = NO;
-        self.adViewBottomLayoutContraint = [adView.bottomAnchor constraintEqualToAnchor:self.bottomLayoutGuide.topAnchor];
+        self.adViewBottomLayoutContraint = [adView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor];
         self.adViewBottomLayoutContraint.active = YES;
     }
     
