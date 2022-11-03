@@ -14,12 +14,15 @@
     #import <AdSupport/ASIdentifierManager.h>
     #if __has_include(<MoPubSDK/MoPub.h>)
         #import <MoPubSDK/MoPub.h>
+        #define HAS_INCLUDE_MOPUB
     #endif
     #if __has_include(<GoogleMobileAds/GoogleMobileAds.h>)
         @import GoogleMobileAds;
+        #define HAS_INCLUDE_ADMOB
     #endif
     #if __has_include(<FBAudienceNetwork/FBAdSettings.h>)
         #import <FBAudienceNetwork/FBAdSettings.h>
+        #define HAS_INCLUDE_FACEBOOK
     #endif
 #endif
 
@@ -191,18 +194,25 @@
     NSDictionary *testDevices = [configuration objectForKey:@"testDevices"];
     
     // MoPub debug options
+    #if HAS_INCLUDE_MOPUB
+    #endif
     
     // AdMob debug options
+    #if HAS_INCLUDE_ADMOB
     if ([GADMobileAds class] && [testDevices objectForKey:@"admob"]) {
         GADMobileAds *ads = [GADMobileAds sharedInstance];
         [ads requestConfiguration].testDeviceIdentifiers = [testDevices objectForKey:@"admob"];
     }
+    #endif
     
     // Facebook Audience Network debug options
+    #if HAS_INCLUDE_FACEBOOK
     if ([FBAdSettings class] && [testDevices objectForKey:@"facebook"]) {
         // [FBAdSettings clearTestDevices];
         [FBAdSettings addTestDevices:[testDevices objectForKey:@"facebook"]];
     }
+    #endif
+
 #endif
     
     [self.adapter adapterViewDebug];
