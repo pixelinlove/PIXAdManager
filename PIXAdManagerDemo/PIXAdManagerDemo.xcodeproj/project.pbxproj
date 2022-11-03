@@ -11,18 +11,6 @@
 		65376AFB268888E50020F73C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65376AFA268888E50020F73C /* FirstViewController.m */; };
 		6555E99B277803970015F1D5 /* FacebookAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555E99A277803970015F1D5 /* FacebookAdapter.xcframework */; };
 		6555E99D2778039F0015F1D5 /* AdColonyAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555E99C2778039F0015F1D5 /* AdColonyAdapter.xcframework */; };
-		65A91AFF279E22F900F775A8 /* FirebaseCoreDiagnostics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A91AF3279E22F900F775A8 /* FirebaseCoreDiagnostics.xcframework */; };
-		65A91B00279E22F900F775A8 /* FirebaseAnalytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A91AF4279E22F900F775A8 /* FirebaseAnalytics.xcframework */; };
-		65A91B01279E22F900F775A8 /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A91AF5279E22F900F775A8 /* GoogleMobileAds.xcframework */; };
-		65A91B02279E22F900F775A8 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A91AF6279E22F900F775A8 /* nanopb.xcframework */; };
-		65A91B03279E22F900F775A8 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A91AF7279E22F900F775A8 /* PromisesObjC.xcframework */; };
-		65A91B04279E22F900F775A8 /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A91AF8279E22F900F775A8 /* UserMessagingPlatform.xcframework */; };
-		65A91B05279E22F900F775A8 /* GoogleDataTransport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A91AF9279E22F900F775A8 /* GoogleDataTransport.xcframework */; };
-		65A91B06279E22F900F775A8 /* GoogleAppMeasurement.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A91AFA279E22F900F775A8 /* GoogleAppMeasurement.xcframework */; };
-		65A91B07279E22F900F775A8 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A91AFB279E22F900F775A8 /* GoogleUtilities.xcframework */; };
-		65A91B08279E22F900F775A8 /* FirebaseInstallations.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A91AFC279E22F900F775A8 /* FirebaseInstallations.xcframework */; };
-		65A91B09279E22F900F775A8 /* FirebaseCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A91AFD279E22F900F775A8 /* FirebaseCore.xcframework */; };
-		65A91B0A279E22F900F775A8 /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A91AFE279E22F900F775A8 /* GoogleAppMeasurementIdentitySupport.xcframework */; };
 		65AA414F27780774002FB69C /* AppLovinSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65AA413D27780773002FB69C /* AppLovinSDKResources.bundle */; };
 		65AA415D27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */; };
 		65B1A098277A734A006CF53A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A097277A734A006CF53A /* AdSupport.framework */; };
@@ -77,18 +65,6 @@
 		6552D3322556B19C00C71EA2 /* PIXAdManagerAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapter.h; sourceTree = "<group>"; };
 		6555E99A277803970015F1D5 /* FacebookAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FacebookAdapter.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/FacebookAudienceNetwork/FacebookAdapter.xcframework; sourceTree = "<group>"; };
 		6555E99C2778039F0015F1D5 /* AdColonyAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AdColonyAdapter.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/MediationAdaptersAdMob/AdColony/AdColonyAdapter.xcframework; sourceTree = "<group>"; };
-		65A91AF3279E22F900F775A8 /* FirebaseCoreDiagnostics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseCoreDiagnostics.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/GoogleAdMob/FirebaseCoreDiagnostics.xcframework; sourceTree = "<group>"; };
-		65A91AF4279E22F900F775A8 /* FirebaseAnalytics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseAnalytics.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/GoogleAdMob/FirebaseAnalytics.xcframework; sourceTree = "<group>"; };
-		65A91AF5279E22F900F775A8 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/GoogleAdMob/GoogleMobileAds.xcframework; sourceTree = "<group>"; };
-		65A91AF6279E22F900F775A8 /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = nanopb.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/GoogleAdMob/nanopb.xcframework; sourceTree = "<group>"; };
-		65A91AF7279E22F900F775A8 /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PromisesObjC.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/GoogleAdMob/PromisesObjC.xcframework; sourceTree = "<group>"; };
-		65A91AF8279E22F900F775A8 /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/GoogleAdMob/UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
-		65A91AF9279E22F900F775A8 /* GoogleDataTransport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleDataTransport.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/GoogleAdMob/GoogleDataTransport.xcframework; sourceTree = "<group>"; };
-		65A91AFA279E22F900F775A8 /* GoogleAppMeasurement.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurement.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/GoogleAdMob/GoogleAppMeasurement.xcframework; sourceTree = "<group>"; };
-		65A91AFB279E22F900F775A8 /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleUtilities.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/GoogleAdMob/GoogleUtilities.xcframework; sourceTree = "<group>"; };
-		65A91AFC279E22F900F775A8 /* FirebaseInstallations.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseInstallations.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/GoogleAdMob/FirebaseInstallations.xcframework; sourceTree = "<group>"; };
-		65A91AFD279E22F900F775A8 /* FirebaseCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseCore.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/GoogleAdMob/FirebaseCore.xcframework; sourceTree = "<group>"; };
-		65A91AFE279E22F900F775A8 /* GoogleAppMeasurementIdentitySupport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurementIdentitySupport.xcframework; path = PIXAdManagerDemo/PIXAdManagerLibs/AdNetworkSDKs/GoogleAdMob/GoogleAppMeasurementIdentitySupport.xcframework; sourceTree = "<group>"; };
 		65AA413D27780773002FB69C /* AppLovinSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AppLovinSDKResources.bundle; sourceTree = "<group>"; };
 		65AA415B27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapterAppLovin.h; sourceTree = "<group>"; };
 		65AA415C27780AB1002FB69C /* PIXAdManagerAdapterAppLovin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterAppLovin.m; sourceTree = "<group>"; };
@@ -138,36 +114,24 @@
 			files = (
 				6555E99D2778039F0015F1D5 /* AdColonyAdapter.xcframework in Frameworks */,
 				65B1A0A3277A743A006CF53A /* CoreMedia.framework in Frameworks */,
-				65A91B01279E22F900F775A8 /* GoogleMobileAds.xcframework in Frameworks */,
 				65B1A0AB277A7C06006CF53A /* MessageUI.framework in Frameworks */,
-				65A91B00279E22F900F775A8 /* FirebaseAnalytics.xcframework in Frameworks */,
 				65B2A8342778016E00022C02 /* AppLovinSDK.xcframework in Frameworks */,
 				65B1A0B2277A7C2D006CF53A /* SystemConfiguration.framework in Frameworks */,
-				65A91B03279E22F900F775A8 /* PromisesObjC.xcframework in Frameworks */,
 				65E07ADC27EA2D270092AB13 /* FBAudienceNetwork.xcframework in Frameworks */,
 				65B1A09E277A7374006CF53A /* AVFoundation.framework in Frameworks */,
-				65A91B08279E22F900F775A8 /* FirebaseInstallations.xcframework in Frameworks */,
 				65B2A8362778018100022C02 /* AdColony.xcframework in Frameworks */,
-				65A91B09279E22F900F775A8 /* FirebaseCore.xcframework in Frameworks */,
 				65B1A0B6277A7C40006CF53A /* WebKit.framework in Frameworks */,
 				65B1A0AE277A7C1C006CF53A /* SafariServices.framework in Frameworks */,
 				65B1A09C277A7365006CF53A /* AudioToolbox.framework in Frameworks */,
 				65B1A0B4277A7C37006CF53A /* UIKit.framework in Frameworks */,
 				65B1A09A277A7357006CF53A /* AppTrackingTransparency.framework in Frameworks */,
-				65A91B02279E22F900F775A8 /* nanopb.xcframework in Frameworks */,
-				65A91B06279E22F900F775A8 /* GoogleAppMeasurement.xcframework in Frameworks */,
 				65B1A0B0277A7C25006CF53A /* StoreKit.framework in Frameworks */,
 				6555E99B277803970015F1D5 /* FacebookAdapter.xcframework in Frameworks */,
 				65B1A0A7277A7BEC006CF53A /* CoreTelephony.framework in Frameworks */,
-				65A91B07279E22F900F775A8 /* GoogleUtilities.xcframework in Frameworks */,
 				65B1A0A2277A73C8006CF53A /* CoreMedia.framework in Frameworks */,
 				65B1A0A9277A7BFD006CF53A /* Foundation.framework in Frameworks */,
-				65A91B05279E22F900F775A8 /* GoogleDataTransport.xcframework in Frameworks */,
-				65A91B04279E22F900F775A8 /* UserMessagingPlatform.xcframework in Frameworks */,
 				65B1A0A0277A7385006CF53A /* CoreGraphics.framework in Frameworks */,
 				65B1A098277A734A006CF53A /* AdSupport.framework in Frameworks */,
-				65A91B0A279E22F900F775A8 /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */,
-				65A91AFF279E22F900F775A8 /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
 				65B1A0A5277A7448006CF53A /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,18 +244,6 @@
 				65B2A8332778016E00022C02 /* AppLovinSDK.xcframework */,
 				6555E99A277803970015F1D5 /* FacebookAdapter.xcframework */,
 				65E07ADB27EA2D270092AB13 /* FBAudienceNetwork.xcframework */,
-				65A91AF4279E22F900F775A8 /* FirebaseAnalytics.xcframework */,
-				65A91AFD279E22F900F775A8 /* FirebaseCore.xcframework */,
-				65A91AF3279E22F900F775A8 /* FirebaseCoreDiagnostics.xcframework */,
-				65A91AFC279E22F900F775A8 /* FirebaseInstallations.xcframework */,
-				65A91AFA279E22F900F775A8 /* GoogleAppMeasurement.xcframework */,
-				65A91AFE279E22F900F775A8 /* GoogleAppMeasurementIdentitySupport.xcframework */,
-				65A91AF9279E22F900F775A8 /* GoogleDataTransport.xcframework */,
-				65A91AF5279E22F900F775A8 /* GoogleMobileAds.xcframework */,
-				65A91AFB279E22F900F775A8 /* GoogleUtilities.xcframework */,
-				65A91AF6279E22F900F775A8 /* nanopb.xcframework */,
-				65A91AF7279E22F900F775A8 /* PromisesObjC.xcframework */,
-				65A91AF8279E22F900F775A8 /* UserMessagingPlatform.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
