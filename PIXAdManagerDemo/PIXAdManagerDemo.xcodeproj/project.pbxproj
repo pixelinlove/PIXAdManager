@@ -235,6 +235,7 @@
 				65F3CADE20535349009A3C86 /* Resources */,
 				65DF3FFE263CB0B8002D2746 /* Embed Frameworks */,
 				11CC305B3337A3D537B97990 /* [CP] Copy Pods Resources */,
+				BA5A746F1FB72A6A71177734 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -300,11 +301,19 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PIXAdManagerDemo/Pods-PIXAdManagerDemo-resources.sh",
-				"${PODS_ROOT}/AppLovinSDK/applovin-ios-sdk-11.5.3/AppLovinSDKResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FBAudienceNetwork/FBAudienceNetwork.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/Fyber_Marketplace_SDK/Fyber_Marketplace_SDK.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/Google-Mobile-Ads-SDK/GoogleMobileAdsResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUserMessagingPlatform/UserMessagingPlatformResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/UnityAds/UnityAds.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AppLovinSDKResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FBAudienceNetwork.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fyber_Marketplace_SDK.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMobileAdsResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UserMessagingPlatformResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UnityAds.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -331,6 +340,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA5A746F1FB72A6A71177734 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PIXAdManagerDemo/Pods-PIXAdManagerDemo-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AppLovinSDK/AppLovinSDK.framework/AppLovinSDK",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppLovinSDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PIXAdManagerDemo/Pods-PIXAdManagerDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

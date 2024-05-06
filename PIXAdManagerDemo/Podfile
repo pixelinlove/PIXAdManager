@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '12.0'
+platform :ios, '13.0'
 
 use_frameworks! :linkage => :static
 # WARNING #
@@ -12,19 +12,23 @@ target 'PIXAdManagerDemo' do
   # use_frameworks!
 
   # Pods for PIXAdManagerDemo
-  pod 'Google-Mobile-Ads-SDK', '~> 9.11.0'
-  pod 'GoogleMobileAdsMediationAdColony', '~> 4.9.0'
-  pod 'GoogleMobileAdsMediationFacebook', '~> 6.12.0'
-  pod 'GoogleMobileAdsMediationAppLovin', '~> 11.5.0'
+  pod 'Google-Mobile-Ads-SDK', '~> 11'
+  pod 'GoogleMobileAdsMediationAppLovin', '~> 12'
+  pod 'GoogleMobileAdsMediationFyber', '~> 8'
+  pod 'GoogleMobileAdsMediationUnity', '~> 4'
+  pod 'GoogleMobileAdsMediationFacebook', '~> 6'
   
-  pod 'AppLovinSDK', '~> 11.5.0'
-  pod 'AppLovinMediationAdColonyAdapter', '~> 4.9.0'
-  pod 'AppLovinMediationGoogleAdapter', '~> 9.11.0'
-  pod 'AppLovinMediationFacebookAdapter', '~> 6.12.0'
+  pod 'AppLovinSDK', '~> 12'
+  pod 'AppLovinMediationGoogleAdapter', '~> 11'
+  pod 'AppLovinMediationFacebookAdapter', '~> 6'
+  pod 'AppLovinMediationFyberAdapter', '~> 8'
+  pod 'AppLovinMediationUnityAdsAdapter', '~> 4'
   
-  pod 'FBAudienceNetwork', '~> 6.12.0'
+  pod 'Fyber_Marketplace_SDK', '~> 8'
   
-  pod 'AdColony', '~> 4.9.0'
+  pod 'UnityAds', '~> 4'
+  
+  pod 'FBAudienceNetwork', '~> 6'
   
 end
 
