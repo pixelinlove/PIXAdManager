@@ -14,6 +14,8 @@ static NSString *const kAdManagerConfigurationSDKKey = @"sdkKey";
 static NSString *const kAdManagerConfigurationAdUnitKey = @"adUnitID";
 static NSString *const kAdManagerConfigurationAdSizeKey = @"adSize";
 static NSString *const kAdManagerConfigurationFBTrackingEnabledKey = @"FBTrackingEnabled";
+static NSString *const kAdManagerConfigurationAmazonAPSAppKey = @"amazonAPSApp";
+static NSString *const kAdManagerConfigurationAmazonAPSSlotIDKey = @"amazonAPSSlotID";
 
 @protocol PIXAdManagerAdapterDelegate <NSObject>
 

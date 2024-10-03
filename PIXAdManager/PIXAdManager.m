@@ -20,6 +20,10 @@
         #import <FBAudienceNetwork/FBAdSettings.h>
         #define HAS_INCLUDE_FACEBOOK
     #endif
+    #if __has_include(<DTBiOSSDK/DTBiOSSDK.h>)
+        #import <DTBiOSSDK/DTBiOSSDK.h>
+        #define HAS_INCLUDE_AMAZONAPS
+    #endif
 #endif
 
 
@@ -200,6 +204,11 @@
         // [FBAdSettings clearTestDevices];
         [FBAdSettings addTestDevices:[testDevices objectForKey:@"facebook"]];
     }
+    #endif
+
+    #ifdef HAS_INCLUDE_AMAZONAPS
+        [[DTBAds sharedInstance] setLogLevel:DTBLogLevelAll];
+        [[DTBAds sharedInstance] setTestMode:YES];
     #endif
 
 #endif

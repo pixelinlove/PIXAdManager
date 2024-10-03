@@ -16,6 +16,8 @@ static NSString * const kMediationAdapter = @"AdMob";
 @property (nonatomic, copy) NSString *adUnitID;
 @property (nonatomic, assign) CGSize adSize;
 @property (nonatomic, assign) BOOL FBTrackingEnabled;
+@property (nonatomic, copy) NSString *amazonAPSApp;
+@property (nonatomic, copy) NSString *amazonAPSSlotID;
 
 @end
 
@@ -34,14 +36,24 @@ static NSString * const kMediationAdapter = @"AdMob";
     self.adUnitID = self.configuration[kAdManagerConfigurationAdUnitKey];
     self.adSize = CGSizeFromString(self.configuration[kAdManagerConfigurationAdSizeKey]);
     self.FBTrackingEnabled = [self.configuration[kAdManagerConfigurationFBTrackingEnabledKey] boolValue];
+    self.amazonAPSApp = self.configuration[kAdManagerConfigurationAmazonAPSAppKey];
+    self.amazonAPSSlotID = self.configuration[kAdManagerConfigurationAmazonAPSSlotIDKey];
     
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.configuration);
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.adUnitID);
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), NSStringFromCGSize(self.adSize));
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.FBTrackingEnabled ? @"Y" : @"N");
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.amazonAPSApp);
+    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.amazonAPSSlotID);
     
     #ifdef HAS_INCLUDE_FBADSETTINGS
         [FBAdSettings setAdvertiserTrackingEnabled:self.FBTrackingEnabled];
+    #endif
+    
+    #ifdef HAS_INCLUDE_AMAZONAPS
+        [[DTBAds sharedInstance] setAppKey:self.amazonAPSApp]; //@"d72716b8-271b-416f-9554-7240e15734ca"
+        DTBAdNetworkInfo *dtbAdNetworkInfo = [[DTBAdNetworkInfo alloc] initWithNetworkName:DTBADNETWORK_ADMOB];
+        [[DTBAds sharedInstance] setAdNetworkInfo:dtbAdNetworkInfo];
     #endif
     
     // AdMob initialisation
@@ -103,7 +115,15 @@ static NSString * const kMediationAdapter = @"AdMob";
     NSLog(@"[AdManager][%@] > %@ > Initialized? %@", self.name, NSStringFromSelector(_cmd), self.isInitialized ? @"Yes" : @"No");
     
     if (self.isInitialized) {
-        [self.adView loadRequest:[GADRequest request]];
+        
+        GADRequest *request = [GADRequest request];
+        
+        #ifdef HAS_INCLUDE_AMAZONAPS
+            NSString *slotId = self.amazonAPSSlotID; //@"842b59ef-2c34-4308-8be6-b38a6a912f26";
+            [request registerAdNetworkExtras:[APSAdMobUtils extrasWithSlotUUID:slotId adFormat:APSAdFormatBanner]];
+        #endif
+        
+        [self.adView loadRequest:request];
         self.adView.autoloadEnabled = YES;
     } else {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

@@ -14,6 +14,12 @@
   #define HAS_INCLUDE_FBADSETTINGS
 #endif
 
+#if __has_include(<DTBiOSSDK/DTBiOSSDK.h>)
+    #import <DTBiOSSDK/DTBiOSSDK.h>
+    #import <APSAdMobUtils.h>
+    #define HAS_INCLUDE_AMAZONAPS
+#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PIXAdManagerAdapterAdMob : NSObject <PIXAdManagerAdapter, GADBannerViewDelegate>
