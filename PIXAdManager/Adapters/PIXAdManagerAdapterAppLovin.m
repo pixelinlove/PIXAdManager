@@ -32,7 +32,7 @@ static NSString * const kMediationAdapter = @"AppLovin";
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
     self.configuration = configuration;
-    self.sdkKey = self.configuration[kAdManagerConfigurationSDKKey];
+    self.sdkKey = self.configuration[kAdManagerConfigurationSDKKeyKey];
     self.adUnitID = self.configuration[kAdManagerConfigurationAdUnitKey];
     self.adSize = CGSizeFromString(self.configuration[kAdManagerConfigurationAdSizeKey]);
     self.FBTrackingEnabled = [self.configuration[kAdManagerConfigurationFBTrackingEnabledKey] boolValue];
