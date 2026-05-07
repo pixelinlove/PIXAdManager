@@ -37,7 +37,7 @@ typedef enum {
 // PIXAdManager singleton class definition
 @interface PIXAdManager : NSObject <PIXAdManagerAdapterDelegate>
 
-@property (nonatomic, strong) UIView *adView;
+@property (nonatomic, strong, readonly) UIView *adView;
 @property (nonatomic, copy, readonly) NSString *adapterName;
 @property (nonatomic, weak) id<PIXAdManagerDelegate> delegate;
 
@@ -54,3 +54,4 @@ typedef enum {
 - (void)debugEnabledWithConfiguration:(NSDictionary *)configuration;
 
 @end
+
