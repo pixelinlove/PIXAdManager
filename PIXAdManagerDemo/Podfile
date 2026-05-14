@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '13.0'
+platform :ios, '15.0'
 
 use_frameworks! :linkage => :static
 # WARNING #
@@ -7,29 +7,42 @@ use_frameworks! :linkage => :static
 # If want to use static linkage it is required to add an empty swift file to the project
 # Refer to: https://developers.facebook.com/docs/audience-network/setting-up/platform-setup/ios/add-sdk/#notes
 
-target 'PIXAdManagerDemo' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  # use_frameworks!
-
-  # Pods for PIXAdManagerDemo
-  pod 'Google-Mobile-Ads-SDK', '~> 11'
-  pod 'GoogleMobileAdsMediationAppLovin', '~> 12'
+def advertising_pods
+  pod 'Google-Mobile-Ads-SDK', '~> 13'
+  pod 'GoogleMobileAdsMediationAppLovin', '~> 13'
   pod 'GoogleMobileAdsMediationFyber', '~> 8'
   pod 'GoogleMobileAdsMediationUnity', '~> 4'
   pod 'GoogleMobileAdsMediationFacebook', '~> 6'
+  pod 'GoogleMobileAdsMediationVungle', '~> 7'
   
-  pod 'AppLovinSDK', '~> 12'
-  pod 'AppLovinMediationGoogleAdapter', '~> 11'
-  pod 'AppLovinMediationFacebookAdapter', '~> 6'
+  pod 'AppLovinSDK', '~> 13'
+  pod 'AppLovinMediationGoogleAdapter', '~> 13'
   pod 'AppLovinMediationFyberAdapter', '~> 8'
   pod 'AppLovinMediationUnityAdsAdapter', '~> 4'
+  pod 'AppLovinMediationFacebookAdapter', '~> 6'
+  pod 'AppLovinMediationVungleAdapter', '~> 7'
   
   pod 'Fyber_Marketplace_SDK', '~> 8'
   
   pod 'UnityAds', '~> 4'
   
   pod 'FBAudienceNetwork', '~> 6'
+
+  pod 'VungleAds', '~> 7'
   
+  pod 'AmazonPublisherServicesSDK', '~> 5'
+  pod 'AmazonPublisherServicesAdMobAdapter', '~> 5'
+  pod 'AppLovinMediationAmazonAdMarketplaceAdapter', '~> 5' # Check later as the current implementation together with admob does freeze the screen and makes the app unresponsive.
+  
+end
+
+target 'PIXAdManagerDemo' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for PIXAdManagerDemo
+  advertising_pods
+
 end
 
 post_install do |installer|

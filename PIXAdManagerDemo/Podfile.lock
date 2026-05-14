@@ -1,57 +1,80 @@
 PODS:
-  - AppLovinMediationFacebookAdapter (6.15.0.0):
+  - AmazonPublisherServicesAdMobAdapter (5.0.0):
+    - AmazonPublisherServicesSDK
+    - Google-Mobile-Ads-SDK
+  - AmazonPublisherServicesSDK (5.6.1)
+  - AppLovinMediationAmazonAdMarketplaceAdapter (5.6.1.0):
     - AppLovinSDK
-    - FBAudienceNetwork (= 6.15.0)
-  - AppLovinMediationFyberAdapter (8.2.8.0):
-    - AppLovinSDK
-    - Fyber_Marketplace_SDK (= 8.2.8)
-  - AppLovinMediationGoogleAdapter (11.3.0.0):
-    - AppLovinSDK
-    - Google-Mobile-Ads-SDK (= 11.3.0)
-  - AppLovinMediationUnityAdsAdapter (4.10.0.0):
-    - AppLovinSDK
-    - UnityAds (= 4.10.0)
-  - AppLovinSDK (12.4.1)
-  - FBAudienceNetwork (6.15.0)
-  - Fyber_Marketplace_SDK (8.2.8)
-  - Google-Mobile-Ads-SDK (11.3.0):
+  - AppLovinMediationFacebookAdapter (6.21.1.0):
+    - AppLovinSDK (>= 13.0.0)
+    - FBAudienceNetwork (= 6.21.1)
+  - AppLovinMediationFyberAdapter (8.4.7.0):
+    - AppLovinSDK (>= 13.0.0)
+    - Fyber_Marketplace_SDK (= 8.4.7)
+  - AppLovinMediationGoogleAdapter (13.3.0.0):
+    - AppLovinSDK (>= 13.0.0)
+    - Google-Mobile-Ads-SDK (= 13.3.0)
+  - AppLovinMediationUnityAdsAdapter (4.17.0.0):
+    - AppLovinSDK (>= 13.0.0)
+    - UnityAds (= 4.17.0)
+  - AppLovinMediationVungleAdapter (7.7.2.1):
+    - AppLovinSDK (>= 13.0.0)
+    - VungleAds (= 7.7.2)
+  - AppLovinSDK (13.6.2)
+  - FBAudienceNetwork (6.21.1)
+  - Fyber_Marketplace_SDK (8.4.7)
+  - Google-Mobile-Ads-SDK (13.3.0):
     - GoogleUserMessagingPlatform (>= 1.1)
-  - GoogleMobileAdsMediationAppLovin (12.4.1.0):
-    - AppLovinSDK (= 12.4.1)
-    - Google-Mobile-Ads-SDK (~> 11.0)
-  - GoogleMobileAdsMediationFacebook (6.15.0.0):
-    - FBAudienceNetwork (= 6.15.0)
-    - Google-Mobile-Ads-SDK (~> 11.0)
-  - GoogleMobileAdsMediationFyber (8.2.8.0):
-    - Fyber_Marketplace_SDK (= 8.2.8)
-    - Google-Mobile-Ads-SDK (~> 11.0)
-  - GoogleMobileAdsMediationUnity (4.10.0.0):
-    - Google-Mobile-Ads-SDK (~> 11.0)
-    - UnityAds (= 4.10.0)
-  - GoogleUserMessagingPlatform (2.4.0)
-  - UnityAds (4.10.0)
+  - GoogleMobileAdsMediationAppLovin (13.6.2.0):
+    - AppLovinSDK (= 13.6.2)
+    - Google-Mobile-Ads-SDK (~> 13.0)
+  - GoogleMobileAdsMediationFacebook (6.21.1.0):
+    - FBAudienceNetwork (= 6.21.1)
+    - Google-Mobile-Ads-SDK (~> 13.0)
+  - GoogleMobileAdsMediationFyber (8.4.7.0):
+    - Fyber_Marketplace_SDK (= 8.4.7)
+    - Google-Mobile-Ads-SDK (~> 13.0)
+  - GoogleMobileAdsMediationUnity (4.17.0.0):
+    - Google-Mobile-Ads-SDK (~> 13.0)
+    - UnityAds (= 4.17.0)
+  - GoogleMobileAdsMediationVungle (7.7.2.0):
+    - Google-Mobile-Ads-SDK (~> 13.0)
+    - VungleAds (= 7.7.2)
+  - GoogleUserMessagingPlatform (3.1.0)
+  - UnityAds (4.17.0)
+  - VungleAds (7.7.2)
 
 DEPENDENCIES:
+  - AmazonPublisherServicesAdMobAdapter (~> 5)
+  - AmazonPublisherServicesSDK (~> 5)
+  - AppLovinMediationAmazonAdMarketplaceAdapter (~> 5)
   - AppLovinMediationFacebookAdapter (~> 6)
   - AppLovinMediationFyberAdapter (~> 8)
-  - AppLovinMediationGoogleAdapter (~> 11)
+  - AppLovinMediationGoogleAdapter (~> 13)
   - AppLovinMediationUnityAdsAdapter (~> 4)
-  - AppLovinSDK (~> 12)
+  - AppLovinMediationVungleAdapter (~> 7)
+  - AppLovinSDK (~> 13)
   - FBAudienceNetwork (~> 6)
   - Fyber_Marketplace_SDK (~> 8)
-  - Google-Mobile-Ads-SDK (~> 11)
-  - GoogleMobileAdsMediationAppLovin (~> 12)
+  - Google-Mobile-Ads-SDK (~> 13)
+  - GoogleMobileAdsMediationAppLovin (~> 13)
   - GoogleMobileAdsMediationFacebook (~> 6)
   - GoogleMobileAdsMediationFyber (~> 8)
   - GoogleMobileAdsMediationUnity (~> 4)
+  - GoogleMobileAdsMediationVungle (~> 7)
   - UnityAds (~> 4)
+  - VungleAds (~> 7)
 
 SPEC REPOS:
   trunk:
+    - AmazonPublisherServicesAdMobAdapter
+    - AmazonPublisherServicesSDK
+    - AppLovinMediationAmazonAdMarketplaceAdapter
     - AppLovinMediationFacebookAdapter
     - AppLovinMediationFyberAdapter
     - AppLovinMediationGoogleAdapter
     - AppLovinMediationUnityAdsAdapter
+    - AppLovinMediationVungleAdapter
     - AppLovinSDK
     - FBAudienceNetwork
     - Fyber_Marketplace_SDK
@@ -60,25 +83,33 @@ SPEC REPOS:
     - GoogleMobileAdsMediationFacebook
     - GoogleMobileAdsMediationFyber
     - GoogleMobileAdsMediationUnity
+    - GoogleMobileAdsMediationVungle
     - GoogleUserMessagingPlatform
     - UnityAds
+    - VungleAds
 
 SPEC CHECKSUMS:
-  AppLovinMediationFacebookAdapter: 30ddfcb09c1c9ff6778ba974f58e8f3204e6eebc
-  AppLovinMediationFyberAdapter: 068792cae6c9e088870dda003f3122f6018d4f22
-  AppLovinMediationGoogleAdapter: de91629d439394cf970e7cc865c9736815b1c16a
-  AppLovinMediationUnityAdsAdapter: d6d5bf488adce05684bf00e0845af49a96a1aadd
-  AppLovinSDK: c57ad0d34625c971d2db127f8ef60570b28ff51a
-  FBAudienceNetwork: 80a035aa69cc3a71c99e44cb5c2874e4cef9909f
-  Fyber_Marketplace_SDK: 50fb9e3077ddbd99e3da08dfcaab60df689ac106
-  Google-Mobile-Ads-SDK: 301a16c461c331ba34ff4dab40a22ab7c147af61
-  GoogleMobileAdsMediationAppLovin: bec02fea799187f82edb151c227bc0723953d15c
-  GoogleMobileAdsMediationFacebook: 26dec5611c04af55eba3dd16c564bafa8ebd7131
-  GoogleMobileAdsMediationFyber: b87054f0cc1b42e6d31db6f6b62a5143d2a52b88
-  GoogleMobileAdsMediationUnity: 144474b1e19b3b4a8b60cf3da8f0d9ca25d83597
-  GoogleUserMessagingPlatform: f131fa7978d2ba88d7426702b057c2cc318e6595
-  UnityAds: 5601f6397b0e02ed3ed6ee92827f5177a523aab6
+  AmazonPublisherServicesAdMobAdapter: 04244b10c2ed8d9a891fa3f1e89382cb8654fe4a
+  AmazonPublisherServicesSDK: ccac8083a10ec4a567db052ccc0182d4c5645ff2
+  AppLovinMediationAmazonAdMarketplaceAdapter: 07bed841deb45e51a975aa040967ddeb1ff72d84
+  AppLovinMediationFacebookAdapter: b962c9d82620bfb9ee53909aa9856d642e1f84db
+  AppLovinMediationFyberAdapter: 0d386d13531e8e5be5421f76572e90779cab0ae1
+  AppLovinMediationGoogleAdapter: f53f5df0e9f6a349fdc923226fd25911b11070ad
+  AppLovinMediationUnityAdsAdapter: 23afa95da0fc9c02c868f583a682d95811447bf4
+  AppLovinMediationVungleAdapter: a5f7b8998f8b20c06cc66a67dbd1854c7a93debe
+  AppLovinSDK: 91a47db42b6c0e2b83224006aa46b0b88c62c16f
+  FBAudienceNetwork: 85d18a65c9e35bc426bd4664cf3ae2a1172d7b60
+  Fyber_Marketplace_SDK: 1a880b530921ddf07a74982e163ab56eaf90e932
+  Google-Mobile-Ads-SDK: 7692126a35ed859f20635af281c50a2162be8bea
+  GoogleMobileAdsMediationAppLovin: b32db78894088699b8261c2050228c603c7236c5
+  GoogleMobileAdsMediationFacebook: c28fe93a3e6ba02c3a7e09fa9c45682ad9b1e9c6
+  GoogleMobileAdsMediationFyber: 954ab04950e35daf99e0dd88bd4a80619b70770d
+  GoogleMobileAdsMediationUnity: aa0eaab93dbb5d9a05526ef1778b5f0cdd861cf9
+  GoogleMobileAdsMediationVungle: 8580192dd44ffba1264e9add658602e196060b21
+  GoogleUserMessagingPlatform: befe603da6501006420c206222acd449bba45a9c
+  UnityAds: adbe0d522fd14b8298c5e159164fc43396165843
+  VungleAds: 03d93126f39d6056055a8b9edca701c6a3391d8b
 
-PODFILE CHECKSUM: 8139b85752beea673aed6f8f0af93ff2a92ff3d3
+PODFILE CHECKSUM: 43b8501f65a4ff7dbffc93e1add27e590c568841
 
 COCOAPODS: 1.16.2
