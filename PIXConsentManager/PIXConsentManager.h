@@ -10,21 +10,22 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef enum {
+typedef NS_ENUM(NSInteger, ConsentFlow) {
     ConsentFlowNone = 0,
     ConsentFlowATT,
     ConsentFlowAdMobCMP
-} ConsentFlow;
+};
 
-typedef void (^TrackingConsentStatusHandler)(NSString *statusString);
+typedef void (^ConsentFlowCompletion)(NSString *statusString);
 
 @interface PIXConsentManager : NSObject
 
 @property (nonatomic, weak, nullable) UIViewController *presentingViewController;
+@property (nonatomic, assign, readonly) BOOL canRequestAds;
 
 + (instancetype)sharedManager;
 
-- (void)startConsentFlowType:(ConsentFlow)type withCompletion:(nullable TrackingConsentStatusHandler)completion;
+- (void)startConsentFlow:(ConsentFlow)flow completion:(nullable ConsentFlowCompletion)completion;
 
 @end
 

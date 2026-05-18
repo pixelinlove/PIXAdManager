@@ -64,7 +64,7 @@
         self.didStartConsentFlow = YES;
         PIXConsentManager *consentManager = [PIXConsentManager sharedManager];
         consentManager.presentingViewController = self;
-        [consentManager startConsentFlowType:ConsentFlowAdMobCMP withCompletion:^(NSString * _Nonnull statusString) {
+        [consentManager startConsentFlow:ConsentFlowAdMobCMP completion:^(NSString * _Nonnull statusString) {
             NSLog(@"[LogMe][ConsentManager] > callback with status: %@", statusString);
         }];
     }
