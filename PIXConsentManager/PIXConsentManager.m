@@ -97,7 +97,7 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
             dispatch_async(dispatch_get_main_queue(), requestTrackingAuthorization);
         }
     } else {
-        [self completeConsentFlowForATTWithAuthorizationStatus:0 completion:completion];
+        [self completeConsentFlowForUnavailableATTWithCompletion:completion];
     }
 }
 
@@ -105,16 +105,8 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
 - (void)completeConsentFlowForATTWithAuthorizationStatus:(ATTrackingManagerAuthorizationStatus)status completion:(ConsentFlowCompletion)completion {
     NSLog(@"[LogMe][ConsentManager][ATT] > status: %lu", (unsigned long)status);
     
-    NSString *statusString = @"unavailable";
-    AdConsentStatus adConsentStatus = AdConsentStatusAllowed;
-    
-    if (!@available(iOS 14.5, *)) {
-        [self completeConsentFlowWithStatus:statusString adConsentStatus:adConsentStatus completion:completion];
-        return;
-    }
-    
-    statusString = @"unknown";
-    adConsentStatus = AdConsentStatusNotAllowed;
+    NSString *statusString = @"unknown";
+    AdConsentStatus adConsentStatus = AdConsentStatusNotAllowed;
     switch (status) {
         case ATTrackingManagerAuthorizationStatusAuthorized:
             statusString = @"authorized";
@@ -138,6 +130,13 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
     }
     
     [self completeConsentFlowWithStatus:statusString adConsentStatus:adConsentStatus completion:completion];
+}
+
+// Normalizes older iOS versions where ATT is unavailable.
+- (void)completeConsentFlowForUnavailableATTWithCompletion:(ConsentFlowCompletion)completion {
+    [self completeConsentFlowWithStatus:@"unavailable"
+                        adConsentStatus:AdConsentStatusAllowed
+                             completion:completion];
 }
 
 #pragma mark - AdMob CMP Flow
