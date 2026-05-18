@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		498BE47CC7816EF44731D54F /* Pods_PIXAdManagerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2B7F772087787D1BBB90A3 /* Pods_PIXAdManagerDemo.framework */; };
 		65376AFB268888E50020F73C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65376AFA268888E50020F73C /* FirstViewController.m */; };
+		65421E372FBA8E580013A0C5 /* PIXConsentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65421E352FBA8E580013A0C5 /* PIXConsentManager.m */; };
 		654E4C1C29144CF500D0238C /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E4C1B29144CF500D0238C /* Empty.swift */; };
 		65A2A23D2914225700E46E9F /* PIXAdManagerAdapterAdMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */; };
 		65B1A098277A734A006CF53A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B1A097277A734A006CF53A /* AdSupport.framework */; };
@@ -55,6 +56,8 @@
 		651ADA90255AED1C005E2D91 /* PIXAdManagerAdapterAdMob.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXAdManagerAdapterAdMob.m; sourceTree = "<group>"; };
 		65376AF9268888E50020F73C /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		65376AFA268888E50020F73C /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		65421E342FBA8E580013A0C5 /* PIXConsentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXConsentManager.h; sourceTree = "<group>"; };
+		65421E352FBA8E580013A0C5 /* PIXConsentManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIXConsentManager.m; sourceTree = "<group>"; };
 		654E4C1A29144CF500D0238C /* PIXAdManagerDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PIXAdManagerDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		654E4C1B29144CF500D0238C /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		6552D3322556B19C00C71EA2 /* PIXAdManagerAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIXAdManagerAdapter.h; sourceTree = "<group>"; };
@@ -119,6 +122,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65421E362FBA8E580013A0C5 /* PIXConsentManager */ = {
+			isa = PBXGroup;
+			children = (
+				65421E342FBA8E580013A0C5 /* PIXConsentManager.h */,
+				65421E352FBA8E580013A0C5 /* PIXConsentManager.m */,
+			);
+			name = PIXConsentManager;
+			path = ../PIXConsentManager;
+			sourceTree = SOURCE_ROOT;
+		};
 		6552D33E2557189F00C71EA2 /* Internals */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				65F3CAF92053538F009A3C86 /* PIXAdManager */,
+				65421E362FBA8E580013A0C5 /* PIXConsentManager */,
 				65F3CAE220535349009A3C86 /* PIXAdManagerDemo */,
 				65F3CAE120535349009A3C86 /* Products */,
 				65DF3FE7263CB086002D2746 /* Frameworks */,
@@ -373,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65421E372FBA8E580013A0C5 /* PIXConsentManager.m in Sources */,
 				65376AFB268888E50020F73C /* FirstViewController.m in Sources */,
 				65F3CAE820535349009A3C86 /* ViewController.m in Sources */,
 				65A2A23D2914225700E46E9F /* PIXAdManagerAdapterAdMob.m in Sources */,

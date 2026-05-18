@@ -48,5 +48,9 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>This helps us show you less annoying ads and keep the app free.
+
+You can change this later in the Settings app.</string>
 </dict>
 </plist>

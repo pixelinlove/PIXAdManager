@@ -13,6 +13,7 @@
 @interface ViewController () <PIXAdManagerDelegate>
 
 @property (nonatomic, strong) NSLayoutConstraint *adViewBottomLayoutContraint;
+@property (nonatomic, assign) BOOL didStartConsentFlow;
 
 @end
 
@@ -28,11 +29,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.title = @"Root ViewController";
-    
+
     PIXAdManager *adManager = [PIXAdManager sharedManager];
     adManager.delegate = self;
     
-    NSDictionary *admobTestConfiguration = @{@"adUnitID": @"ca-app-pub-3940256099942544/2934735716"};
+    NSDictionary *admobTestConfiguration = @{
+        @"adUnitID": @"ca-app-pub-3940256099942544/2934735716",
+        @"amazonAPSApp": @"a",
+        @"amazonAPSSlotID": @"a",
+    };
     [adManager initializeWithMediationAdapter:AdManagerAdapterAdMob andConfiguration:admobTestConfiguration];
     
 //    NSDictionary *applovinTestConfiguration = @{@"adUnitID": @"03291466ee732cfa"};
@@ -55,6 +60,14 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    if (!self.didStartConsentFlow) {
+        self.didStartConsentFlow = YES;
+        PIXConsentManager *consentManager = [PIXConsentManager sharedManager];
+        [consentManager startConsentFlowType:ConsentFlowATT withCompletion:^(NSString * _Nonnull statusString) {
+            NSLog(@"[LogMe][ConsentManager] > callback with status: %@", statusString);
+        }];
+    }
+
     [self setupAdView];
     
     PIXAdManager *adManager = [PIXAdManager sharedManager];
