@@ -10,18 +10,18 @@
 #import <AppTrackingTransparency/AppTrackingTransparency.h>
 #import <UserMessagingPlatform/UserMessagingPlatform.h>
 
-typedef NS_ENUM(NSInteger, ConsentAdRequestStatus) {
-    ConsentAdRequestStatusUnknown = 0,
-    ConsentAdRequestStatusCanRequestAds,
-    ConsentAdRequestStatusCannotRequestAds,
-    ConsentAdRequestStatusError
+typedef NS_ENUM(NSInteger, AdConsentStatus) {
+    AdConsentStatusUnknown = 0,
+    AdConsentStatusAllowed,
+    AdConsentStatusNotAllowed,
+    AdConsentStatusError
 };
 
 @interface PIXConsentManager ()
 
 @property (nonatomic, assign, readwrite) BOOL canRequestAds;
 @property (nonatomic, assign) ConsentFlow currentConsentFlow;
-@property (nonatomic, assign) ConsentAdRequestStatus adRequestStatus;
+@property (nonatomic, assign) AdConsentStatus adConsentStatus;
 @property (nonatomic, copy) NSString *lastConsentStatus;
 
 @end
@@ -39,9 +39,10 @@ typedef NS_ENUM(NSInteger, ConsentAdRequestStatus) {
 
 #pragma mark - Entry point
 
+// Resets normalized state, then routes to the selected consent provider flow.
 - (void)startConsentFlow:(ConsentFlow)flow completion:(ConsentFlowCompletion)completion {
     self.currentConsentFlow = flow;
-    self.adRequestStatus = ConsentAdRequestStatusUnknown;
+    self.adConsentStatus = AdConsentStatusUnknown;
     self.canRequestAds = NO;
     
     switch (flow) {
@@ -62,18 +63,21 @@ typedef NS_ENUM(NSInteger, ConsentAdRequestStatus) {
 
 #pragma mark - No Consent Flow
 
+// No consent provider is configured, so ads can be requested immediately.
 - (void)startNoConsentFlowWithCompletion:(ConsentFlowCompletion)completion {
     [self completeConsentFlowForNoConsentWithCompletion:completion];
 }
 
+// Normalizes the no-consent flow as skipped and ad-requestable.
 - (void)completeConsentFlowForNoConsentWithCompletion:(ConsentFlowCompletion)completion {
     [self completeConsentFlowWithStatus:@"skipped"
-                        adRequestStatus:ConsentAdRequestStatusCanRequestAds
+                        adConsentStatus:AdConsentStatusAllowed
                              completion:completion];
 }
 
 #pragma mark - Apple ATT Flow
 
+// Requests ATT when needed, otherwise completes with the current ATT status.
 - (void)startATTConsentFlowWithCompletion:(ConsentFlowCompletion)completion {
     if (@available(iOS 14.5, *)) {
         void (^requestTrackingAuthorization)(void) = ^{
@@ -97,46 +101,48 @@ typedef NS_ENUM(NSInteger, ConsentAdRequestStatus) {
     }
 }
 
+// Converts ATT authorization into the provider-agnostic ad request state.
 - (void)completeConsentFlowForATTWithAuthorizationStatus:(ATTrackingManagerAuthorizationStatus)status completion:(ConsentFlowCompletion)completion {
     NSLog(@"[LogMe][ConsentManager][ATT] > status: %lu", (unsigned long)status);
     
     NSString *statusString = @"unavailable";
-    ConsentAdRequestStatus adRequestStatus = ConsentAdRequestStatusCanRequestAds;
+    AdConsentStatus adConsentStatus = AdConsentStatusAllowed;
     
     if (!@available(iOS 14.5, *)) {
-        [self completeConsentFlowWithStatus:statusString adRequestStatus:adRequestStatus completion:completion];
+        [self completeConsentFlowWithStatus:statusString adConsentStatus:adConsentStatus completion:completion];
         return;
     }
     
     statusString = @"unknown";
-    adRequestStatus = ConsentAdRequestStatusCannotRequestAds;
+    adConsentStatus = AdConsentStatusNotAllowed;
     switch (status) {
         case ATTrackingManagerAuthorizationStatusAuthorized:
             statusString = @"authorized";
-            adRequestStatus = ConsentAdRequestStatusCanRequestAds;
+            adConsentStatus = AdConsentStatusAllowed;
             break;
             
         case ATTrackingManagerAuthorizationStatusDenied:
             statusString = @"denied";
-            adRequestStatus = ConsentAdRequestStatusCanRequestAds;
+            adConsentStatus = AdConsentStatusAllowed;
             break;
             
         case ATTrackingManagerAuthorizationStatusRestricted:
             statusString = @"restricted";
-            adRequestStatus = ConsentAdRequestStatusCanRequestAds;
+            adConsentStatus = AdConsentStatusAllowed;
             break;
             
         case ATTrackingManagerAuthorizationStatusNotDetermined:
             statusString = @"not determined";
-            adRequestStatus = ConsentAdRequestStatusCannotRequestAds;
+            adConsentStatus = AdConsentStatusNotAllowed;
             break;
     }
     
-    [self completeConsentFlowWithStatus:statusString adRequestStatus:adRequestStatus completion:completion];
+    [self completeConsentFlowWithStatus:statusString adConsentStatus:adConsentStatus completion:completion];
 }
 
 #pragma mark - AdMob CMP Flow
 
+// Updates UMP consent info and presents the AdMob CMP form if required.
 - (void)startAdMobCMPConsentFlowWithCompletion:(ConsentFlowCompletion)completion {
     UIViewController *presentingViewController = self.presentingViewController;
     if (!presentingViewController) {
@@ -157,50 +163,55 @@ typedef NS_ENUM(NSInteger, ConsentAdRequestStatus) {
                                                                completionHandler:^(NSError *_Nullable requestConsentError) {
         if (requestConsentError) {
             NSLog(@"[LogMe][ConsentManager] > AdMob CMP request error: %@", requestConsentError.localizedDescription);
-            [self completeConsentFlowForAdMobCMPWithError:requestConsentError completion:completion];
+            [self completeConsentFlowWithStatus:@"error"
+                                adConsentStatus:AdConsentStatusError
+                                     completion:completion];
         } else {
             [UMPConsentForm loadAndPresentIfRequiredFromViewController:presentingViewController
                                                      completionHandler:^(NSError *_Nullable loadAndPresentError) {
-                [self completeConsentFlowForAdMobCMPWithError:loadAndPresentError completion:completion];
+                if (loadAndPresentError) {
+                    NSLog(@"[LogMe][ConsentManager] > AdMob CMP form error: %@", loadAndPresentError.localizedDescription);
+                    [self completeConsentFlowWithStatus:@"error"
+                                        adConsentStatus:AdConsentStatusError
+                                             completion:completion];
+                } else {
+                    [self completeConsentFlowForAdMobCMPWithCompletion:completion];
+                }
             }];
         }
     }];
 }
 
-- (void)completeConsentFlowForAdMobCMPWithError:(NSError *)error completion:(ConsentFlowCompletion)completion {
-    if (error) {
-        NSLog(@"[LogMe][ConsentManager] > AdMob CMP error: %@", error.localizedDescription);
-        [self completeConsentFlowWithStatus:@"error"
-                            adRequestStatus:ConsentAdRequestStatusError
-                                 completion:completion];
-        return;
-    }
-    
+// Reads UMP's final ad-request eligibility after the CMP flow succeeds.
+- (void)completeConsentFlowForAdMobCMPWithCompletion:(ConsentFlowCompletion)completion {
     BOOL canRequestAds = UMPConsentInformation.sharedInstance.canRequestAds;
     [self completeConsentFlowWithStatus:@"completed"
-                        adRequestStatus:canRequestAds ? ConsentAdRequestStatusCanRequestAds : ConsentAdRequestStatusCannotRequestAds
+                        adConsentStatus:canRequestAds ? AdConsentStatusAllowed : AdConsentStatusNotAllowed
                              completion:completion];
 }
 
 #pragma mark - Unknown Consent Flow
 
+// Unknown flows fail closed so ads are not requested accidentally.
 - (void)startUnknownConsentFlowWithCompletion:(ConsentFlowCompletion)completion {
     [self completeConsentFlowForUnknownFlowWithCompletion:completion];
 }
 
+// Normalizes unsupported flow values.
 - (void)completeConsentFlowForUnknownFlowWithCompletion:(ConsentFlowCompletion)completion {
     [self completeConsentFlowWithStatus:@"unknown"
-                        adRequestStatus:ConsentAdRequestStatusCannotRequestAds
+                        adConsentStatus:AdConsentStatusNotAllowed
                              completion:completion];
 }
 
 #pragma mark - Shared Completion
 
-- (void)completeConsentFlowWithStatus:(NSString *)statusString adRequestStatus:(ConsentAdRequestStatus)adRequestStatus completion:(ConsentFlowCompletion)completion {
+// Stores the normalized result and invokes the caller on the main queue.
+- (void)completeConsentFlowWithStatus:(NSString *)statusString adConsentStatus:(AdConsentStatus)adConsentStatus completion:(ConsentFlowCompletion)completion {
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.adRequestStatus = adRequestStatus;
+        self.adConsentStatus = adConsentStatus;
         self.lastConsentStatus = statusString;
-        self.canRequestAds = adRequestStatus == ConsentAdRequestStatusCanRequestAds;
+        self.canRequestAds = adConsentStatus == AdConsentStatusAllowed;
         
         NSLog(@"[LogMe][ConsentManager] > status: %@ > canRequestAds: %@", statusString, self.canRequestAds ? @"Y" : @"N");
         
