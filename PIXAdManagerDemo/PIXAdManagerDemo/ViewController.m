@@ -7,8 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "PIXAdManager.h"
+#import "PIXConsentManager.h"
 
-@interface ViewController ()
+@interface ViewController () <PIXAdManagerDelegate>
 
 @property (nonatomic, strong) NSLayoutConstraint *adViewBottomLayoutContraint;
 

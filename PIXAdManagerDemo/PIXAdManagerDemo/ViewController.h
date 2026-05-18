@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PIXAdManager.h"
 
-@interface ViewController : UIViewController <PIXAdManagerDelegate>
+@interface ViewController : UIViewController
 
 @end
-
