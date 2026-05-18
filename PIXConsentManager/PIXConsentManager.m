@@ -21,6 +21,8 @@
     return sharedInstance;
 }
 
+#pragma mark - Entry point
+
 - (void)startConsentFlowType:(ConsentFlow)type withCompletion:(TrackingConsentStatusHandler)completion {
     switch (type) {
         case ConsentFlowNone:
@@ -29,12 +31,15 @@
             [self startConsentFlowATTWithCompletion:completion];
             break;
         case ConsentFlowAdMobCMP:
+            [self startConsentFlowAdMobCMPWithCompletion:completion];
             break;
         default:
             break;
     }
 }
-    
+
+#pragma mark - Apple ATT Flow
+
 - (void)startConsentFlowATTWithCompletion:(TrackingConsentStatusHandler)completion {
     if (@available(iOS 14.5, *)) {
         void (^requestTrackingAuthorization)(void) = ^{
@@ -42,10 +47,10 @@
             
             if (status == ATTrackingManagerAuthorizationStatusNotDetermined) {
                 [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-                    [self handleTrackingConsentStatus:status withCompletion:completion];
+                    [self handleTrackingConsentFlowATTStatus:status completion:completion];
                 }];
             } else {
-                [self handleTrackingConsentStatus:status withCompletion:completion];
+                [self handleTrackingConsentFlowATTStatus:status completion:completion];
             }
         };
         if ([NSThread isMainThread]) {
@@ -56,10 +61,10 @@
     }
 }
 
-- (void)handleTrackingConsentStatus:(ATTrackingManagerAuthorizationStatus)status withCompletion:(TrackingConsentStatusHandler)completion {
+- (void)handleTrackingConsentFlowATTStatus:(ATTrackingManagerAuthorizationStatus)status completion:(TrackingConsentStatusHandler)completion {
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        NSLog(@"[LogMe][ConsentManager] > status: %lu", (unsigned long)status);
+        NSLog(@"[LogMe][ConsentManager][ATT] > status: %lu", (unsigned long)status);
         
         if (completion) {
             NSString *statusString = @"unknown";
@@ -85,8 +90,53 @@
     });
 }
 
+#pragma mark - Admob CMP Flow
 
+- (void)startConsentFlowAdMobCMPWithCompletion:(TrackingConsentStatusHandler)completion {
+    UIViewController *presentingViewController = self.presentingViewController;
+    if (!presentingViewController) {
+        [NSException raise:NSInternalInconsistencyException
+                    format:@"PIXConsentManager requires presentingViewController to be set before starting ConsentFlowAdMobCMP."];
+    }
+    
+    UMPRequestParameters *parameters = [[UMPRequestParameters alloc] init];
+    parameters.tagForUnderAgeOfConsent = NO;
+    
+#if DEBUG
+    UMPDebugSettings *debugSettings = [[UMPDebugSettings alloc] init];
+    debugSettings.geography = UMPDebugGeographyEEA;
+    parameters.debugSettings = debugSettings;
+#endif
+    
+    [UMPConsentInformation.sharedInstance requestConsentInfoUpdateWithParameters:parameters
+                                                               completionHandler:^(NSError *_Nullable requestConsentError) {
+        if (requestConsentError) {
+            NSLog(@"[LogMe][ConsentManager] > AdMob CMP request error: %@", requestConsentError.localizedDescription);
+            [self handleTrackingConsentFlowAdMobCMPStatus:@"error" completion:completion];
+        } else {
+            [UMPConsentForm loadAndPresentIfRequiredFromViewController:presentingViewController
+                                                     completionHandler:^(NSError *_Nullable loadAndPresentError) {
+                if (loadAndPresentError) {
+                    NSLog(@"[LogMe][ConsentManager] > AdMob CMP form error: %@", loadAndPresentError.localizedDescription);
+                    [self handleTrackingConsentFlowAdMobCMPStatus:@"error" completion:completion];
+                } else {
+                    [self handleTrackingConsentFlowAdMobCMPStatus:@"completed" completion:completion];
+                }
+            }];
+        }
+    }];
+}
 
+- (void)handleTrackingConsentFlowAdMobCMPStatus:(NSString *)statusString completion:(TrackingConsentStatusHandler)completion {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        NSLog(@"[LogMe][ConsentManager][AdMob] > status: %@", statusString);
+        
+        if (completion) {
+            completion(statusString);
+        }
+    });
+}
 
 /*
 

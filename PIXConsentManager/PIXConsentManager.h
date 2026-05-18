@@ -20,6 +20,8 @@ typedef void (^TrackingConsentStatusHandler)(NSString *statusString);
 
 @interface PIXConsentManager : NSObject
 
+@property (nonatomic, weak, nullable) UIViewController *presentingViewController;
+
 + (instancetype)sharedManager;
 
 - (void)startConsentFlowType:(ConsentFlow)type withCompletion:(nullable TrackingConsentStatusHandler)completion;
