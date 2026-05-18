@@ -1,5 +1,5 @@
 //
-//  PIXPrivacyManager.h
+//  PIXConsentManager.h
 //  PIXAdManagerDemo
 //
 //  Created by Andrea Ottolina on 15/05/2026.
