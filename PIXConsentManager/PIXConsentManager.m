@@ -26,6 +26,8 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
 @property (nonatomic, assign) AdConsentStatus adConsentStatus;
 @property (nonatomic, copy, readwrite) NSString *lastConsentStatus;
 @property (nonatomic, copy) ConsentFlowCompletion pendingCompletion;
+// Weak on purpose: the manager tracks the latest visible caller, but never owns UI.
+@property (nonatomic, weak) UIViewController *latestPresentingViewController;
 
 @end
 
@@ -70,7 +72,12 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
         return;
     }
 
+    if (viewController) {
+        self.latestPresentingViewController = viewController;
+    }
+
     if (self.isConsentFlowInProgress) {
+        // Latest caller wins: consent is app-level, but continuation work belongs to the current UI.
         self.pendingCompletion = completion;
         return;
     }
@@ -90,7 +97,7 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
             [self startATTConsentFlowWithCompletion:nil];
             break;
         case ConsentFlowAdMobCMP:
-            [self startAdMobCMPConsentFlowFromPresentingViewController:viewController completion:nil];
+            [self startAdMobCMPConsentFlowWithCompletion:nil];
             break;
         default:
             [self startUnknownConsentFlowWithCompletion:nil];
@@ -179,15 +186,7 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
 #pragma mark - AdMob CMP Flow
 
 // Updates UMP consent info and presents the AdMob CMP form if required.
-- (void)startAdMobCMPConsentFlowFromPresentingViewController:(UIViewController *)presentingViewController completion:(ConsentFlowCompletion)completion {
-    if (!presentingViewController) {
-        NSLog(@"[LogMe][ConsentManager] > AdMob CMP requires a presenting view controller.");
-        [self completeConsentFlowWithStatus:@"error"
-                            adConsentStatus:AdConsentStatusError
-                                 completion:completion];
-        return;
-    }
-
+- (void)startAdMobCMPConsentFlowWithCompletion:(ConsentFlowCompletion)completion {
     UMPRequestParameters *parameters = [[UMPRequestParameters alloc] init];
     parameters.tagForUnderAgeOfConsent = NO;
 
@@ -201,23 +200,37 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
                                                                completionHandler:^(NSError *_Nullable requestConsentError) {
         if (requestConsentError) {
             NSLog(@"[LogMe][ConsentManager] > AdMob CMP request error: %@", requestConsentError.localizedDescription);
-            [self completeConsentFlowWithStatus:@"error"
-                                adConsentStatus:AdConsentStatusError
-                                     completion:completion];
+            [self completeRetryableConsentFlowErrorWithCompletion:completion];
         } else {
+            // Resolve the presenter after the async consent-info update, so navigation during the request
+            // can hand presentation to the latest visible caller.
+            UIViewController *presentingViewController = [self currentConsentPresentingViewController];
+            if (!presentingViewController) {
+                NSLog(@"[LogMe][ConsentManager] > AdMob CMP requires a presenting view controller.");
+                [self completeRetryableConsentFlowErrorWithCompletion:completion];
+                return;
+            }
+
             [UMPConsentForm loadAndPresentIfRequiredFromViewController:presentingViewController
                                                      completionHandler:^(NSError *_Nullable loadAndPresentError) {
                 if (loadAndPresentError) {
                     NSLog(@"[LogMe][ConsentManager] > AdMob CMP form error: %@", loadAndPresentError.localizedDescription);
-                    [self completeConsentFlowWithStatus:@"error"
-                                        adConsentStatus:AdConsentStatusError
-                                             completion:completion];
+                    [self completeRetryableConsentFlowErrorWithCompletion:completion];
                 } else {
                     [self completeConsentFlowForAdMobCMPWithCompletion:completion];
                 }
             }];
         }
     }];
+}
+
+- (UIViewController *)currentConsentPresentingViewController {
+    UIViewController *viewController = self.latestPresentingViewController;
+    if (!viewController || !viewController.view.window) {
+        return nil;
+    }
+
+    return viewController;
 }
 
 // Reads UMP's final ad-request eligibility after the CMP flow succeeds.
@@ -246,12 +259,22 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
 
 // Stores the normalized result and invokes the caller on the main queue.
 - (void)completeConsentFlowWithStatus:(NSString *)statusString adConsentStatus:(AdConsentStatus)adConsentStatus completion:(ConsentFlowCompletion)completion {
+    [self finishConsentFlowWithStatus:statusString adConsentStatus:adConsentStatus didCompleteFlow:YES completion:completion];
+}
+
+// Retryable failures are not consent decisions; the next visible caller may start the flow again.
+- (void)completeRetryableConsentFlowErrorWithCompletion:(ConsentFlowCompletion)completion {
+    [self finishConsentFlowWithStatus:@"error" adConsentStatus:AdConsentStatusError didCompleteFlow:NO completion:completion];
+}
+
+- (void)finishConsentFlowWithStatus:(NSString *)statusString adConsentStatus:(AdConsentStatus)adConsentStatus didCompleteFlow:(BOOL)didCompleteFlow completion:(ConsentFlowCompletion)completion {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.adConsentStatus = adConsentStatus;
         self.lastConsentStatus = statusString;
         self.canRequestAds = adConsentStatus == AdConsentStatusAllowed;
-        self.didCompleteConsentFlow = YES;
+        self.didCompleteConsentFlow = didCompleteFlow;
         self.isConsentFlowInProgress = NO;
+        self.latestPresentingViewController = nil;
 
         NSLog(@"[LogMe][ConsentManager] > status: %@ > canRequestAds: %@", statusString, self.canRequestAds ? @"Y" : @"N");
 

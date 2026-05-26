@@ -43,6 +43,14 @@ typedef enum {
 
 + (PIXAdManager *)sharedManager;
 
+/**
+ Initializes the selected mediation adapter.
+
+ Important: adapter initialization may start third-party ad SDKs. When your app uses a consent flow,
+ call this only after consent has completed and ad requests are allowed. For PIXConsentManager-based
+ integrations, that means waiting for startConsentFlowIfNeeded:fromPresentingViewController:completion:
+ to complete and checking canRequestAds before initializing or loading ads.
+ */
 - (void)initializeWithMediationAdapter:(AdManagerAdapter)adapter andConfiguration:(NSDictionary *)configuration;
 - (void)applicationNotificationsEnabled:(BOOL)enabled;
 
@@ -54,4 +62,3 @@ typedef enum {
 - (void)debugEnabledWithConfiguration:(NSDictionary *)configuration;
 
 @end
-
