@@ -20,12 +20,14 @@ typedef void (^ConsentFlowCompletion)(NSString *statusString);
 
 @interface PIXConsentManager : NSObject
 
-@property (nonatomic, weak, nullable) UIViewController *presentingViewController;
 @property (nonatomic, assign, readonly) BOOL canRequestAds;
+@property (nonatomic, assign, readonly) BOOL isConsentFlowInProgress;
+@property (nonatomic, assign, readonly) BOOL didCompleteConsentFlow;
+@property (nonatomic, copy, readonly, nullable) NSString *lastConsentStatus;
 
 + (instancetype)sharedManager;
 
-- (void)startConsentFlow:(ConsentFlow)flow completion:(nullable ConsentFlowCompletion)completion;
+- (void)startConsentFlowIfNeeded:(ConsentFlow)flow fromPresentingViewController:(UIViewController *)viewController completion:(nullable ConsentFlowCompletion)completion;
 
 @end
 

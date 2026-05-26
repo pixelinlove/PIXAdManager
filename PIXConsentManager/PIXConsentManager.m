@@ -20,13 +20,25 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
 @interface PIXConsentManager ()
 
 @property (nonatomic, assign, readwrite) BOOL canRequestAds;
+@property (nonatomic, assign, readwrite) BOOL isConsentFlowInProgress;
+@property (nonatomic, assign, readwrite) BOOL didCompleteConsentFlow;
 @property (nonatomic, assign) ConsentFlow currentConsentFlow;
 @property (nonatomic, assign) AdConsentStatus adConsentStatus;
-@property (nonatomic, copy) NSString *lastConsentStatus;
+@property (nonatomic, copy, readwrite) NSString *lastConsentStatus;
+@property (nonatomic, copy) ConsentFlowCompletion pendingCompletion;
 
 @end
 
 @implementation PIXConsentManager
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _adConsentStatus = AdConsentStatusUnknown;
+        _lastConsentStatus = @"unknown";
+    }
+    return self;
+}
 
 + (instancetype)sharedManager {
     static PIXConsentManager *sharedInstance = nil;
@@ -39,24 +51,49 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
 
 #pragma mark - Entry point
 
-// Resets normalized state, then routes to the selected consent provider flow.
-- (void)startConsentFlow:(ConsentFlow)flow completion:(ConsentFlowCompletion)completion {
+- (void)startConsentFlowIfNeeded:(ConsentFlow)flow fromPresentingViewController:(UIViewController *)viewController completion:(ConsentFlowCompletion)completion {
+    if (![NSThread isMainThread]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self startConsentFlowIfNeeded:flow fromPresentingViewController:viewController completion:completion];
+        });
+        return;
+    }
+
+    [self startConsentFlowIfNeededOnMainThread:flow fromPresentingViewController:viewController completion:completion];
+}
+
+- (void)startConsentFlowIfNeededOnMainThread:(ConsentFlow)flow fromPresentingViewController:(UIViewController *)viewController completion:(ConsentFlowCompletion)completion {
+    if (self.didCompleteConsentFlow) {
+        if (completion) {
+            completion(self.lastConsentStatus);
+        }
+        return;
+    }
+
+    if (self.isConsentFlowInProgress) {
+        self.pendingCompletion = completion;
+        return;
+    }
+
+    self.pendingCompletion = completion;
     self.currentConsentFlow = flow;
     self.adConsentStatus = AdConsentStatusUnknown;
     self.canRequestAds = NO;
-    
+    self.didCompleteConsentFlow = NO;
+    self.isConsentFlowInProgress = YES;
+
     switch (flow) {
         case ConsentFlowNone:
-            [self startNoConsentFlowWithCompletion:completion];
+            [self startNoConsentFlowWithCompletion:nil];
             break;
         case ConsentFlowATT:
-            [self startATTConsentFlowWithCompletion:completion];
+            [self startATTConsentFlowWithCompletion:nil];
             break;
         case ConsentFlowAdMobCMP:
-            [self startAdMobCMPConsentFlowWithCompletion:completion];
+            [self startAdMobCMPConsentFlowFromPresentingViewController:viewController completion:nil];
             break;
         default:
-            [self startUnknownConsentFlowWithCompletion:completion];
+            [self startUnknownConsentFlowWithCompletion:nil];
             break;
     }
 }
@@ -82,7 +119,7 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
     if (@available(iOS 14.5, *)) {
         void (^requestTrackingAuthorization)(void) = ^{
             ATTrackingManagerAuthorizationStatus status = [ATTrackingManager trackingAuthorizationStatus];
-            
+
             if (status == ATTrackingManagerAuthorizationStatusNotDetermined) {
                 [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
                     [self completeConsentFlowForATTWithAuthorizationStatus:status completion:completion];
@@ -104,7 +141,7 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
 // Converts ATT authorization into the provider-agnostic ad request state.
 - (void)completeConsentFlowForATTWithAuthorizationStatus:(ATTrackingManagerAuthorizationStatus)status completion:(ConsentFlowCompletion)completion {
     NSLog(@"[LogMe][ConsentManager][ATT] > status: %lu", (unsigned long)status);
-    
+
     NSString *statusString = @"unknown";
     AdConsentStatus adConsentStatus = AdConsentStatusNotAllowed;
     switch (status) {
@@ -112,23 +149,23 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
             statusString = @"authorized";
             adConsentStatus = AdConsentStatusAllowed;
             break;
-            
+
         case ATTrackingManagerAuthorizationStatusDenied:
             statusString = @"denied";
             adConsentStatus = AdConsentStatusAllowed;
             break;
-            
+
         case ATTrackingManagerAuthorizationStatusRestricted:
             statusString = @"restricted";
             adConsentStatus = AdConsentStatusAllowed;
             break;
-            
+
         case ATTrackingManagerAuthorizationStatusNotDetermined:
             statusString = @"not determined";
             adConsentStatus = AdConsentStatusNotAllowed;
             break;
     }
-    
+
     [self completeConsentFlowWithStatus:statusString adConsentStatus:adConsentStatus completion:completion];
 }
 
@@ -142,22 +179,24 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
 #pragma mark - AdMob CMP Flow
 
 // Updates UMP consent info and presents the AdMob CMP form if required.
-- (void)startAdMobCMPConsentFlowWithCompletion:(ConsentFlowCompletion)completion {
-    UIViewController *presentingViewController = self.presentingViewController;
+- (void)startAdMobCMPConsentFlowFromPresentingViewController:(UIViewController *)presentingViewController completion:(ConsentFlowCompletion)completion {
     if (!presentingViewController) {
-        [NSException raise:NSInternalInconsistencyException
-                    format:@"PIXConsentManager requires presentingViewController to be set before starting ConsentFlowAdMobCMP."];
+        NSLog(@"[LogMe][ConsentManager] > AdMob CMP requires a presenting view controller.");
+        [self completeConsentFlowWithStatus:@"error"
+                            adConsentStatus:AdConsentStatusError
+                                 completion:completion];
+        return;
     }
-    
+
     UMPRequestParameters *parameters = [[UMPRequestParameters alloc] init];
     parameters.tagForUnderAgeOfConsent = NO;
-    
+
 #if DEBUG
     UMPDebugSettings *debugSettings = [[UMPDebugSettings alloc] init];
     debugSettings.geography = UMPDebugGeographyEEA;
     parameters.debugSettings = debugSettings;
 #endif
-    
+
     [UMPConsentInformation.sharedInstance requestConsentInfoUpdateWithParameters:parameters
                                                                completionHandler:^(NSError *_Nullable requestConsentError) {
         if (requestConsentError) {
@@ -211,11 +250,15 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
         self.adConsentStatus = adConsentStatus;
         self.lastConsentStatus = statusString;
         self.canRequestAds = adConsentStatus == AdConsentStatusAllowed;
-        
+        self.didCompleteConsentFlow = YES;
+        self.isConsentFlowInProgress = NO;
+
         NSLog(@"[LogMe][ConsentManager] > status: %@ > canRequestAds: %@", statusString, self.canRequestAds ? @"Y" : @"N");
-        
-        if (completion) {
-            completion(statusString);
+
+        ConsentFlowCompletion pendingCompletion = completion ?: self.pendingCompletion;
+        self.pendingCompletion = nil;
+        if (pendingCompletion) {
+            pendingCompletion(statusString);
         }
     });
 }
@@ -227,7 +270,7 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
 - (void)checkPrivacyConsent:(ATTPromptType)type daysBetweenReminders:(int)days {
     if (@available(iOS 14.5, *)) {
         ATTrackingManagerAuthorizationStatus status = [ATTrackingManager trackingAuthorizationStatus];
-        
+
         NSLog(@"[LogMe][ATTPrompt] > Prompt type: %u - AuthStatus: %lu", type, (unsigned long)status);
         if (status == ATTrackingManagerAuthorizationStatusNotDetermined) {
             switch (type) {
@@ -256,21 +299,21 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
 
 - (BOOL)shouldShowConsentPromptATTWithIntroAlertAfterDays:(int)days {
     // Check enough days have passed.
-    
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
+
     NSDate *lastReminded = [defaults objectForKey:ATTPromptLastReminded];
     NSDate *today = [NSDate date];
-    
+
     if ([today timeIntervalSinceDate:lastReminded] < days * SECONDS_IN_A_DAY) {
         // Do not display as not enough days have passed
         return NO;
     }
-    
+
     // Save current date in case we need to check again
     [defaults setObject:today forKey:ATTPromptLastReminded];
     [defaults synchronize];
-    
+
     return YES;
 }
 
@@ -289,22 +332,22 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
     NSString *alertMessage = NSLocalizedString(@"att.preprompt.message", @"Label for the main message displayed in the pre App Tracking Transparency prompt");
     NSString *okActionLabel = NSLocalizedString(@"att.preprompt.button.ok", @"Label for the OK button");
     NSString *laterActionLabel = NSLocalizedString(@"att.preprompt.button.later", @"Label for the remind-me-later button");
-    
+
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:alertTitle message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
-    
+
     UIAlertAction *laterAction = [UIAlertAction actionWithTitle:laterActionLabel style:UIAlertActionStyleCancel handler:nil];
-    
+
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:okActionLabel
                                                        style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction *_Nonnull action) {
         [self showConsentPromptATTDefault];
     }];
-    
+
     [alert addAction:laterAction];
     [alert addAction:okAction];
-    
+
     alert.preferredAction = okAction;
-    
+
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -313,7 +356,7 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
     UMPRequestParameters *parameters = [[UMPRequestParameters alloc] init];
     // Set tag for under age of consent. Here NO means users are not under age.
     parameters.tagForUnderAgeOfConsent = NO;
-    
+
     // Request an update to the consent information.
     [UMPConsentInformation.sharedInstance requestConsentInfoUpdateWithParameters:parameters
                                                                completionHandler:^(NSError *_Nullable error) {
@@ -355,13 +398,13 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
 }
 
 - (void)showConsentPromptWithAdMobUMP {
-    
+
     // Create a UMPRequestParameters object.
     UMPRequestParameters *parameters = [[UMPRequestParameters alloc] init];
     // Set tag for under age of consent. NO means users are not under age
     // of consent.
     parameters.tagForUnderAgeOfConsent = NO;
-    
+
 #if DEBUG
     UMPDebugSettings *debugSettings = [[UMPDebugSettings alloc] init];
 //    debugSettings.testDeviceIdentifiers = @[ @"TEST-DEVICE-HASHED-ID" ];
@@ -369,7 +412,7 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
     parameters.debugSettings = debugSettings;
     [UMPConsentInformation.sharedInstance reset];
 #endif
-    
+
     __weak __typeof__(self) weakSelf = self;
     // Request an update for the consent information.
     [UMPConsentInformation.sharedInstance
@@ -384,7 +427,7 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
         if (!strongSelf) {
             return;
         }
-        
+
         [UMPConsentForm loadAndPresentIfRequiredFromViewController:strongSelf
                                                  completionHandler:^(NSError *loadAndPresentError) {
             if (loadAndPresentError) {
@@ -392,19 +435,19 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
                 NSLog(@"Error: %@", loadAndPresentError.localizedDescription);
                 return;
             }
-            
+
             // Consent has been gathered.
             __strong __typeof__(self) strongSelf = weakSelf;
             if (!strongSelf) {
                 return;
             }
-            
+
             if (UMPConsentInformation.sharedInstance.canRequestAds) {
                 [strongSelf startGoogleMobileAdsSDK];
             }
         }];
     }];
-    
+
     // Check if you can initialize the Google Mobile Ads SDK in parallel
     // while checking for new consent information. Consent obtained in
     // the previous session can be used to request ads.
@@ -419,7 +462,7 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
         // TODO: Initialise ad manager.
         // Initialize the Google Mobile Ads SDK.
         // [GADMobileAds.sharedInstance startWithCompletionHandler:nil];
-        
+
         // TODO: Request an ad.
         // [GADInterstitialAd loadWithAdUnitID...];
     });
@@ -428,7 +471,7 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
 
 - (void)logATTrackingManagerAuthorizationStatus:(ATTrackingManagerAuthorizationStatus)status API_AVAILABLE(ios(14)) {
     NSLog(@"[LogMe][ATTPrompt] > status: %lu", (unsigned long)status);
-    
+
     NSString *trackingLabel = @"unknown";
     if (status == ATTrackingManagerAuthorizationStatusAuthorized) {
         trackingLabel = @"authorized";
@@ -436,7 +479,7 @@ typedef NS_ENUM(NSInteger, AdConsentStatus) {
     if (status == ATTrackingManagerAuthorizationStatusDenied) {
         trackingLabel = @"denied";
     }
-    
+
     ///////////////////////
     // Begin Tracking Block
     NSArray *trackingData = @[ @"interface", @"attprompt", trackingLabel ];
