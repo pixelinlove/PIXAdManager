@@ -18,6 +18,7 @@ static NSString * const kMediationAdapter = @"AdMob";
 @property (nonatomic, assign) BOOL FBTrackingEnabled;
 @property (nonatomic, copy) NSString *amazonAPSApp;
 @property (nonatomic, copy) NSString *amazonAPSSlotID;
+@property (nonatomic, assign) BOOL amazonAPSConfigured;
 @property (nonatomic, assign) BOOL shouldLoadAd;
 
 @end
@@ -35,10 +36,21 @@ static NSString * const kMediationAdapter = @"AdMob";
     
     self.configuration = configuration;
     self.adUnitID = self.configuration[kAdManagerConfigurationAdUnitKey];
-    self.adSize = CGSizeFromString(self.configuration[kAdManagerConfigurationAdSizeKey]);
-    self.FBTrackingEnabled = [self.configuration[kAdManagerConfigurationFBTrackingEnabledKey] boolValue];
-    self.amazonAPSApp = self.configuration[kAdManagerConfigurationAmazonAPSAppKey];
-    self.amazonAPSSlotID = self.configuration[kAdManagerConfigurationAmazonAPSSlotIDKey];
+
+    id adSizeValue = self.configuration[kAdManagerConfigurationAdSizeKey];
+    self.adSize = [adSizeValue isKindOfClass:[NSString class]] ? CGSizeFromString(adSizeValue) : CGSizeZero;
+
+    id FBTrackingEnabledValue = self.configuration[kAdManagerConfigurationFBTrackingEnabledKey];
+    self.FBTrackingEnabled = [FBTrackingEnabledValue respondsToSelector:@selector(boolValue)] ? [FBTrackingEnabledValue boolValue] : NO;
+
+    id amazonAPSAppValue = self.configuration[kAdManagerConfigurationAmazonAPSAppKey];
+    id amazonAPSSlotIDValue = self.configuration[kAdManagerConfigurationAmazonAPSSlotIDKey];
+    self.amazonAPSApp = [amazonAPSAppValue isKindOfClass:[NSString class]] ? amazonAPSAppValue : nil;
+    self.amazonAPSSlotID = [amazonAPSSlotIDValue isKindOfClass:[NSString class]] ? amazonAPSSlotIDValue : nil;
+    self.amazonAPSConfigured = self.amazonAPSApp.length > 0 &&
+                               self.amazonAPSSlotID.length > 0 &&
+                               [[NSUUID alloc] initWithUUIDString:self.amazonAPSApp] != nil &&
+                               [[NSUUID alloc] initWithUUIDString:self.amazonAPSSlotID] != nil;
     
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.configuration);
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.adUnitID);
@@ -52,9 +64,13 @@ static NSString * const kMediationAdapter = @"AdMob";
     #endif
     
     #ifdef HAS_INCLUDE_AMAZONAPS
+    if (self.amazonAPSConfigured) {
         [[DTBAds sharedInstance] setAppKey:self.amazonAPSApp]; //@"d72716b8-271b-416f-9554-7240e15734ca"
         DTBAdNetworkInfo *dtbAdNetworkInfo = [[DTBAdNetworkInfo alloc] initWithNetworkName:DTBADNETWORK_ADMOB];
         [[DTBAds sharedInstance] setAdNetworkInfo:dtbAdNetworkInfo];
+    } else if (self.amazonAPSApp.length > 0 || self.amazonAPSSlotID.length > 0) {
+        NSLog(@"[AdManager][%@] > *** WARNING *** > Amazon APS configuration is incomplete or invalid", self.name);
+    }
     #endif
     
     // AdMob initialisation
@@ -124,8 +140,10 @@ static NSString * const kMediationAdapter = @"AdMob";
         GADRequest *request = [GADRequest request];
 
         #ifdef HAS_INCLUDE_AMAZONAPS
+        if (self.amazonAPSConfigured) {
             NSString *slotId = self.amazonAPSSlotID; //@"842b59ef-2c34-4308-8be6-b38a6a912f26";
             [request registerAdNetworkExtras:[APSAdMobUtils extrasWithSlotUUID:slotId adFormat:APSAdFormatBanner]];
+        }
         #endif
 
         [self.adView loadRequest:request];

@@ -14,7 +14,7 @@
   #define HAS_INCLUDE_FBADSETTINGS
 #endif
 
-#if __has_include(<DTBiOSSDK/DTBiOSSDK.h>)
+#if __has_include(<DTBiOSSDK/DTBiOSSDK.h>) && __has_include(<APSAdMobUtils.h>)
     #import <DTBiOSSDK/DTBiOSSDK.h>
     #import <APSAdMobUtils.h>
     #define HAS_INCLUDE_AMAZONAPS

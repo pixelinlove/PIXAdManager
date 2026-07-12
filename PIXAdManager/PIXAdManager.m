@@ -31,6 +31,8 @@
 
 @property (nonatomic, strong) id<PIXAdManagerAdapter> adapter;
 
+- (BOOL)isConfigurationValid:(NSDictionary *)configuration forAdapter:(AdManagerAdapter)adapter;
+
 @end
 
 @implementation PIXAdManager
@@ -52,6 +54,36 @@
     return adapterName;
 }
 
+- (BOOL)isConfigurationValid:(NSDictionary *)configuration forAdapter:(AdManagerAdapter)adapter {
+    if (![configuration isKindOfClass:[NSDictionary class]]) {
+        NSLog(@"[AdManager] > *** WARNING *** > Adapter configuration is missing or invalid");
+        return NO;
+    }
+
+    NSArray<NSString *> *requiredKeys = @[];
+    switch (adapter) {
+        case AdManagerAdapterAdMob:
+            requiredKeys = @[kAdManagerConfigurationAdUnitKey];
+            break;
+        case AdManagerAdapterAppLovin:
+            requiredKeys = @[kAdManagerConfigurationSDKKeyKey, kAdManagerConfigurationAdUnitKey];
+            break;
+        default:
+            return NO;
+    }
+
+    for (NSString *key in requiredKeys) {
+        id value = configuration[key];
+        if (![value isKindOfClass:[NSString class]] ||
+            [[(NSString *)value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0) {
+            NSLog(@"[AdManager] > *** WARNING *** > Missing or invalid configuration value: %@", key);
+            return NO;
+        }
+    }
+
+    return YES;
+}
+
 - (void)initializeWithMediationAdapter:(AdManagerAdapter)adapter andConfiguration:(NSDictionary *)configuration {
     NSString *className = [self classNameForAdapter:adapter];
     if (className == nil) {
@@ -61,6 +93,10 @@
     Class adapterClass = NSClassFromString(className);
     if (adapterClass == nil) {
         NSLog(@"[AdManager] > *** WARNING *** > Can't find required adapter file: %@.h", className);
+        return;
+    }
+
+    if (![self isConfigurationValid:configuration forAdapter:adapter]) {
         return;
     }
 
