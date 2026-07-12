@@ -103,12 +103,23 @@
         return;
     }
 
+    if (![adapterClass conformsToProtocol:@protocol(PIXAdManagerAdapter)]) {
+        NSLog(@"[AdManager] > *** WARNING *** > Adapter class does not conform to PIXAdManagerAdapter: %@", className);
+        return;
+    }
+
     if (![self isConfigurationValid:configuration forAdapter:adapter]) {
         return;
     }
 
     if ([self.adapter isKindOfClass:adapterClass]) {
         NSLog(@"[AdManager] > Adapter already initialized: %@", self.adapter.name);
+        return;
+    }
+
+    id<PIXAdManagerAdapter> newAdapter = (id<PIXAdManagerAdapter>)[[adapterClass alloc] init];
+    if (newAdapter == nil) {
+        NSLog(@"[AdManager] > *** WARNING *** > Unable to create adapter: %@", className);
         return;
     }
 
@@ -119,7 +130,6 @@
         [self.adapter.adView removeFromSuperview];
     }
 
-    id<PIXAdManagerAdapter> newAdapter = (id<PIXAdManagerAdapter>)[[adapterClass alloc] init];
     self.adapter = newAdapter;
     newAdapter.delegate = self;
 
