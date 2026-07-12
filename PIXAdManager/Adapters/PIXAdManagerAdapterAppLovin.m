@@ -65,7 +65,11 @@ static NSString * const kAppLovinErrorDomain = @"PIXAdManager.AppLovin";
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.FBTrackingEnabled ? @"Y" : @"N");
     
     #ifdef HAS_INCLUDE_FBADSETTINGS
-        [FBAdSettings setAdvertiserTrackingEnabled:self.FBTrackingEnabled];
+        if (@available(iOS 17.0, *)) {
+            // Audience Network reads the ATT status directly on iOS 17 and later.
+        } else {
+            [FBAdSettings setAdvertiserTrackingEnabled:self.FBTrackingEnabled];
+        }
     #endif
     
     // AppLovin initialisation
