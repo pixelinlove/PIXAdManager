@@ -200,7 +200,8 @@
     [self showAdView:YES animated:YES];
 }
 
-- (void)adManagerDidFailToLoadAd {
+- (void)adManagerDidFailToLoadAdWithError:(NSError *)error {
+    NSLog(@"[AdManager] > Failed to load ad: %@ (%@, %ld)", error.localizedDescription, error.domain, (long)error.code);
     [self showAdView:NO animated:YES];
 }
 

@@ -235,6 +235,14 @@
     }
 }
 
+- (void)adapterDidFailToLoadAdWithError:(NSError *)error {
+    if ([self.delegate respondsToSelector:@selector(adManagerDidFailToLoadAdWithError:)]) {
+        [self.delegate adManagerDidFailToLoadAdWithError:error];
+    } else {
+        [self adapterDidFailToLoadAd];
+    }
+}
+
 - (UIViewController *)viewControllerForAdapter {
     return [self.delegate viewControllerForAdManager];
 }

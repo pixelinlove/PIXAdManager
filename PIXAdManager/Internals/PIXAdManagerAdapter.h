@@ -25,6 +25,7 @@ static NSString *const kAdManagerConfigurationAmazonAPSSlotIDKey = @"amazonAPSSl
 @optional
 - (void)adapterDidLoadAd;
 - (void)adapterDidFailToLoadAd;
+- (void)adapterDidFailToLoadAdWithError:(NSError *)error;
 
 @end
 

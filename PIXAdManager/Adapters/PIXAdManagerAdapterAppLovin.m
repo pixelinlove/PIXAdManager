@@ -9,6 +9,7 @@
 #import "PIXAdManagerAdapterAppLovin.h"
 
 static NSString * const kMediationAdapter = @"AppLovin";
+static NSString * const kAppLovinErrorDomain = @"PIXAdManager.AppLovin";
 
 @interface PIXAdManagerAdapterAppLovin ()
 
@@ -151,8 +152,16 @@ static NSString * const kMediationAdapter = @"AppLovin";
 
 - (void)didFailToLoadAdForAdUnitIdentifier:(nonnull NSString *)adUnitIdentifier withError:(nonnull MAError *)error {
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), [error message]);
-    if (self.shouldLoadAd && [self.delegate respondsToSelector:@selector(adapterDidFailToLoadAd)]) {
-        [self.delegate adapterDidFailToLoadAd];
+    if (self.shouldLoadAd) {
+        NSString *errorMessage = error.message ?: @"AppLovin failed to load an ad";
+        NSError *adapterError = [NSError errorWithDomain:kAppLovinErrorDomain
+                                                     code:(NSInteger)error.code
+                                                 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
+        if ([self.delegate respondsToSelector:@selector(adapterDidFailToLoadAdWithError:)]) {
+            [self.delegate adapterDidFailToLoadAdWithError:adapterError];
+        } else if ([self.delegate respondsToSelector:@selector(adapterDidFailToLoadAd)]) {
+            [self.delegate adapterDidFailToLoadAd];
+        }
     }
 }
 

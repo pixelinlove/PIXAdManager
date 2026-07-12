@@ -30,6 +30,7 @@ typedef enum {
 
 - (void)adManagerDidLoadAd;
 - (void)adManagerDidFailToLoadAd;
+- (void)adManagerDidFailToLoadAdWithError:(NSError *)error;
 - (void)adManagerDidPauseAd;
 
 @end
