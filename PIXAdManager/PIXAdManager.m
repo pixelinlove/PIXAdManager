@@ -158,12 +158,23 @@
 - (void)loadAd {
     [self assertMainThread];
     NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
-    
+
+    if (self.adapter == nil) {
+        NSLog(@"[AdManager] > *** WARNING *** > An adapter must be initialized before loading an ad");
+        return;
+    }
+
     UIView *adView = self.adapter.adView;
+    if (adView == nil) {
+        NSLog(@"[AdManager] > *** WARNING *** > The initialized adapter did not provide an ad view");
+        return;
+    }
+
     if (adView.superview == nil) {
         NSLog(@"[AdManager] > *** WARNING *** > AdView needs to be attached to the superView before loading an ad");
+        return;
     }
-    
+
     [self.adapter adapterViewLoadAd];
 }
 
@@ -182,16 +193,10 @@
     [self assertMainThread];
     NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
     
     if (enabled) {
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(applicationNotificationForAdManager:)
-                                                     name:UIApplicationDidEnterBackgroundNotification
-                                                   object:nil];
-        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(applicationNotificationForAdManager:)
                                                      name:UIApplicationWillResignActiveNotification
@@ -207,12 +212,10 @@
 - (void)applicationNotificationForAdManager:(NSNotification *)notification {
     [self assertMainThread];
 
-    if (notification.name == UIApplicationDidBecomeActiveNotification) {
+    if ([notification.name isEqualToString:UIApplicationDidBecomeActiveNotification]) {
         NSLog(@"[AdManager] > Application Did Become Active - Banner will refresh");
         [self loadAd];
-    }
-    
-    if (notification.name == UIApplicationWillResignActiveNotification) {
+    } else if ([notification.name isEqualToString:UIApplicationWillResignActiveNotification]) {
         NSLog(@"[AdManager] > Application Will Resign Active - Banner will hide");
         [self pauseAd];
     }
