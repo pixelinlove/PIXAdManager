@@ -17,6 +17,7 @@ static NSString * const kMediationAdapter = @"AppLovin";
 @property (nonatomic, copy) NSString *adUnitID;
 @property (nonatomic, assign) CGSize adSize;
 @property (nonatomic, assign) BOOL FBTrackingEnabled;
+@property (nonatomic, assign) BOOL shouldLoadAd;
 
 @end
 
@@ -60,7 +61,9 @@ static NSString * const kMediationAdapter = @"AppLovin";
     [[ALSdk shared] initializeWithConfiguration:initConfig completionHandler:^(ALSdkConfiguration *sdkConfig) {
         NSLog(@"[AdManager][%@] > SDK initialized ", self.name);
         self->_isInitialized = YES;
-        // Start loading ads
+        if (self.shouldLoadAd) {
+            [self adapterViewLoadAd];
+        }
     }];
 }
 
@@ -103,20 +106,19 @@ static NSString * const kMediationAdapter = @"AppLovin";
 
 - (void)adapterViewLoadAd {
     NSLog(@"[AdManager][%@] > %@ > Initialized? %@", self.name, NSStringFromSelector(_cmd), self.isInitialized ? @"Yes" : @"No");
-    
+
+    self.shouldLoadAd = YES;
+
     if (self.isInitialized) {
         [self.adView loadAd];
         [self.adView startAutoRefresh];
-    } else {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self adapterViewLoadAd];
-        });
     }
 }
 
 - (void)adapterViewStopAd {
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
-    
+
+    self.shouldLoadAd = NO;
     [self.adView stopAutoRefresh];
 }
 
@@ -124,14 +126,14 @@ static NSString * const kMediationAdapter = @"AppLovin";
 
 - (void)didLoadAd:(nonnull MAAd *)ad {
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), ad);
-    if ([self.delegate respondsToSelector:@selector(adapterDidLoadAd)]) {
+    if (self.shouldLoadAd && [self.delegate respondsToSelector:@selector(adapterDidLoadAd)]) {
         [self.delegate adapterDidLoadAd];
     }
 }
 
 - (void)didFailToLoadAdForAdUnitIdentifier:(nonnull NSString *)adUnitIdentifier withError:(nonnull MAError *)error {
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), [error message]);
-    if ([self.delegate respondsToSelector:@selector(adapterDidFailToLoadAd)]) {
+    if (self.shouldLoadAd && [self.delegate respondsToSelector:@selector(adapterDidFailToLoadAd)]) {
         [self.delegate adapterDidFailToLoadAd];
     }
 }

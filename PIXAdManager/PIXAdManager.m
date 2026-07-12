@@ -53,12 +53,6 @@
 }
 
 - (void)initializeWithMediationAdapter:(AdManagerAdapter)adapter andConfiguration:(NSDictionary *)configuration {
-//    if (_initialisedMediationAdapter != 0) {
-//        //TODO: Raise error. Mediation Adapter already initialised and can't be changed.
-//        [NSException raise:NSInternalInconsistencyException
-//                    format:@"PIXAdManager can be initialised only once"];
-//        return;
-//    }
     NSString *className = [self classNameForAdapter:adapter];
     if (className == nil) {
         NSLog(@"[AdManager] > *** WARNING *** > No class available for this adapter");
@@ -69,12 +63,25 @@
         NSLog(@"[AdManager] > *** WARNING *** > Can't find required adapter file: %@.h", className);
         return;
     }
-    self.adapter = (id<PIXAdManagerAdapter>)[[adapterClass alloc] init];
-    self.adapter.delegate = self;
-    
-    [self.adapter initWithConfiguration:configuration];
-    [self.adapter adapterViewInit];
-    
+
+    if ([self.adapter isKindOfClass:adapterClass]) {
+        NSLog(@"[AdManager] > Adapter already initialized: %@", self.adapter.name);
+        return;
+    }
+
+    if (self.adapter) {
+        NSLog(@"[AdManager] > Switching adapter from %@ to %@", self.adapter.name, className);
+        [self.adapter adapterViewStopAd];
+        self.adapter.delegate = nil;
+        [self.adapter.adView removeFromSuperview];
+    }
+
+    id<PIXAdManagerAdapter> newAdapter = (id<PIXAdManagerAdapter>)[[adapterClass alloc] init];
+    self.adapter = newAdapter;
+    newAdapter.delegate = self;
+
+    [newAdapter initWithConfiguration:configuration];
+    [newAdapter adapterViewInit];
 }
 
 - (NSString *)classNameForAdapter:(AdManagerAdapter)adapter {

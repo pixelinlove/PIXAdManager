@@ -18,6 +18,7 @@ static NSString * const kMediationAdapter = @"AdMob";
 @property (nonatomic, assign) BOOL FBTrackingEnabled;
 @property (nonatomic, copy) NSString *amazonAPSApp;
 @property (nonatomic, copy) NSString *amazonAPSSlotID;
+@property (nonatomic, assign) BOOL shouldLoadAd;
 
 @end
 
@@ -67,6 +68,9 @@ static NSString * const kMediationAdapter = @"AdMob";
         }
         NSLog(@"[AdManager][%@] > SDK initialized ", self.name);
         self->_isInitialized = YES;
+        if (self.shouldLoadAd) {
+            [self adapterViewLoadAd];
+        }
     }];
 }
 
@@ -113,28 +117,26 @@ static NSString * const kMediationAdapter = @"AdMob";
 
 - (void)adapterViewLoadAd {
     NSLog(@"[AdManager][%@] > %@ > Initialized? %@", self.name, NSStringFromSelector(_cmd), self.isInitialized ? @"Yes" : @"No");
-    
+
+    self.shouldLoadAd = YES;
+
     if (self.isInitialized) {
-        
         GADRequest *request = [GADRequest request];
-        
+
         #ifdef HAS_INCLUDE_AMAZONAPS
             NSString *slotId = self.amazonAPSSlotID; //@"842b59ef-2c34-4308-8be6-b38a6a912f26";
             [request registerAdNetworkExtras:[APSAdMobUtils extrasWithSlotUUID:slotId adFormat:APSAdFormatBanner]];
         #endif
-        
+
         [self.adView loadRequest:request];
         self.adView.autoloadEnabled = YES;
-    } else {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self adapterViewLoadAd];
-        });
     }
 }
 
 - (void)adapterViewStopAd {
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
-    
+
+    self.shouldLoadAd = NO;
     self.adView.autoloadEnabled = NO;
 }
 
@@ -142,14 +144,14 @@ static NSString * const kMediationAdapter = @"AdMob";
 
 - (void)bannerViewDidReceiveAd:(GADBannerView *)bannerView {
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), bannerView);
-    if ([self.delegate respondsToSelector:@selector(adapterDidLoadAd)]) {
+    if (self.shouldLoadAd && [self.delegate respondsToSelector:@selector(adapterDidLoadAd)]) {
         [self.delegate adapterDidLoadAd];
     }
 }
 
 - (void)bannerView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(NSError *)error {
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), [error localizedDescription]);
-    if ([self.delegate respondsToSelector:@selector(adapterDidFailToLoadAd)]) {
+    if (self.shouldLoadAd && [self.delegate respondsToSelector:@selector(adapterDidFailToLoadAd)]) {
         [self.delegate adapterDidFailToLoadAd];
     }
 }
