@@ -18,6 +18,8 @@ static NSString * const kMediationAdapter = @"AppLovin";
 @property (nonatomic, assign) CGSize adSize;
 @property (nonatomic, assign) BOOL FBTrackingEnabled;
 @property (nonatomic, assign) BOOL shouldLoadAd;
+@property (nonatomic, strong) NSLayoutConstraint *adViewWidthConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *adViewHeightConstraint;
 
 @end
 
@@ -84,6 +86,7 @@ static NSString * const kMediationAdapter = @"AppLovin";
     UIView *superView = self.adView.superview;
     if (superView == nil) {
         NSLog(@"[AdManager] > *** WARNING *** > AdView needs to be attached to the superView before loading an ad");
+        return;
     }
     
     CGRect frame = superView.frame;
@@ -102,8 +105,14 @@ static NSString * const kMediationAdapter = @"AppLovin";
     }
     
     // AdView Size customisation logic
-    [self.adView.widthAnchor constraintEqualToConstant:adSize.width].active = YES;
-    [self.adView.heightAnchor constraintEqualToConstant:adSize.height].active = YES;
+    if (self.adViewWidthConstraint == nil) {
+        self.adViewWidthConstraint = [self.adView.widthAnchor constraintEqualToConstant:adSize.width];
+        self.adViewHeightConstraint = [self.adView.heightAnchor constraintEqualToConstant:adSize.height];
+        [NSLayoutConstraint activateConstraints:@[self.adViewWidthConstraint, self.adViewHeightConstraint]];
+    } else {
+        self.adViewWidthConstraint.constant = adSize.width;
+        self.adViewHeightConstraint.constant = adSize.height;
+    }
     
     [superView layoutIfNeeded];
 }

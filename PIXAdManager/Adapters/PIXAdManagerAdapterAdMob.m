@@ -105,6 +105,7 @@ static NSString * const kMediationAdapter = @"AdMob";
     UIView *superView = self.adView.superview;
     if (superView == nil) {
         NSLog(@"[AdManager] > *** WARNING *** > AdView needs to be attached to the superView before loading an ad");
+        return;
     }
     
     CGRect frame = superView.frame;
@@ -123,7 +124,7 @@ static NSString * const kMediationAdapter = @"AdMob";
     }
     
     // AdView Size customisation logic
-    self.adView.adSize = GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth(adSize.width);
+    self.adView.adSize = GADLargeAnchoredAdaptiveBannerAdSizeWithWidth(adSize.width);
     if (self.adSize.height > 0.0f) {
         self.adView.adSize = GADAdSizeFromCGSize(adSize);
     }
