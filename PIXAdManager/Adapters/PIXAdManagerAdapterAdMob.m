@@ -7,11 +7,26 @@
 //
 
 #import "PIXAdManagerAdapterAdMob.h"
+#import "PIXAdManagerAdapter.h"
+@import GoogleMobileAds;
+
+#if __has_include(<FBAudienceNetwork/FBAdSettings.h>)
+    #import <FBAudienceNetwork/FBAdSettings.h>
+    #define HAS_INCLUDE_FBADSETTINGS
+#endif
+
+#if __has_include(<DTBiOSSDK/DTBiOSSDK.h>) && __has_include(<APSAdMobUtils.h>)
+    #import <DTBiOSSDK/DTBiOSSDK.h>
+    #import <APSAdMobUtils.h>
+    #define HAS_INCLUDE_AMAZONAPS
+#endif
 
 static NSString * const kMediationAdapter = @"AdMob";
 
-@interface PIXAdManagerAdapterAdMob ()
+@interface PIXAdManagerAdapterAdMob () <PIXAdManagerAdapter, GADBannerViewDelegate>
 
+@property (nonatomic, strong, readwrite) GADBannerView *adView;
+@property (nonatomic, assign, readwrite) BOOL isInitialized;
 @property (nonatomic, strong) NSDictionary *configuration;
 @property (nonatomic, copy) NSString *adUnitID;
 @property (nonatomic, assign) CGSize adSize;
@@ -27,6 +42,7 @@ static NSString * const kMediationAdapter = @"AdMob";
 @implementation PIXAdManagerAdapterAdMob
 
 @synthesize isInitialized = _isInitialized;
+@synthesize delegate = _delegate;
 
 - (NSString *)name {
     return kMediationAdapter;

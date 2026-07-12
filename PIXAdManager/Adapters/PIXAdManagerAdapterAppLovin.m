@@ -7,12 +7,21 @@
 //
 
 #import "PIXAdManagerAdapterAppLovin.h"
+#import "PIXAdManagerAdapter.h"
+#import <AppLovinSDK/AppLovinSDK.h>
+
+#if __has_include(<FBAudienceNetwork/FBAdSettings.h>)
+    #import <FBAudienceNetwork/FBAdSettings.h>
+    #define HAS_INCLUDE_FBADSETTINGS
+#endif
 
 static NSString * const kMediationAdapter = @"AppLovin";
 static NSString * const kAppLovinErrorDomain = @"PIXAdManager.AppLovin";
 
-@interface PIXAdManagerAdapterAppLovin ()
+@interface PIXAdManagerAdapterAppLovin () <PIXAdManagerAdapter, MAAdViewAdDelegate>
 
+@property (nonatomic, strong, readwrite) MAAdView *adView;
+@property (nonatomic, assign, readwrite) BOOL isInitialized;
 @property (nonatomic, strong) NSDictionary *configuration;
 @property (nonatomic, copy) NSString *sdkKey;
 @property (nonatomic, copy) NSString *adUnitID;
@@ -28,6 +37,7 @@ static NSString * const kAppLovinErrorDomain = @"PIXAdManager.AppLovin";
 @implementation PIXAdManagerAdapterAppLovin
 
 @synthesize isInitialized = _isInitialized;
+@synthesize delegate = _delegate;
 
 - (NSString *)name {
     return kMediationAdapter;
