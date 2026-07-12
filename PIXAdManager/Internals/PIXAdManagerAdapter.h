@@ -38,7 +38,7 @@ static NSString *const kAdManagerConfigurationAmazonAPSSlotIDKey = @"amazonAPSSl
 @property (nonatomic, assign, readonly) BOOL isInitialized;
 @property (nonatomic, weak) id<PIXAdManagerAdapterDelegate> delegate;
 
-- (void)initWithConfiguration:(NSDictionary *)configuration;
+- (void)configureWithConfiguration:(NSDictionary *)configuration;
 - (void)adapterViewInit;
 - (void)adapterViewAdjustSize;
 - (void)adapterViewLoadAd;

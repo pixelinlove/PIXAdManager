@@ -133,7 +133,7 @@
     self.adapter = newAdapter;
     newAdapter.delegate = self;
 
-    [newAdapter initWithConfiguration:configuration];
+    [newAdapter configureWithConfiguration:configuration];
     [newAdapter adapterViewInit];
 }
 

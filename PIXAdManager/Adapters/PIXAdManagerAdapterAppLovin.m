@@ -33,7 +33,7 @@ static NSString * const kAppLovinErrorDomain = @"PIXAdManager.AppLovin";
     return kMediationAdapter;
 }
 
-- (void)initWithConfiguration:(NSDictionary *)configuration {
+- (void)configureWithConfiguration:(NSDictionary *)configuration {
     NSLog(@"[AdManager][%@] > %@ ", self.name, NSStringFromSelector(_cmd));
     
     self.configuration = configuration;
