@@ -27,7 +27,7 @@
 #endif
 
 
-@interface PIXAdManager ()
+@interface PIXAdManager () <PIXAdManagerAdapterDelegate>
 
 @property (nonatomic, strong) id<PIXAdManagerAdapter> adapter;
 

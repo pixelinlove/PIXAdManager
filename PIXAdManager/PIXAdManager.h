@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PIXAdManagerAdapter.h"
 
 typedef enum {
     AdManagerAdapterNone = 0,
@@ -36,7 +35,7 @@ typedef enum {
 @end
 
 // PIXAdManager singleton class definition
-@interface PIXAdManager : NSObject <PIXAdManagerAdapterDelegate>
+@interface PIXAdManager : NSObject
 
 @property (nonatomic, strong, readonly) UIView *adView;
 @property (nonatomic, copy, readonly) NSString *adapterName;
