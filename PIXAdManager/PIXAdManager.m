@@ -31,6 +31,7 @@
 
 @property (nonatomic, strong) id<PIXAdManagerAdapter> adapter;
 
+- (void)assertMainThread;
 - (BOOL)isConfigurationValid:(NSDictionary *)configuration forAdapter:(AdManagerAdapter)adapter;
 
 @end
@@ -44,6 +45,10 @@
         sharedInstance = [[self alloc] init];
     });
     return sharedInstance;
+}
+
+- (void)assertMainThread {
+    NSAssert([NSThread isMainThread], @"PIXAdManager UI and SDK operations must run on the main thread");
 }
 
 - (NSString *)adapterName {
@@ -85,6 +90,8 @@
 }
 
 - (void)initializeWithMediationAdapter:(AdManagerAdapter)adapter andConfiguration:(NSDictionary *)configuration {
+    [self assertMainThread];
+
     NSString *className = [self classNameForAdapter:adapter];
     if (className == nil) {
         NSLog(@"[AdManager] > *** WARNING *** > No class available for this adapter");
@@ -138,15 +145,18 @@
 
 
 - (UIView *)adView {
+    [self assertMainThread];
     return (UIView *)self.adapter.adView;
 }
 
 - (void)adViewSetupSize {
+    [self assertMainThread];
     NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     [self.adapter adapterViewAdjustSize];
 }
 
 - (void)loadAd {
+    [self assertMainThread];
     NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     
     UIView *adView = self.adapter.adView;
@@ -158,6 +168,7 @@
 }
 
 - (void)pauseAd {
+    [self assertMainThread];
     NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     [self.adapter adapterViewStopAd];
     if ([self.delegate respondsToSelector:@selector(adManagerDidPauseAd)]) {
@@ -168,6 +179,7 @@
 #pragma mark - Application notifications handling
 
 - (void)applicationNotificationsEnabled:(BOOL)enabled {
+    [self assertMainThread];
     NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
@@ -193,6 +205,8 @@
 }
 
 - (void)applicationNotificationForAdManager:(NSNotification *)notification {
+    [self assertMainThread];
+
     if (notification.name == UIApplicationDidBecomeActiveNotification) {
         NSLog(@"[AdManager] > Application Did Become Active - Banner will refresh");
         [self loadAd];
@@ -225,6 +239,7 @@
 #pragma mark - Debugging
 
 - (void)debugEnabledWithConfiguration:(NSDictionary *)configuration {
+    [self assertMainThread];
     NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     NSLog(@"[AdManager] > *** WARNING *** > Debug mode enabled");
 

@@ -82,11 +82,13 @@ static NSString * const kMediationAdapter = @"AdMob";
             GADAdapterStatus *adapterStatus = adapterStatuses[adapter];
             NSLog(@"[AdManager][%@] > SDK initialization > Adapter Name: %@, Description: %@, Latency: %f", self.name, adapter, adapterStatus.description, adapterStatus.latency);
         }
-        NSLog(@"[AdManager][%@] > SDK initialized ", self.name);
-        self->_isInitialized = YES;
-        if (self.shouldLoadAd) {
-            [self adapterViewLoadAd];
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"[AdManager][%@] > SDK initialized ", self.name);
+            self->_isInitialized = YES;
+            if (self.shouldLoadAd) {
+                [self adapterViewLoadAd];
+            }
+        });
     }];
 }
 

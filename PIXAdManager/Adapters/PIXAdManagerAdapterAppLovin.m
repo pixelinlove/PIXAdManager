@@ -65,11 +65,13 @@ static NSString * const kMediationAdapter = @"AppLovin";
     }];
     
     [[ALSdk shared] initializeWithConfiguration:initConfig completionHandler:^(ALSdkConfiguration *sdkConfig) {
-        NSLog(@"[AdManager][%@] > SDK initialized ", self.name);
-        self->_isInitialized = YES;
-        if (self.shouldLoadAd) {
-            [self adapterViewLoadAd];
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"[AdManager][%@] > SDK initialized ", self.name);
+            self->_isInitialized = YES;
+            if (self.shouldLoadAd) {
+                [self adapterViewLoadAd];
+            }
+        });
     }];
 }
 
