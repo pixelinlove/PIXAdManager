@@ -242,11 +242,11 @@
 #pragma mark - Debugging
 
 - (void)debugEnabledWithConfiguration:(NSDictionary *)configuration {
+#if DEBUG
     [self assertMainThread];
     NSLog(@"[AdManager] > %@", NSStringFromSelector(_cmd));
     NSLog(@"[AdManager] > *** WARNING *** > Debug mode enabled");
 
-#if DEBUG
     NSLog(@"[AdManager] > IDFA: %@", [ASIdentifierManager sharedManager].advertisingIdentifier);
     
     NSDictionary *testDevices = [configuration objectForKey:@"testDevices"];
@@ -272,9 +272,8 @@
         [[DTBAds sharedInstance] setTestMode:YES];
     #endif
 
-#endif
-    
     [self.adapter adapterViewDebug];
+#endif
 }
 
 @end

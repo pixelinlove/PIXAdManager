@@ -20,6 +20,7 @@ static NSString * const kMediationAdapter = @"AdMob";
 @property (nonatomic, copy) NSString *amazonAPSSlotID;
 @property (nonatomic, assign) BOOL amazonAPSConfigured;
 @property (nonatomic, assign) BOOL shouldLoadAd;
+@property (nonatomic, strong) UITapGestureRecognizer *debugGestureRecognizer;
 
 @end
 
@@ -52,12 +53,14 @@ static NSString * const kMediationAdapter = @"AdMob";
                                [[NSUUID alloc] initWithUUIDString:self.amazonAPSApp] != nil &&
                                [[NSUUID alloc] initWithUUIDString:self.amazonAPSSlotID] != nil;
     
-    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.configuration);
-    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.adUnitID);
+    #if DEBUG
+        NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.configuration);
+        NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.adUnitID);
+        NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.amazonAPSApp);
+        NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.amazonAPSSlotID);
+    #endif
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), NSStringFromCGSize(self.adSize));
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.FBTrackingEnabled ? @"Y" : @"N");
-    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.amazonAPSApp);
-    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.amazonAPSSlotID);
     
     #ifdef HAS_INCLUDE_FBADSETTINGS
         [FBAdSettings setAdvertiserTrackingEnabled:self.FBTrackingEnabled];
@@ -181,15 +184,21 @@ static NSString * const kMediationAdapter = @"AdMob";
 
 - (void)adapterViewDebug {
     UIView *gestureTriggerView = [self.delegate viewControllerForAdapter].view;
-    UITapGestureRecognizer *adViewDebugGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleViewDebugGesture:)];
-    adViewDebugGestureRecognizer.numberOfTapsRequired = 3;
-    [gestureTriggerView addGestureRecognizer:adViewDebugGestureRecognizer];
+    if (gestureTriggerView == nil || self.debugGestureRecognizer != nil) {
+        return;
+    }
+
+    self.debugGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleViewDebugGesture:)];
+    self.debugGestureRecognizer.numberOfTapsRequired = 3;
+    [gestureTriggerView addGestureRecognizer:self.debugGestureRecognizer];
 }
 
 - (void)handleViewDebugGesture:(UITapGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateRecognized) {
         [[GADMobileAds sharedInstance] presentAdInspectorFromViewController:[self.delegate viewControllerForAdapter] completionHandler:^(NSError * _Nullable error) {
-            NSLog(@"[AdManager][%@] > %@ : Ad Inspector not loaded: %@", self.name, NSStringFromSelector(_cmd), [error localizedDescription]);
+            if (error) {
+                NSLog(@"[AdManager][%@] > %@ : Ad Inspector not loaded: %@", self.name, NSStringFromSelector(_cmd), [error localizedDescription]);
+            }
         }];
     }
 }
@@ -197,6 +206,7 @@ static NSString * const kMediationAdapter = @"AdMob";
 #pragma mark - Dealloc
 
 - (void)dealloc {
+    [self.debugGestureRecognizer.view removeGestureRecognizer:self.debugGestureRecognizer];
     NSLog(@"[AdManager][%@] > %@", self.name, NSStringFromSelector(_cmd));
 }
 

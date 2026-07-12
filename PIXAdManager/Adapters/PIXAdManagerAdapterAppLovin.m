@@ -20,6 +20,7 @@ static NSString * const kMediationAdapter = @"AppLovin";
 @property (nonatomic, assign) BOOL shouldLoadAd;
 @property (nonatomic, strong) NSLayoutConstraint *adViewWidthConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *adViewHeightConstraint;
+@property (nonatomic, strong) UITapGestureRecognizer *debugGestureRecognizer;
 
 @end
 
@@ -44,9 +45,11 @@ static NSString * const kMediationAdapter = @"AppLovin";
     id FBTrackingEnabledValue = self.configuration[kAdManagerConfigurationFBTrackingEnabledKey];
     self.FBTrackingEnabled = [FBTrackingEnabledValue respondsToSelector:@selector(boolValue)] ? [FBTrackingEnabledValue boolValue] : NO;
     
-    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.configuration);
-    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.sdkKey);
-    NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.adUnitID);
+    #if DEBUG
+        NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.configuration);
+        NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.sdkKey);
+        NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.adUnitID);
+    #endif
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), NSStringFromCGSize(self.adSize));
     NSLog(@"[AdManager][%@] > %@ : %@", self.name, NSStringFromSelector(_cmd), self.FBTrackingEnabled ? @"Y" : @"N");
     
@@ -169,9 +172,13 @@ static NSString * const kMediationAdapter = @"AppLovin";
 
 - (void)adapterViewDebug {
     UIView *gestureTriggerView = [self.delegate viewControllerForAdapter].view;
-    UITapGestureRecognizer *adViewDebugGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleViewDebugGesture:)];
-    adViewDebugGestureRecognizer.numberOfTapsRequired = 3;
-    [gestureTriggerView addGestureRecognizer:adViewDebugGestureRecognizer];
+    if (gestureTriggerView == nil || self.debugGestureRecognizer != nil) {
+        return;
+    }
+
+    self.debugGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleViewDebugGesture:)];
+    self.debugGestureRecognizer.numberOfTapsRequired = 3;
+    [gestureTriggerView addGestureRecognizer:self.debugGestureRecognizer];
 }
 
 - (void)handleViewDebugGesture:(UITapGestureRecognizer *)sender {
@@ -183,6 +190,7 @@ static NSString * const kMediationAdapter = @"AppLovin";
 #pragma mark - Dealloc
 
 - (void)dealloc {
+    [self.debugGestureRecognizer.view removeGestureRecognizer:self.debugGestureRecognizer];
     NSLog(@"[AdManager][%@] > %@", self.name, NSStringFromSelector(_cmd));
 }
 
