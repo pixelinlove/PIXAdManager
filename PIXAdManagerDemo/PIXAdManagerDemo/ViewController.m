@@ -90,7 +90,8 @@
     if (!self.didInitializeAds) {
         // Adapter initialization may start ad SDKs, so keep this behind the consent gate.
         NSDictionary *admobTestConfiguration = @{
-            @"adUnitID": @"ca-app-pub-3940256099942544/2934735716",
+            kAdManagerConfigurationAdUnitKey:@"ca-app-pub-3940256099942544/2934735716",
+            kAdManagerConfigurationAdSizeKey:@"{-1.0f,-1.0f}",
         };
         [adManager initializeWithMediationAdapter:AdManagerAdapterAdMob andConfiguration:admobTestConfiguration];
 
