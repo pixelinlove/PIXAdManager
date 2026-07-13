@@ -150,7 +150,7 @@ static NSString * const kMediationAdapter = @"AdMob";
     }
     
     // AdView Size customisation logic
-    self.adView.adSize = GADLargeAnchoredAdaptiveBannerAdSizeWithWidth(adSize.width);
+    self.adView.adSize = GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth(adSize.width);
     if (self.adSize.height > 0.0f) {
         self.adView.adSize = GADAdSizeFromCGSize(adSize);
     }
