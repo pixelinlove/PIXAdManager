@@ -7,6 +7,7 @@
 //
 
 #import "PIXAdManagerAdapterAdMob.h"
+#import "PIXAdManager.h"
 #import "PIXAdManagerAdapter.h"
 @import GoogleMobileAds;
 

@@ -15,6 +15,13 @@ typedef enum {
     AdManagerAdapterAppLovin
 } AdManagerAdapter;
 
+FOUNDATION_EXPORT NSString * const kAdManagerConfigurationSDKKeyKey;
+FOUNDATION_EXPORT NSString * const kAdManagerConfigurationAdUnitKey;
+FOUNDATION_EXPORT NSString * const kAdManagerConfigurationAdSizeKey;
+FOUNDATION_EXPORT NSString * const kAdManagerConfigurationFBTrackingEnabledKey;
+FOUNDATION_EXPORT NSString * const kAdManagerConfigurationAmazonAPSAppKey;
+FOUNDATION_EXPORT NSString * const kAdManagerConfigurationAmazonAPSSlotIDKey;
+
 
 @class PIXAdManager;
 

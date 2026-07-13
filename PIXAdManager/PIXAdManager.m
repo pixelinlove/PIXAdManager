@@ -9,6 +9,13 @@
 #import "PIXAdManager.h"
 #import "PIXAdManagerAdapter.h"
 
+NSString * const kAdManagerConfigurationSDKKeyKey = @"sdkKey";
+NSString * const kAdManagerConfigurationAdUnitKey = @"adUnitID";
+NSString * const kAdManagerConfigurationAdSizeKey = @"adSize";
+NSString * const kAdManagerConfigurationFBTrackingEnabledKey = @"FBTrackingEnabled";
+NSString * const kAdManagerConfigurationAmazonAPSAppKey = @"amazonAPSApp";
+NSString * const kAdManagerConfigurationAmazonAPSSlotIDKey = @"amazonAPSSlotID";
+
 #if DEBUG
     // Import Libraries and SDK necessary to setup DEBUG Mode
     #import <AdSupport/ASIdentifierManager.h>

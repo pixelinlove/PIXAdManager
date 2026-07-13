@@ -7,6 +7,7 @@
 //
 
 #import "PIXAdManagerAdapterAppLovin.h"
+#import "PIXAdManager.h"
 #import "PIXAdManagerAdapter.h"
 #import <AppLovinSDK/AppLovinSDK.h>
 
